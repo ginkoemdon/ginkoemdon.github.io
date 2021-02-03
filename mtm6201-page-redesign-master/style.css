@@ -1,0 +1,188 @@
+/* The redesign is a transformation into a sleak but visualloy engaging design that uses fonts, colours, shapes, and spacing in a visually engaging manner */
+
+/* Navigation Bar: Display flex, in a column to create a mobile appropriate menu */
+body #nav {
+  background-color: #88d498;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  border: none;
+  max-width: 1200px;
+  padding: 30px 0px;
+}
+
+/* Style Navigation Bar Text to have different font and all uppercase letters to emphasize importance*/
+.nav a {
+  color: black;
+  font-family: monaco;
+  text-transform: uppercase;
+}
+
+/* hover interaction - upon user hovering over nav text with mouse, the text will turn to a lighter colour to indicate the prospect of selction. I used this because as I user I like this feature. It adds some functional flare and stylistic responsivness to a design */
+a.nav-link:hover {
+  color: #c6dabf;
+}
+
+/* Background of "Hello"  */
+main #home {
+  background-color: #f3e9d2;
+  padding: 3em;
+}
+
+/* Hello Title - Created the illusion of a background shape/button for each Title using background & border radius. I chose to do this because it displays great emphasis with colour and shape, as well as distinguishes hierchy of information, while being visually appealing */
+main #home h1 {
+  background: #c6dabf;
+  padding: 0.5em;
+  font-family: monaco;
+  display: flex;
+  margin: 0;
+  width: fit-content;
+  border-radius: 1em;
+
+}
+
+/* Create breathing space between title and paragraph & aligning text to the left for formatting */
+main #home p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  margin: 0;
+  padding-top: 1em;
+}
+
+/* About full section */
+main #about {
+  background: #f3e9d2;
+  color: black;
+  padding: 0 3em 0 3em;
+
+}
+
+/* About Title - adding background shape & font family for emphasis, heirchy & visual attraction*/
+main #about h2 {
+  font-family: monaco;
+  text-align: left;
+  margin: 0;
+  background: #c6dabf;
+  width: fit-content;
+  padding: 0.5em;
+  border-radius: 1em;
+}
+
+/* About Paragraph */
+main #about p {
+  font-size: 24px;
+  margin: 0;
+  padding-top: 1em;
+}
+
+/* Image Illustration - Moved to the the right of the text & encouporated circular background to display a cohesive visual theme*/
+#about .about-image {
+  float: right;
+  background-color: #c6dabf;
+  border-radius: 5em;
+  width: 250px;
+
+}
+
+/* Contact Section */
+main #contact {
+  padding: 3em;
+  background: #f3e9d2;
+  margin: 0;
+}
+
+/* Background shape & font family for emphasis, hierchy & visual attraction */
+#contact h2 {
+  font-family: monaco;
+  text-align: left;
+  background: #c6dabf;
+  width: fit-content;
+  padding: 0.5em;
+  border-radius: 1em;
+  margin-left: 1em;
+  margin-bottom: 0em;
+  margin-top: 0;
+}
+
+/* Contact Section - Paragraph  */
+#contact p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1em 0em 1em 0em;
+  margin: 0em 2em;
+  font-size: 24px;
+}
+
+/* Contact Form */
+form.contact-form {
+  color: black;
+  background-color: #88d498;
+  padding: 2em 3.5em 2em 2em;
+  width: auto;
+}
+
+/* Contatc Form Inputs- Make sure text area inputs have rounded corners to go with visual theme*/
+form .contact-form-input {
+  border-radius: 2em;
+  margin-bottom: 1em;
+  border: solid black 1px;
+}
+
+/* Contact Form Labels "Name, Email, Message" - round corners and change to title text to keep up visual theme and draw attention */
+.contact-form-label {
+  font-family: monaco;
+  margin-bottom: 1em;
+  padding-left: 0.5em;
+}
+
+/* Form Submission Button "Send Message"- Make bigger object and text to scale elements for visual cohesiveness */
+button {
+  padding: 1em;
+  border-radius: 3em;
+  font-size: 15px;
+  font-family: monaco;
+  border: solid black 1px;
+}
+
+/* Footer width match to body*/
+footer {
+  margin: 0 auto;
+  justify-content: center;
+  padding: 10px 0px;
+  max-width: 1200px;
+  background-color: #88d498;
+
+}
+
+/* Website Footer - Center text, add background colour the same as nav bar, and add padding to wrap up website on a consitent design note  */
+footer p {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* -------------Desktop Styling -------------*/
+@media only screen and (min-width:760px) {
+
+  body #nav {
+    background-color: #88d498;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    border: none;
+  }
+
+  /* Create wider padding for "About" link to apply border sides seperation evenly */
+  .nav a {
+    padding: 0em 2em 0em 2em;
+  }
+
+  /* border strokes between 3 Nav links to  visually seperate links*/
+  .nav a:nth-child(2) {
+    border-left: black solid 1px;
+    border-right: black solid 1px;
+    padding: 0em 2.5em 0em 2.5em;
+  }
+}
