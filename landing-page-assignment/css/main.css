@@ -1,0 +1,415 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}`  
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*designing start*/
+html {
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* /*  Color values used in the layout
+green= #57eeab
+yellow= #fffd8c
+coral= #ff8480
+white= #f7f7ff
+grey= #333131
+ */
+
+html {
+  background-color: #f7f7ff;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(3, auto);
+  margin: 0.9rem 2.3rem;
+}
+
+#dash-logo {
+  display: flex;
+  justify-content: left;
+  width: 6.25rem;
+  height: auto;
+  padding-bottom: 2.313rem;
+}
+
+.title h1 {
+  font-weight: Bold;
+  font-size: 60px;
+  color: #333131;
+  letter-spacing: 0em;
+  line-height: 73px;
+  text-align: left;
+}
+
+.start-today {
+  font-size: 24px;
+  color: #333131;
+  line-height: 29px;
+  opacity: 1;
+}
+
+.scooter-girl {
+  width: 18.007rem;
+  height: auto;
+  padding: 0.25rem 0 1rem 0;
+
+}
+
+.apply-form {
+  box-sizing: border-box;
+  border: #333131;
+  background-color: white;
+  width: 18.75rem;
+  height: 30.938rem;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 5px 10px 15px rgba(51, 49, 49, 0.4);
+  width: 304px;
+  margin-bottom: 2.813rem;
+
+}
+
+.apply-form-contents {
+  padding: 0.9rem 1.9rem;
+  justify-content: center;
+  text-align: left;
+  padding: 0.938rem;
+}
+
+.apply-now {
+  font-weight: Bold;
+  font-size: 40px;
+  color: #333131;
+  padding-bottom: 0.625rem 1.563rem 1.5rem 1.563rem ;
+}
+
+.apply-description-short {
+  font-weight: normal;
+  font-size: 16px;
+  color: #333131;
+  padding: 24px 0 15px 0;
+}
+
+.apply-description-long {
+  display: none;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flexbox ordered the 3rd form section (email adress) as "1" to make it the last written section on the form -> this was one of the differences in the mobile mockup compared to the desktop and tablet which have the form sections in source code order */
+.contact-form-section:nth-child(3) {
+  order: 1;
+}
+
+/* The labels appear before the input, which is not displayed on the mockup, therefore I took away the label's display. The placeholders are there to still guide the user to input the correct contact information. */
+.contact-form-label {
+  display: none;
+}
+
+.contact-form-input {
+  box-sizing: border-box;
+  background: #F4F4F5;
+  border-radius: 11px;
+  opacity: 0.5;
+  width: 15.625rem;
+  height: 2.5rem;
+  margin-bottom: 0.938rem;
+  border: none;
+  padding: 0.688rem 0rem 0.625rem 0.625rem;
+  font-size: 16px;
+  font-weight: normal;
+  color:  #9B9B9B;
+}
+
+.agreement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type=checkbox] {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  /* 15px 10px 15 0 */
+  margin: 0rem;
+  border: 1px solid #333131;
+  opacity: 1;
+}
+
+.i-agree {
+  font-size: 16px;
+  display: inline;
+  margin-left: 0.938rem;
+}
+
+.button1 {
+  align-content: center;
+  box-sizing: border-box;
+  border: none;
+  background-color: #57eeab;
+  border-radius: 11px;
+  width: 15.625rem;
+  height: 3.438rem;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333131;
+  margin: 0.938rem 0;
+}
+
+.fine-text {
+  font-size: 14px;
+}
+
+.fine-text em {
+  color: #ff8480;
+}
+
+
+
+/*  
+:placeholder-shown{
+  padding: 0.688rem 0rem 0.625rem 0.625rem ;
+  font:  normal 16px;
+  text-align: left;
+  color: #9B9B9B;
+  font-style: 'Montserrat';
+  letter-spacing: 0.5px;
+  font-weight: normal;
+}
+*/
+
+footer {
+  background-color: #fffd8c;
+  margin: 0;
+  width: 100%;
+}
+
+.footer-content {
+  padding: 1.375rem 2.313rem 0rem 2.313rem;
+}
+
+h5 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333131;
+}
+
+.fine-text2 {
+  font-size: 16px;
+  font-weight: normal;
+  color: #333131;
+  padding: 0.625rem 0;
+}
+
+.footer-form-input {
+  box-sizing: border-box;
+  height: 2.5rem;
+  background-color: #F7F7FF;
+  border: none;
+  border-radius: 11px;
+  margin-bottom: 0.625rem;
+  padding: 0.688rem 0rem 0.625rem 0.625rem;
+  font-size: 16px;
+  color: #707070;
+}
+
+.footer-form-label {
+  display: none;
+}
+
+input#hours {
+  width: 4.25rem;
+}
+
+input#city {
+  display: flex;
+  width: 14rem;
+}
+
+.button2 {
+  box-sizing: border-box;
+  width: 18.875rem;
+  height: 2.5rem;
+  background-color: #ff8480;
+  font-size: 24px;
+  color: #F7F7FF;
+  font-weight: bold;
+  border-radius: 11px;
+  border: none;
+  text-transform: uppercase;
+}
+
+div.footer-icons {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.875rem 3.531rem 1.334rem 3.531rem;
+
+}
+
+/* padding: 1.875rem 3.531rem 1.334rem 3.625rem; */
+/* .footer-icons img {
+ 
+} */
+
+
+/* --------Media Queries */
+
+/* @media (max-width:1023px) */
+/* .main{
+background-position: center 35;
+background-size: 50%; }
+
+.main-content{
+grid-template-columns: 1fr;
+justiy-items: center;
+align-content: space-between;
+grid-gap:0;
+min-height: 1000px
+
+}*/
