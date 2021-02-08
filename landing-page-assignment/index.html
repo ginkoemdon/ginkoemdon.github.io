@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dash</title>
 
+
+  <!--adding link to css -->
+  <link rel="stylesheet" href="/landing-page-assignment/css/main.css">
+
   <!--Adding Favicon -->
   <link rel="shortcut icon" type="image/ico" href="/landing-page-assignment/images/favicon.ico">
 
@@ -14,85 +18,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
 
-  <!--adding link to css -->
-  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
   <main>
-    <div class="logo">
-      <img src="images/logo/logo.png" alt="dash-logo">
+
+
+    <section class="main-content">
+      <div class="logo">
+        <img id=dash-logo src="images/logo/logo.png" alt="dash-logo">
+      </div>
+
+      <div class="title">
+        <h1> Want to be your own boss?
+        </h1>
+        <p class="start-today">
+          Start today and make up to $30/hr driving your own vehical with Dash!
+        </p>
+      </div>
+
+      <div class="scooter-girl">
+        <img src="/landing-page-assignment/images/bg-image/scooter.svg" alt="illustration of girl on a scooter">
+
+      </div>
+
+      <div class="apply-form">
+        <div class="apply-form-contents">
+          <h2 class="apply-now">Apply Now</h2>
+          <p class="apply-description-short">Enter your info below.</p>
+          <p class="apply-description-long">Enter your info below to get started.</p>
+
+          <form class="contact" action="get">
+            <!-- Name -->
+            <div class="form-container">
+              <div class="contact-form-section">
+                <label class="contact-form-label" for="name">First name</label>
+                <input id="name" class="contact-form-input" type="text" placeholder="First name">
+              </div>
+              <!-- Last Name -->
+              <div class="contact-form-section">
+                <label class="contact-form-label" for="surname">Last name</label>
+                <input id="surname" class="contact-form-input" type="text" placeholder="Last name">
+              </div>
+              <!-- Email Adress -->
+              <div class="contact-form-section">
+                <label class="contact-form-label" for="email">Email address</label>
+                <input id="email" class="contact-form-input" type="email" placeholder="Email address">
+              </div>
+              <!-- Phone Number -->
+              <div class="contact-form-section">
+                <label class="contact-form-label" for="number">Phone number</label>
+                <input id="number" class="contact-form-input" type="number" placeholder="Phone number">
+              </div>
+            </div>
+
+            <div class="agreement">
+              <!-- Checkbox -->
+              <input class="checkbox" type="checkbox">
+              <p class="i-agree">I agree to dash terms</p>
+            </div>
+            <!-- Drive With Us -->
+            <button class="button1" type="submit">DRIVE WITH US
+            </button>
+            <div class="fine-text">
+              <p>Already applied?
+                <em>Check your application status here</em></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <h5> See how much you can earn with Dash.</h5>
+        <p class="fine-text2">how many hours do you want to drive with us this week?</p>
+      </div>
+      <form class="footer-form" action="get">
+        <div class="footer-form-div">
+          <label class="footer-form-label" for="hours">Hours</label>
+          <input id="hours" class="footer-form-input" type="number" placeholder="Hours">
+        </div>
+        <div class="footer-form-div" >
+          <label class="footer-form-label" for="city">City</label>
+          <input id="city" class="footer-form-input" type="text" placeholder="City">
+          <!-- Look up city drop down input -->
+        </div>
+        <button type="submit" class="button2">Calculate</button>
+      </form>
+    </div>
+    <div class="footer-icons">
+      <img src="/landing-page-assignment/images/icons/facebook.svg" alt="facebook-icon">
+      <img src="/landing-page-assignment/images/icons/instagram.svg" alt="instagram-icon">
+      <img src="/landing-page-assignment/images/icons/twitter.svg" alt="twitter-icon">
+      <img src="/landing-page-assignment/images/icons/linkedin.svg" alt="linkedin-icon">
     </div>
 
-
-    <section id="title" class="title">
-      <h1> Want to be your own boss?
-      </h1>
-      <p class="start-today">
-        Start today and make up to $30/hr driving your own vehical with Dash!
-      </p>
-    </section>
-
-    <section class="apply-form">
-      <h2 class="apply-now">Apply Now</h2>
-      <p>Ener your info below to get started.</p>
-      <form class="contact" action="get">
-        <div class="contact-form-section">
-          <label class="contact-form-label" for="name">First name</label>
-          <input id="name" class="contact-form-input" type="text" placeholder="First name">
-        </div>
-        <div class="contact-form-section">
-          <label class="contact-form-label" for="surname">Last name</label>
-          <input id="surname" class="contact-form-input" type="text" placeholder="Last name">
-        </div>
-        <div class="contact-form-section">
-          <label class="contact-form-label" for="email">Email address</label>
-          <input id="email" class="contact-form-input" type="email" placeholder="Email address">
-        </div>
-        <div class="contact-form-section">
-          <label class="contact-form-label" for="number">Phone number</label>
-          <input id="number" class="contact-form-input" type="number" placeholder="Phone number">
-        </div>
-        <div class="agreement">
-          <input class="checkbox" type="checkbox">
-          <p class="i-agree">I agree to dash terms</p>
-        </div>
-        <button class="button1" type="submit">DRIVE WITH US
-        </button>
-        <div class="fine-text">
-          <p>Already applied?</p>
-          <p class="orange-text"> Check your application status here</p>
-        </div>
-      </form>
-    </section>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-text">
-          <h5> See how much you can earn with Dash.</h5>
-          <p class="fine-text">how many hours do you want to drive with us this week?</p>
-        </div>
-        <form class="footer-form" action="get">
-          <div class="footer-form-div">
-            <label for="hours">Hours</label>
-            <input id="hours" class="footer-form-input" type="number" placeholder="Hours">
-          </div>
-          <div class="footer-form-div">
-            <label for="city">City</label>
-            <input id="city" class="footer-form-input" type="text" placeholder="City">
-            <!-- Look up city drop down input -->
-          </div>
-          <button type="submit" class="button2">Calculate</button>
-        </form>
-        <div class="footer-icons">
-          <img src="/landing-page-assignment/images/icons/instagram.svg" alt="instagram-icon">
-          <img src="/landing-page-assignment/images/icons/twitter.svg" alt="twitter-icon">
-          <img src="/landing-page-assignment/images/icons/facebook.svg" alt="facebook-icon">
-          <img src="/landing-page-assignment/images/icons/linkedin.svg" alt="linkedin-icon">
-        </div>
-    </footer>
-
-  </main>
+  </footer>
 </body>
 
 </html>
