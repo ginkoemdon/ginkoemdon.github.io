@@ -441,20 +441,25 @@ main aside aside */
 
 @media only screen and (min-device-width: 1024px) {
 
-main{
+.main-content{
 display: grid;
 grid-template-columns:(repeat 3, 1fr);
 grid-template-areas:
 "header main side";
-background-image: url(/landing-page-assignment/images/bg-image/scooter.svg) 
 }
 
 .title{
 grid-area: header;
+justify-content: center;
 }
 
 .scooter-girl{
   display: none;
+}
+
+.main-content{
+background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
+grid-template: main;
 }
 
 .contact{
