@@ -127,7 +127,7 @@ q:before,
 q:after {
   content: '';
   content: none;
-}`  
+}
 
 table {
   border-collapse: collapse;
@@ -219,7 +219,7 @@ main {
   font-weight: Bold;
   font-size: 40px;
   color: #333131;
-  padding-bottom: 0.625rem 1.563rem 1.5rem 1.563rem ;
+  padding-bottom: 0.625rem 1.563rem 1.5rem 1.563rem;
 }
 
 .apply-description-short {
@@ -360,14 +360,21 @@ h5 {
 .footer-form-label {
   display: none;
 }
+.footer-form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
+#hours{
+  margin-right: 0.625rem;
+}
 input#hours {
   width: 4.25rem;
 }
 
 input#city {
-  display: flex;
-  width: 14rem;
+  width: 13.9rem;
 }
 
 .button2 {
@@ -384,12 +391,10 @@ input#city {
 }
 
 div.footer-icons {
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.875rem 3.531rem 1.334rem 3.531rem;
-
 }
 
 /* padding: 1.875rem 3.531rem 1.334rem 3.625rem; */
@@ -400,16 +405,135 @@ div.footer-icons {
 
 /* --------Media Queries */
 
-/* @media (max-width:1023px) */
-/* .main{
-background-position: center 35;
-background-size: 50%; }
+/* tablet */
+@media screen and (min-width: 768px) and (max-width: 1024px) {}
 
-.main-content{
+main{
+  padding: 1.563rem 5.063rem 5.813rem 5.125rem;
+  margin:0;
+}
+
+img#dash-logo{
+  width: 7.037rem;
+  height: auto;
+}
+
+.title h1{
+  font-size: 80px;
+  line-height: 97px;
+}
+.start-today{
+line-height: 1.813rem;
+font-size: 24px;
+padding-top: 1.25rem;
+}
+.scooter-girl{
+width: 29.29rem;
+height: 1.847rem;
+display: block;
+margin: auto;
+padding-bottom: 1.847rem;
+}
+
+.apply-description-short{
+  font-size: 30px;
+}
+
+.apply-form{
+align-items: center;
+  width: 37.813rem;
+  height: auto;  
+  padding: 1.813rem 2.5rem 2.5rem;
+  margin: 0;
+}
+div.apply-form-contents{
+  width: 32.813rem;
+  margin: 0;
+
+}
+/* form input & placeholder */
+.contact-form-input{
+  width: 100%;
+  height: 3.438rem;
+  align-content: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  
+}
+.agreement input{
+border-radius: 5px;
+width: 29px;
+height: 29px;
+}
+
+p.i-agree{
+  font-size: 20px
+}
+
+.button1{
+  width: 99%;
+  font-size: 32px;
+}
+
+div.fine-text{
+  font-size: 17px;
+  /* center text */
+}
+ 
+.footer-content{
+  padding: 1.25rem 5rem 0 5rem;
+}
+
+form.footer-form{
+  padding-right: 0.813rem;
+}
+
+.footer-form-div #hours{
+  width: 12.5rem;
+}
+.footer-form #city{
+  margin-left: 0.613rem;
+}
+
+div.footer-icons{
+  padding: 1.5rem 15.844rem 1.209rem 15.313rem;
+}
+
+
+.button2{
+
+width: 12.5rem;
+display: inline;
+}
+}
+/* background-position: center 35%;
+background-size: 50%; */
+
+
+/* .main-content{
 grid-template-columns: 1fr;
 justiy-items: center;
 align-content: space-between;
 grid-gap:0;
-min-height: 1000px
+min-height: 1000px */
 
-}*/
+/* grid-template areas
+main aside aside */
+
+
+@media only screen and (min-device-width: 1024px) {
+
+
+
+.main{
+display: grid;
+grid-template-columns:(repeat 3 1fr);
+grid-template-areas:
+"header main side";
+}
+
+
+}
+
+
