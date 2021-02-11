@@ -48,15 +48,7 @@ table {
 }
 
 
-/*designing start*/
-html {
-  font-family: 'Montserrat', sans-serif;
-
-}
-
-* {
-  box-sizing: border-box;
-}
+/*CSS Design Start t*/
 
 /* /*  Color values used in the layout
 green= #57eeab
@@ -67,8 +59,10 @@ grey= #333131
  */
 
 html {
+  font-family: 'Montserrat', sans-serif;
   background-color: #f7f7ff;
 }
+
 
 main {
   display: grid;
@@ -85,7 +79,7 @@ main {
   padding-bottom: 2.313rem;
 }
 
-.title h1 {
+.title-and-text h1 {
   font-weight: Bold;
   font-size: 60px;
   color: #333131;
@@ -109,7 +103,7 @@ main {
 
 }
 
-.apply-form {
+.apply {
   box-sizing: border-box;
   border: #333131;
   background-color: white;
@@ -334,7 +328,7 @@ img#dash-logo{
   height: auto;
 }
 
-.title h1{
+.title-and-text h1{
   font-size: 80px;
   line-height: 97px;
 }
@@ -354,7 +348,7 @@ padding-bottom: 1.847rem;
   font-size: 30px;
 }
 
-.apply-form{
+.apply{
 align-items: center;
   width: 37.813rem;
   height: auto;  
@@ -443,13 +437,13 @@ main aside aside */
 
 .main-content{
 display: grid;
-grid-template-columns:(repeat 3, 1fr);
+grid-template-columns: repeat(3, 1fr);
 grid-template-areas:
-"header main side";
+"a b c";
 }
 
-.title{
-grid-area: header;
+.title-and-text{
+grid-area: "a";
 justify-content: center;
 }
 
@@ -459,11 +453,11 @@ justify-content: center;
 
 .main-content{
 background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
-grid-template: main;
+grid-area: "a";
 }
 
 .contact{
-  grid-area: side;
+  grid-area: "c";
 }
 
 .footer{
