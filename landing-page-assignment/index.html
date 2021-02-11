@@ -7,7 +7,7 @@
   <title>Dash</title>
 
 
-  <!--adding link to css -->
+  <!--Adding link to CSS (main.css) -->
   <link rel="stylesheet" href="/landing-page-assignment/css/main.css">
 
   <!--Adding Favicon -->
@@ -18,19 +18,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
 
-
 </head>
 
+<!-- body consiststs of all areas of the page (main-content, & footer) -->
 <body>
-  <main>
+  <!-- <main> is the parent of logo and grandparent of the divs: .title , .scooter-girl , and .apply-form -->
+  <main class="main-content">
 
-
-    <section class="main-content">
+    <!-- Dash Logo : Positioned in Left Corner. 
+      It lives outside of main-content for grid purposes and better consistency of positioning for ressponiveness  -->
       <div class="logo">
         <img id=dash-logo src="images/logo/logo.png" alt="dash-logo">
       </div>
 
-      <div class="title">
+      <!-- Section.container is the parent to divs: .title, .scooter-girl, and .apply.form . This is sectioned to organize the html better in anticipation for the css styling and targeting-->
+    <section class="container">
+      
+      <!-- .title-and-text is parent to h1 & .start-today so that they are grouped together for convinence during CSS styling because both text aligns to the left-->
+      <div class="title-and-text">
         <h1> Want to be your own boss?
         </h1>
         <p class="start-today">
@@ -38,17 +43,21 @@
         </p>
       </div>
 
+      <!-- .scooter-girl contains the image of the girl on the scooter that lives between .title-and-text on the mobile and tablet version. It is placed inside it's own div for ease of manipulation -->
+      <!-- This div must not be visable in the CSS desktop version. Therfore making it "display: none" on desktop. This way, I can insert the same image in the css as a background image instead, to insure correct layout of the design-->
       <div class="scooter-girl">
         <img src="/landing-page-assignment/images/bg-image/scooter.svg" alt="illustration of girl on a scooter">
-
       </div>
 
-      <div class="apply-form">
+
+      <div class="apply">
         <div class="apply-form-contents">
           <h2 class="apply-now">Apply Now</h2>
+          <!-- short and long descriptions given the variations. short= mobile & tablet long= desktop-->
           <p class="apply-description-short">Enter your info below.</p>
           <p class="apply-description-long">Enter your info below to get started.</p>
-          <form class="contact" action="get">
+          <!-- Form Inputs & Labels -->
+          <form class="contact" action="apply-now" method="get">
             <!-- Name -->
             <div class="form-container">
               <div class="contact-form-section">
@@ -72,6 +81,7 @@
               </div>
             </div>
 
+            <!-- div contains .checkbox, .button1, & .fine-text -->
             <div class="agreement">
               <!-- Checkbox -->
               <input class="checkbox" type="checkbox">
@@ -91,11 +101,14 @@
   </main>
 
   <footer>
+    <!-- .footer-content = all contents of the footer text and form except for icons is -->
     <div class="footer-content">
+      <!-- footer text -->
       <div class="footer-text">
         <h5> See how much you can earn with Dash.</h5>
         <p class="fine-text2">how many hours do you want to drive with us this week?</p>
       </div>
+      <!-- footer form -->
       <form class="footer-form" action="get">
         <div class="footer-form-div">
           <label class="footer-form-label" for="hours">Hours</label>
@@ -104,11 +117,13 @@
         <div class="footer-form-div" >
           <label class="footer-form-label" for="city">City</label>
           <input id="city" class="footer-form-input" type="text" placeholder="City">
-          <!-- Look up city drop down input -->
+          <!-- Look up city drop down input? -->
         </div>
       <button type="submit" class="button2">Calculate</button>
       </form>
     </div>
+    
+    <!-- Social Media Icons -->
     <div class="footer-icons">
       <img class="svg" src="/landing-page-assignment/images/icons/facebook.svg" alt="facebook-icon">
       <img class="svg" src="/landing-page-assignment/images/icons/instagram.svg" alt="instagram-icon">
