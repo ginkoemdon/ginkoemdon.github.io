@@ -477,11 +477,10 @@ display: inline;
   display: none;
 }
 
-.apply-description-long{
+p.apply-description-long{
 display: contents;
 font-size: 24px;
-padding-top: 10px;
-padding-bottom: 10px;
+counter-reset: red;
 }
 
 .title-and-text{
@@ -524,6 +523,11 @@ footer{
 form.footer-form{
   flex-wrap: wrap;
   margin: 0;
+}
+
+.button2{
+width: 200px;
+margin-left: 18px;
 }
 
 div.footer-icons{
