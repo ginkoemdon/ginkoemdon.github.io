@@ -63,7 +63,7 @@ html {
   background-color: #f7f7ff;
 }
 
-
+/* adding grid */
 main {
   display: grid;
   grid-template-columns: repeat(1, auto);
@@ -78,6 +78,15 @@ main {
   height: auto;
   padding-bottom: 2.313rem;
 }
+
+/* centering contents & adding min+max width */
+.title-and-text{
+  margin: 0 auto;
+  min-width: 304px;
+  max-width: 604px;
+
+}
+
 
 .title-and-text h1 {
   font-weight: Bold;
@@ -107,12 +116,13 @@ main {
   box-sizing: border-box;
   border: #333131;
   background-color: white;
-  width: 18.75rem;
+  /* width: 18.75rem auto; */
   height: 30.938rem;
   border-radius: 26px;
   background: #fff;
   box-shadow: 5px 10px 15px rgba(51, 49, 49, 0.4);
-  width: 304px;
+  min-width: 304px;
+  max-width: 604px;
   margin-bottom: 2.813rem;
   margin: 0  auto;
 
@@ -139,10 +149,12 @@ main {
   padding: 24px 0 15px 0;
 }
 
+/* vanish long description because it's mobile */
 .apply-description-long {
   display: none;
 }
 
+/* apply flex to form container */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -163,7 +175,8 @@ main {
   background: #F4F4F5;
   border-radius: 11px;
   opacity: 0.5;
-  width: 15.625rem;
+  /* width: 15.625rem; */
+  width: 100%;
   height: 2.5rem;
   margin-bottom: 0.938rem;
   border: none;
@@ -179,6 +192,7 @@ main {
   align-items: center;
 }
 
+/* styling checkbox */
 input[type=checkbox] {
   border-radius: 5px;
   width: 25px;
@@ -201,12 +215,13 @@ input[type=checkbox] {
   border: none;
   background-color: #57eeab;
   border-radius: 11px;
-  width: 15.625rem;
+  width: 100%;
   height: 3.438rem;
   font-size: 24px;
   font-weight: bold;
   color: #333131;
   margin: 0.938rem 0;
+  
 }
 
 .fine-text {
@@ -218,34 +233,25 @@ input[type=checkbox] {
 }
 
 
-
-/*  
-:placeholder-shown{
-  padding: 0.688rem 0rem 0.625rem 0.625rem ;
-  font:  normal 16px;
-  text-align: left;
-  color: #9B9B9B;
-  font-style: 'Montserrat';
-  letter-spacing: 0.5px;
-  font-weight: normal;
-}
-*/
-
 footer {
   background-color: #fffd8c;
   margin: 0 auto;
-  width: 100%;
+ 
   display: flex;
   flex-direction: column;
+  width:100%;
+  
 }
 
 .footer-content {
   padding: 1.375rem 2.313rem 0rem 2.313rem;
+  margin: 0 auto;
 }
 
 .footer-text{
   max-width: 300px;
   margin: 0 auto;
+  width: 100%;
 }
 
 h5 {
@@ -263,8 +269,10 @@ h5 {
 }
 .footer-form{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: wrap;  
+  margin: 0 auto;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .footer-form-input {
@@ -287,17 +295,18 @@ h5 {
   margin-right: 0.625rem;
 }
 input#hours {
+  
   width: 4.25rem;
 }
 
 input#city {
-  width: 13.3rem;
-  margin-right: 0.613rem;
+  width: 13rem;
+
 }
 
 .button2 {
   box-sizing: border-box;
-  width: 18.875rem;
+  width: 100%;
   height: 2.5rem;
   background-color: #ff8480;
   font-size: 24px;
@@ -306,6 +315,7 @@ input#city {
   border-radius: 11px;
   border: none;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 div.footer-icons {
@@ -313,17 +323,19 @@ div.footer-icons {
   flex-direction: row;
   justify-content: space-between;
   padding: 1.875rem 3.531rem 1.334rem 3.531rem;
+  margin:0;
+  order: initial;
 }
 
-/* padding: 1.875rem 3.531rem 1.334rem 3.625rem; */
-/* .footer-icons img {
- 
-} */
+
+.footer-icons img:nth-child(1){
+  order: -8 !important;
+}
 
 
-/* --------Media Queries */
+/* ||||||||||||||||| Mobile Styling Ends|||||||||||||||||||*/
 
-/* tablet */
+/* ||||||||||||||||||Tablet Styling Begins|||||||||||||||||||||*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
 main{
@@ -336,6 +348,10 @@ img#dash-logo{
   height: auto;
 }
 
+.title-and-text{
+  max-width: 37.813rem;
+
+}
 .title-and-text h1{
   font-size: 80px;
   line-height: 97px;
@@ -358,17 +374,18 @@ padding-bottom: 1.847rem;
 
 .apply{
 align-items: center;
-  width: 37.813rem;
   height: auto;  
   padding: 1.813rem 0 2.5rem  ;
   margin: 0  auto;
+min-width: 605px;
+max-width: 700px;
 
 }
 div.apply-form-contents{
   width: 32.813rem;
   margin: 0 auto;
-
 }
+
 /* form input & placeholder */
 .contact-form-input{
   width: 100%;
@@ -390,7 +407,7 @@ p.i-agree{
 }
 
 .button1{
-  width: 99%;
+  width: 100%;
   font-size: 32px;
 }
 
@@ -402,15 +419,19 @@ div.fine-text{
 .footer-content{
   padding: 1.25rem 5rem 0 5rem;
   margin: 0 auto;
+  min-width: 605px;
+max-width: 700px;
+  
 }
 
 .footer-text{
-  max-width: 605px;
   margin: 0;
+  align-self: flex-start;  
 }
 
 .footer-form{
-  max-width: 605px;
+  min-width: 605px;
+max-width: 700px;
 }
 
 .footer-form-div #hours{
@@ -432,25 +453,14 @@ display: inline;
 }
 
 }
-/* background-position: center 35%;
-background-size: 50%; */
+/* ||||||||||||||||| Tablet Styling Ends|||||||||||||||||||*/
 
-
-/* .main-content{
-grid-template-columns: 1fr;
-justiy-items: center;
-align-content: space-between;
-grid-gap:0;
-min-height: 1000px */
-
-/* grid-template areas
-main aside aside */
-
+/* ||||||||||||||||||Desktop Styling Begins|||||||||||||||||||||*/
 
 @media screen and (min-width: 1024px) {
 
 .main-content{
-  margin: 4rem;
+  margin: 2rem;
 }
 
 .container {
@@ -459,13 +469,28 @@ main aside aside */
   grid-template-rows: 1fr;
   background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
   background-position: center;
-  
+
 }
 
 
+.apply-description-short{
+  display: none;
+}
+
+.apply-description-long{
+display: contents;
+font-size: 24px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.title-and-text{
+  max-width: 536px;
+  margin-top: 0;
+}
+
 div.title-and-text{
   grid-column: 1 / 2;
-
 }
 
 .scooter-girl{
@@ -474,18 +499,23 @@ div.title-and-text{
 
 div.apply{
   grid-column: 3 / 4;
-}
-.apply-form-contents{
+  max-width: 535px ;
+
 }
 
 footer{
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+
 }
+  
 .footer-content{
   display: flex;
   flex-direction: column;
-  /* margin: 3rem; */
+  margin: 0;
 }
+
 .footer-text{
   align-self: flex-start;
   max-width: none;
@@ -495,6 +525,26 @@ form.footer-form{
   flex-wrap: wrap;
 }
 
+div.footer-icons{
+display: flex;
+flex-direction: row;
+
+} 
+/* icons sizing & padding */
+.svg{
+  padding: 1rem;
+  width: 30.64px;
+  height: auto;
+}
+
+/* changing desktop order of icons */
+.footer-icons img:nth-child(2) {
+  order: -7;
+}
+
+.footer-icons img:nth-child(3) {
+  order: -6;
+}
 
 }
 
