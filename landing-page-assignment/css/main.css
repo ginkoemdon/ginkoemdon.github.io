@@ -523,6 +523,7 @@ footer{
 
 form.footer-form{
   flex-wrap: wrap;
+  margin: 0;
 }
 
 div.footer-icons{
