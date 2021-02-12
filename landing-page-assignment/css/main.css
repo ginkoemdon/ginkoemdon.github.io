@@ -311,6 +311,10 @@ input[type=checkbox] {
 
 }
 
+a{
+  text-decoration: none;
+}
+
 .fine-text {
   font-size: 14px;
 }
@@ -319,7 +323,6 @@ input[type=checkbox] {
 .fine-text em {
   color: #ff8480;
 }
-
 
 footer {
   background-color: #fffd8c;
