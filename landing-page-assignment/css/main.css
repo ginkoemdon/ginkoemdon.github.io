@@ -68,7 +68,7 @@ main {
   display: grid;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(3, auto);
-  margin: 0.9rem 2.3rem;
+  margin: 25px 36px 45px 36px ;
 }
 
 #dash-logo {
@@ -122,14 +122,14 @@ main {
   padding: 0.9rem 1.9rem;
   justify-content: center;
   text-align: left;
-  padding: 0.938rem;
+  margin: 0 auto;
 }
 
 .apply-now {
   font-weight: Bold;
   font-size: 40px;
   color: #333131;
-  padding-bottom: 0.625rem 1.563rem 1.5rem 1.563rem;
+  /* padding: 0.625rem 1.563rem 1.5rem 1.563rem; */
 }
 
 .apply-description-short {
@@ -233,12 +233,19 @@ input[type=checkbox] {
 
 footer {
   background-color: #fffd8c;
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-content {
   padding: 1.375rem 2.313rem 0rem 2.313rem;
+}
+
+.footer-text{
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 h5 {
@@ -253,6 +260,11 @@ h5 {
   font-weight: normal;
   color: #333131;
   padding: 0.625rem 0;
+}
+.footer-form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-form-input {
@@ -270,11 +282,6 @@ h5 {
 .footer-form-label {
   display: none;
 }
-.footer-form{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 #hours{
   margin-right: 0.625rem;
@@ -284,7 +291,8 @@ input#hours {
 }
 
 input#city {
-  width: 13.9rem;
+  width: 13.3rem;
+  margin-right: 0.613rem;
 }
 
 .button2 {
@@ -352,13 +360,13 @@ padding-bottom: 1.847rem;
 align-items: center;
   width: 37.813rem;
   height: auto;  
-  padding: 1.813rem 2.5rem 2.5rem;
+  padding: 1.813rem 0 2.5rem  ;
   margin: 0  auto;
 
 }
 div.apply-form-contents{
   width: 32.813rem;
-  margin: 0;
+  margin: 0 auto;
 
 }
 /* form input & placeholder */
@@ -393,10 +401,16 @@ div.fine-text{
  
 .footer-content{
   padding: 1.25rem 5rem 0 5rem;
+  margin: 0 auto;
 }
 
-form.footer-form{
-  margin: 0  auto;
+.footer-text{
+  max-width: 605px;
+  margin: 0;
+}
+
+.footer-form{
+  max-width: 605px;
 }
 
 .footer-form-div #hours{
@@ -433,35 +447,52 @@ min-height: 1000px */
 main aside aside */
 
 
-@media only screen and (min-device-width: 1024px) {
+@media screen and (min-width: 1024px) {
 
 .main-content{
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-areas:
-"a b c";
+  margin: 4rem;
 }
 
-.title-and-text{
-grid-area: "a";
-justify-content: center;
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
+  background-position: center;
+  
+}
+
+
+div.title-and-text{
+  grid-column: 1 / 2;
+
 }
 
 .scooter-girl{
   display: none;
 }
 
-.main-content{
-background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
-grid-area: "a";
+div.apply{
+  grid-column: 3 / 4;
+}
+.apply-form-contents{
 }
 
-.contact{
-  grid-area: "c";
+footer{
+  display: flex;
 }
+.footer-content{
+  display: flex;
+  flex-direction: column;
+  /* margin: 3rem; */
+}
+.footer-text{
+  align-self: flex-start;
+  max-width: none;
+} 
 
-.footer{
-
+form.footer-form{
+  flex-wrap: wrap;
 }
 
 
