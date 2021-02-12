@@ -3,48 +3,135 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 
@@ -68,7 +155,7 @@ main {
   display: grid;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(3, auto);
-  margin: 25px 36px 45px 36px ;
+  margin: 25px 36px 45px 36px;
 }
 
 #dash-logo {
@@ -80,7 +167,7 @@ main {
 }
 
 /* centering contents & adding min+max width */
-.title-and-text{
+.title-and-text {
   margin: 0 auto;
   min-width: 304px;
   max-width: 604px;
@@ -108,7 +195,7 @@ main {
   width: 18.007rem;
   height: auto;
   padding: 0.25rem 0 1rem 0;
-  margin: 0  auto;
+  margin: 0 auto;
 
 }
 
@@ -124,7 +211,7 @@ main {
   min-width: 304px;
   max-width: 604px;
   margin-bottom: 2.813rem;
-  margin: 0  auto;
+  margin: 0 auto;
 
 }
 
@@ -183,7 +270,7 @@ main {
   padding: 0.688rem 0rem 0.625rem 0.625rem;
   font-size: 16px;
   font-weight: normal;
-  color:  #9B9B9B;
+  color: #9B9B9B;
 }
 
 .agreement {
@@ -221,13 +308,14 @@ input[type=checkbox] {
   font-weight: bold;
   color: #333131;
   margin: 0.938rem 0;
-  
+
 }
 
 .fine-text {
   font-size: 14px;
 }
 
+/* change color of emphasized text */
 .fine-text em {
   color: #ff8480;
 }
@@ -236,11 +324,11 @@ input[type=checkbox] {
 footer {
   background-color: #fffd8c;
   margin: 0 auto;
- 
+
   display: flex;
   flex-direction: column;
-  width:100%;
-  
+  width: 100%;
+
 }
 
 .footer-content {
@@ -248,7 +336,7 @@ footer {
   margin: 0 auto;
 }
 
-.footer-text{
+.footer-text {
   max-width: 300px;
   margin: 0 auto;
   width: 100%;
@@ -267,9 +355,10 @@ h5 {
   color: #333131;
   padding: 0.625rem 0;
 }
-.footer-form{
+
+.footer-form {
   display: flex;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
   margin: 0 auto;
   align-items: center;
   flex-grow: 1;
@@ -291,11 +380,12 @@ h5 {
   display: none;
 }
 
-#hours{
+#hours {
   margin-right: 0.625rem;
 }
+
 input#hours {
-  
+
   width: 4.25rem;
 }
 
@@ -323,12 +413,12 @@ div.footer-icons {
   flex-direction: row;
   justify-content: space-between;
   padding: 1.875rem 3.531rem 1.334rem 3.531rem;
-  margin:0;
+  margin: 0;
   order: initial;
 }
 
 
-.footer-icons img:nth-child(1){
+.footer-icons img:nth-child(1) {
   order: -8 !important;
 }
 
@@ -338,219 +428,229 @@ div.footer-icons {
 /* ||||||||||||||||||Tablet Styling Begins|||||||||||||||||||||*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
-main{
-  padding: 1.563rem 5.063rem 5.813rem 5.125rem;
-  margin:0;
+  main {
+    padding: 1.563rem 5.063rem 5.813rem 5.125rem;
+    margin: 0;
+  }
+
+  img#dash-logo {
+    width: 7.037rem;
+    height: auto;
+  }
+
+  .title-and-text {
+    max-width: 37.813rem;
+  }
+
+  .title-and-text h1 {
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .start-today {
+    line-height: 1.813rem;
+    font-size: 24px;
+    padding-top: 1.25rem;
+  }
+
+  .scooter-girl {
+    width: 29.29rem;
+    display: block;
+    margin: auto;
+    padding-bottom: 1.847rem;
+  }
+
+  .apply-description-short {
+    font-size: 30px;
+  }
+
+  .apply {
+    align-items: center;
+    height: auto;
+    padding: 1.813rem 0 2.5rem;
+    margin: 0 auto;
+    min-width: 605px;
+    max-width: 700px;
+
+  }
+
+  div.apply-form-contents {
+    width: 32.813rem;
+    margin: 0 auto;
+  }
+
+  /* form input & placeholder */
+  .contact-form-input {
+    width: 100%;
+    height: 3.438rem;
+    align-content: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: lighter;
+
+  }
+
+  .agreement input {
+    border-radius: 5px;
+    width: 29px;
+    height: 29px;
+  }
+
+  p.i-agree {
+    font-size: 20px
+  }
+
+  .button1 {
+    width: 100%;
+    font-size: 32px;
+  }
+
+  div.fine-text {
+    font-size: 17px;
+    /* center text */
+  }
+
+  .footer-content {
+    padding: 1.25rem 5rem 0 5rem;
+    margin: 0 auto;
+    min-width: 605px;
+    max-width: 700px;
+  }
+
+  .footer-text {
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .footer-form {
+    min-width: 605px;
+    max-width: 700px;
+  }
+
+  .footer-form-div #hours {
+    width: 7.625rem;
+    margin-right: 0.625rem;
+  }
+
+  .footer-form #city {
+    margin-right: 0.613rem;
+    width: 16.25rem;
+  }
+
+  div.footer-icons {
+    padding: 1.5rem 15.844rem 1.209rem 15.313rem;
+  }
+
+  .button2 {
+    width: 12.5rem;
+    display: inline;
+  }
+
 }
 
-img#dash-logo{
-  width: 7.037rem;
-  height: auto;
-}
-
-.title-and-text{
-  max-width: 37.813rem;
-
-}
-.title-and-text h1{
-  font-size: 80px;
-  line-height: 97px;
-}
-.start-today{
-line-height: 1.813rem;
-font-size: 24px;
-padding-top: 1.25rem;
-}
-.scooter-girl{
-width: 29.29rem;
-display: block;
-margin: auto;
-padding-bottom: 1.847rem;
-}
-
-.apply-description-short{
-  font-size: 30px;
-}
-
-.apply{
-align-items: center;
-  height: auto;  
-  padding: 1.813rem 0 2.5rem  ;
-  margin: 0  auto;
-min-width: 605px;
-max-width: 700px;
-
-}
-div.apply-form-contents{
-  width: 32.813rem;
-  margin: 0 auto;
-}
-
-/* form input & placeholder */
-.contact-form-input{
-  width: 100%;
-  height: 3.438rem;
-  align-content: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-weight: lighter;
-  
-}
-.agreement input{
-border-radius: 5px;
-width: 29px;
-height: 29px;
-}
-
-p.i-agree{
-  font-size: 20px
-}
-
-.button1{
-  width: 100%;
-  font-size: 32px;
-}
-
-div.fine-text{
-  font-size: 17px;
-  /* center text */
-}
- 
-.footer-content{
-  padding: 1.25rem 5rem 0 5rem;
-  margin: 0 auto;
-  min-width: 605px;
-max-width: 700px;
-  
-}
-
-.footer-text{
-  margin: 0;
-  align-self: flex-start;  
-}
-
-.footer-form{
-  min-width: 605px;
-max-width: 700px;
-}
-
-.footer-form-div #hours{
-  width: 7.625rem;
-  margin-right: 0.625rem;
-}
-.footer-form #city{
-  margin-right: 0.613rem;
-  width: 16.25rem;
-}
-
-div.footer-icons{
-  padding: 1.5rem 15.844rem 1.209rem 15.313rem;
-}
-
-.button2{
-width: 12.5rem;
-display: inline;
-}
-
-}
 /* ||||||||||||||||| Tablet Styling Ends|||||||||||||||||||*/
 
 /* ||||||||||||||||||Desktop Styling Begins|||||||||||||||||||||*/
 
 @media screen and (min-width: 1024px) {
 
-.main-content{
-  margin: 2rem;
+  .main-content {
+    margin: 2rem;
+  }
+
+  /* insert background image into .container */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
+    background-position: center;
+  }
+
+/* Vanish short description as it is only for mobile and tablet */
+  .apply-description-short {
+    display: none;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+  }
+
+/* add margin ontop of name input */
+  input#name.contact-form-input {
+    margin-top: 10px;
+  }
+
+  /* Style long description text */
+  p.apply-description-long {
+    display: contents;
+    font-size: 16px;
+  }
+
+  .title-and-text {
+    max-width: 536px;
+    margin-top: 0;
+  }
+
+  div.title-and-text {
+    grid-column: 1 / 2;
+  }
+
+  .scooter-girl {
+    display: none;
+  }
+
+  div.apply {
+    grid-column: 3 / 4;
+    max-width: 535px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .footer-text {
+    align-self: flex-start;
+    max-width: none;
+  }
+
+  form.footer-form {
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .button2 {
+    width: 200px;
+    margin-left: 10px;
+  }
+
+  div.footer-icons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  /* icons sizing & padding */
+  .svg {
+    padding: 1rem;
+    width: 30.64px;
+    height: auto;
+  }
+
+  /* changing desktop order of icons */
+  .footer-icons img:nth-child(2) {
+    order: -7;
+  }
+
+  .footer-icons img:nth-child(3) {
+    order: -6;
+  }
+
 }
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  background: url(/landing-page-assignment/images/bg-image/scooter.svg) no-repeat center;
-  background-position: center;
-
-}
-
-
-.apply-description-short{
-  display: none;
-}
-
-p.apply-description-long{
-display: contents;
-font-size: 24px;
-counter-reset: red;
-}
-
-.title-and-text{
-  max-width: 536px;
-  margin-top: 0;
-}
-
-div.title-and-text{
-  grid-column: 1 / 2;
-}
-
-.scooter-girl{
-  display: none;
-}
-
-div.apply{
-  grid-column: 3 / 4;
-  max-width: 535px ;
-
-}
-
-footer{
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr;
-
-}
-  
-.footer-content{
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-
-.footer-text{
-  align-self: flex-start;
-  max-width: none;
-} 
-
-form.footer-form{
-  flex-wrap: wrap;
-  margin: 0;
-}
-
-.button2{
-width: 200px;
-margin-left: 18px;
-}
-
-div.footer-icons{
-display: flex;
-flex-direction: row;
-
-} 
-/* icons sizing & padding */
-.svg{
-  padding: 1rem;
-  width: 30.64px;
-  height: auto;
-}
-
-/* changing desktop order of icons */
-.footer-icons img:nth-child(2) {
-  order: -7;
-}
-
-.footer-icons img:nth-child(3) {
-  order: -6;
-}
-
-}
-
-
