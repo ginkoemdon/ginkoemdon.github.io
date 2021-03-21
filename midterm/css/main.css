@@ -3,132 +3,323 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-/* |||||||||||||||||||end of  */
-
-body{
-background-color: #F7CE68;
-background-image: linear-gradient(180deg, #F7CE68 0%, #e88f4f 50%, #c74c5a 100%);
-background-repeat: no-repeat;
-background-attachment: fixed;
-color: var(--grey);
-font-family: 'Raleway', sans-serif;
-}
-
-* 
-{
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
-  font-family: 'Raleway';
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* |||||||||||||||||||end of  */
+
+html {
+  /*This makes sure that the padding and border are included in the total width and height of the elements. */
   box-sizing: border-box;
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #F7CE68;
+  background-image: linear-gradient(180deg, #F7CE68 0%, #e88f4f 50%, #c74c5a 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--grey);
+  font-family: 'Raleway', sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.2;
+}
+
 
 :root {
   --grey: #3E3E3E;
   --maroon: #AF2833;
   --navy: #435394;
-  --white:#FFFFFF;
+  --white: #FFFFFF;
+  font-size: 20px;
 }
 
-/* font styles */
-h1{
-  font-size:  48.83px;
-  font-weight: bold;
-
-}
-
-h2{
-  font-size: 39.25px ;
-}
-
-h3{
-  font-size: 31.25px ;
-  font-weight: normal;
-}
-
-.wrapper{
-  margin: 3rem;
-}
-
-.spicey{
-  width: 400px;
+.logo {
+  width: 50%;
   height: auto;
 }
 
-.wrapper{
+
+
+/* -------------------
+      FONT STYLING
+ ---------------------- */
+
+/* 1vw = 1% of viewport width
+1vh = 1% of viewport height
+1vmin = 1vw or 1vh, whichever is smaller
+1vmax = 1vw or 1vh, whichever is larger */
+
+h1 {
+  font-size: 7.9vw;
+  font-weight: bold;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+h2 {
+  font-size: 3.0vh;
+  font-size: 3.052em;
+}
+
+h3 {
+  font-size: 3.0vh;
+}
+
+/* 
+h1{
+  font-size: 3.052em;
+  font-weight: bold;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+h2{
+  font-size: 2.441em;
+}
+
+h3{
+  font-size: 1.953em;
+  
+}
+
+h4{
+  font-size: 1.563em;
+}
+
+h5{
+  font-size: 1.24em;
+}
+
+h6{
+  font-size: 1em;
+} */
+
+.lands{
+  color: var(--navy);
+}
+
+.wrapper {
+  margin: 3rem;
   align-items: center;
 }
 
+.inner {
+  padding-bottom: 4em;
+}
+
 .p {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   padding-top: 1rem;
 }
 
-
-a{
+a {
   text-decoration: none;
 }
 
-a.button{
- background-color: var(--maroon); 
- text-decoration: none;
- width: 174.38px;
- height: 68px;
-border-radius: 30px;
-font-size: 31.25px ;
-color: var(--white);
-padding: 10px;
+/* ---Button Styling--- */
+a.button {
+  background-color: var(--maroon);
+  text-decoration: none;
+  width: 174.38px;
+  height: 68px;
+  border-radius: 30px;
+  font-size: 31.25px;
+  color: var(--white);
+  padding: 10px;
+
 }
 
-.inner{
-padding-bottom: 4em;
+.button:hover {
+  color: white;
+  background-color: var(--navy);
+  transition: 0.2s;
+  
+  
+
 }
 
-.text-content{
-  padding-bottom: 1.5em;
+
+/* making landing page graphic responsive */
+.spicey {
+  width: 100%;
+  height: auto;
+  justify-content: center;
 }
 
 
+/* ||||||||||||||||| Mobile Styling Ends|||||||||||||||||||*/
 
+/* ||||||||||||||||||Tablet Styling Begins|||||||||||||||||||||*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 4vw;
+  }
+
+
+
+}
+
+/* ||||||||||||||||| Tablet Styling Ends|||||||||||||||||||*/
+
+/* ||||||||||||||||||Desktop Styling Begins|||||||||||||||||||||*/
+
+@media screen and (min-width: 1024px) {
+
+ 
+  h1 {
+    font-size: 3.5vw;
+  }
+
+  .wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+    justify-items: start;
+  }
+  
+  /* align text and graphic */
+  .inner{
+align-self: flex-start;
+  }
+  
+
+img.spicey{
+    justify-self: end;
+    width: 100%;
+  }
+   
+
+}
