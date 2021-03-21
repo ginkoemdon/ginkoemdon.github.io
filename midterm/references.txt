@@ -1,0 +1,3 @@
+References of open source libraries used
+
+Gradients: https://www.grabient.com/
