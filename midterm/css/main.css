@@ -160,20 +160,66 @@ body {
 }
 
 
+
+
 :root {
   --grey: #3E3E3E;
   --maroon: #AF2833;
   --navy: #435394;
   --white: #FFFFFF;
+  --yellow: #EDD342;
   font-size: 20px;
 }
 
-.logo {
-  width: 50%;
+
+
+.logo{
+  width: 100%;
   height: auto;
+ 
 }
 
 
+
+/* -------------------
+      Nav for Mobile
+ ---------------------- */
+.nav-menu{
+display: flex;
+flex-flow: row wrap;
+justify-content: flex-end;
+width: 100%;
+margin: 2% auto;
+}
+
+/* desktop nav styling */
+.nav-menu a{
+  display: block;
+  padding: 1em;
+  color: var(--grey);
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+/* position logo in top left corner of desktop */
+.nav-menu li:first-child{
+  margin-right: auto;
+  width: 300px;
+  height: 0;
+  
+}
+
+/* hover effect for nav items */
+.nav-menu a:hover{
+
+background-color: var(--yellow);
+border: var(--yellow);
+border-radius: 3em;
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+}
 
 /* -------------------
       FONT STYLING
@@ -197,6 +243,10 @@ h2 {
 
 h3 {
   font-size: 3.0vh;
+}
+
+h6{
+  font-size: 12px;
 }
 
 /* 
@@ -245,9 +295,6 @@ h6{
   padding-top: 1rem;
 }
 
-a {
-  text-decoration: none;
-}
 
 /* ---Button Styling--- */
 a.button {
@@ -266,9 +313,6 @@ a.button {
   color: white;
   background-color: var(--navy);
   transition: 0.2s;
-  
-  
-
 }
 
 
@@ -279,6 +323,9 @@ a.button {
   justify-content: center;
 }
 
+footer{
+  align-self: center;
+}
 
 /* ||||||||||||||||| Mobile Styling Ends|||||||||||||||||||*/
 
@@ -298,6 +345,7 @@ a.button {
 
 @media screen and (min-width: 1024px) {
 
+ 
  
   h1 {
     font-size: 3.5vw;

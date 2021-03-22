@@ -1,3 +1,5 @@
 References of open source libraries used
 
 Gradients: https://www.grabient.com/
+
+Social Media Icons: https://svgbox.net/iconset/social
