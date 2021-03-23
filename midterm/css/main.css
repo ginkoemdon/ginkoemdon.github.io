@@ -139,6 +139,10 @@ table {
 html {
   /*This makes sure that the padding and border are included in the total width and height of the elements. */
   box-sizing: border-box;
+  background-color: #F7CE68;
+  background-image: linear-gradient(180deg, #F7CE68 0%, #e88f4f 50%, #c74c5a 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 *,
@@ -146,21 +150,6 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
-body {
-  background-color: #F7CE68;
-  background-image: linear-gradient(180deg, #F7CE68 0%, #e88f4f 50%, #c74c5a 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: var(--grey);
-  font-family: 'Raleway', sans-serif;
-  margin: 0 auto;
-  padding: 0;
-  line-height: 1.2;
-}
-
-
-
 
 :root {
   --grey: #3E3E3E;
@@ -171,55 +160,66 @@ body {
   font-size: 20px;
 }
 
-
-
-.logo{
-  width: 100%;
-  height: auto;
- 
+body {
+  color: var(--grey);
+  font-family: 'Raleway', sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.2;
 }
-
-
 
 /* -------------------
       Nav for Mobile
  ---------------------- */
-.nav-menu{
-display: flex;
-flex-flow: row wrap;
-justify-content: flex-end;
-width: 100%;
-margin: 2% auto;
+
+/* nav styling */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2% auto;
+  background-color: var(--yellow);
+  /* styling a circular nav background*/
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* desktop nav styling */
-.nav-menu a{
-  display: block;
+.nav-menu li {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu a {
   padding: 1em;
   color: var(--grey);
   font-weight: bolder;
   text-transform: uppercase;
 }
-/* position logo in top left corner of desktop */
-.nav-menu li:first-child{
-  margin-right: auto;
-  width: 300px;
-  height: 0;
-  
+
+.logo {
+  width: 10em;
+  height: auto;
 }
 
-/* hover effect for nav items */
-.nav-menu a:hover{
-
-background-color: var(--yellow);
-border: var(--yellow);
-border-radius: 3em;
-}
-
+/* remove default underlining styling of links */
 a {
   text-decoration: none;
   list-style: none;
 }
+
+.nav-menu a:hover {
+
+  background-color: var(--yellow);
+  border: var(--yellow);
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+
+}
+
+
 
 /* -------------------
       FONT STYLING
@@ -233,7 +233,7 @@ a {
 h1 {
   font-size: 7.9vw;
   font-weight: bold;
-  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16);
+  text-shadow: 2px 4px 6px rgba(0, 0, 0.5, 0.16);
 }
 
 h2 {
@@ -245,49 +245,26 @@ h3 {
   font-size: 3.0vh;
 }
 
-h6{
+h6 {
   font-size: 12px;
 }
 
-/* 
-h1{
-  font-size: 3.052em;
-  font-weight: bold;
-  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
-h2{
-  font-size: 2.441em;
-}
-
-h3{
-  font-size: 1.953em;
-  
-}
-
-h4{
-  font-size: 1.563em;
-}
-
-h5{
-  font-size: 1.24em;
-}
-
-h6{
-  font-size: 1em;
-} */
-
-.lands{
+/* Main Contents */
+.lands {
   color: var(--navy);
 }
 
 .wrapper {
-  margin: 3rem;
+  margin: 3rem 3rem 0 3rem;
   align-items: center;
 }
 
 .inner {
-  padding-bottom: 4em;
+  padding-bottom: 0.5em;
+}
+
+.left{
+  padding-bottom: 2em;
 }
 
 .p {
@@ -306,14 +283,16 @@ a.button {
   font-size: 31.25px;
   color: var(--white);
   padding: 10px;
-
 }
+
+
 
 .button:hover {
   color: white;
   background-color: var(--navy);
   transition: 0.2s;
 }
+
 
 
 /* making landing page graphic responsive */
@@ -323,8 +302,23 @@ a.button {
   justify-content: center;
 }
 
-footer{
-  align-self: center;
+    
+  footer {
+      padding: 1em;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-top: 2.5em;
+      align-items: center;
+      margin: 0;
+      flex-wrap: nowrap;
+    }
+    
+
+
+.social-icon{
+  padding-right: 1em;
+
 }
 
 /* ||||||||||||||||| Mobile Styling Ends|||||||||||||||||||*/
@@ -335,7 +329,7 @@ footer{
     font-size: 4vw;
   }
 
-
+  /* Hamburger Menu for Tablet & mobile  */
 
 }
 
@@ -345,29 +339,63 @@ footer{
 
 @media screen and (min-width: 1024px) {
 
- 
- 
-  h1 {
-    font-size: 3.5vw;
+
+  .nav-menu {
+    flex-flow: row wrap;
+    background: none;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    box-shadow: none;
   }
 
-  .wrapper{
+  /* desktop nav styling */
+
+  
+  /* position logo in top left corner of desktop */
+  /* .nav-menu li:first-child {
+    margin-right: auto;
+    width: 300px;
+    height: 0;
+    background-color: saddlebrown;
+  } */
+
+  .logo-li{
+    margin-right: auto;
+  }
+  
+  .logo-container{
+    padding: 0;
+  }
+  /* -----hover effect for nav items-----*/
+  .nav-menu a:hover {
+    background-color: var(--yellow);
+    border-radius: 3em;
+  }
+
+
+
+  /* |||||||||||||||||Contents|||||||||||| */
+  /* make text contents and Graphic Content side by side */
+  .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 100px;
     justify-items: start;
   }
-  
-  /* align text and graphic */
-  .inner{
-align-self: flex-start;
-  }
-  
 
-img.spicey{
+  h1 {
+    font-size: 3.5vw;
+  }
+
+  /* align text and graphic */
+  .inner {
+    align-self: flex-start;
+  }
+
+  img.spicey {
     justify-self: end;
     width: 100%;
   }
-   
 
 }
