@@ -211,7 +211,7 @@ a {
   text-decoration: none;
   list-style: none;
 }
-/*  */
+
 
 /* -------------------
       FONT STYLING
@@ -315,13 +315,12 @@ footer {
 
 
 /* ||||||||||||||||| SHOP|||||||||||||||||||*/
-.title{
+.title {
   display: flex;
   justify-content: center;
   margin: 1em;
 
 }
-
 
 .card {
   width: 15em;
@@ -329,14 +328,13 @@ footer {
   border-radius: 199px 199px 60px 60px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 2em;
 }
-
 
 .product-img {
   width: 15em;
@@ -345,13 +343,14 @@ footer {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   justify-self: flex-start;
 }
+
 /* upon hover of product image, it will grow %150 towards the user for zoom functionality*/
 .product-img:hover {
   transform: scale(1.1);
   transition: 0.3s;
 }
 
-.product-title{
+.product-title {
   font-size: 30px;
   font-weight: bold;
 }
@@ -368,10 +367,11 @@ a.shop-btn {
   margin-bottom: 1em;
 }
 
-.card h6{
+.card h6 {
   text-align: center;
   margin: 0.5em;
 }
+
 /* |||||||||||||Contact Page||||||||| */
 /* Make banner Image responsive */
 #banner {
@@ -384,23 +384,6 @@ a.shop-btn {
   width: 100%;
 }
 
-.contact-card{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 70%;
-  }
-  
-  .location{
-  font-size: 25px;
-  }
-
-  .wrapper-shop {
-    margin: 3rem 3rem 0 3rem;
-    align-items: center;
-  }
-/* Cloud Animation Banner */
-
 /* positioning clouds */
 #banner .clouds {
   position: absolute;
@@ -411,6 +394,7 @@ a.shop-btn {
   overflow: hidden;
 }
 
+/* Cloud Animation */
 /* direct cloud movment to be in linear formation and repeatative */
 #banner .clouds img {
   position: absolute;
@@ -423,103 +407,207 @@ a.shop-btn {
 @keyframes animate {
   0% {
     transform: translateX(-100%);
-}
+  }
 
   100% {
     transform: translateX(100%);
-}
-}
-/* TABLET STYLES BEGIN */
-  @media screen and (min-width: 768px) and (max-width: 1024px) 
-  {
-    html{
-    font-size: 4vw;
-    }
   }
+}
+
+/* ====CONTACT FORM====*/
+.form-container {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.form-item {
+  background: transparent;
+  border: solid 1px var(--maroon);
+  color: var(--grey);
+  outline: none;
+  border-bottom: none;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  font-family: "raleway";
+}
+
+#form {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+input {
+  font-size: 20px;
+  width: 100%;
+  height: 50px;
+  padding: 1em;
+}
+
+input:hover {
+  background: var(--white);
+}
+
+textarea {
+  width: 100%;
+  ;
+  height: auto;
+  padding: 1em;
+  border-bottom: var(--maroon);
+}
+
+textarea:hover {
+  background: var(--white);
+  color: var(--navy);
+}
+
+#submit {
+  padding: 0;
+  margin: -5px 0px 0px 0px;
+  font: 20px var(--grey);
+  outline: none;
+  border: solid 1px var(--maroon);
+  background: transparent;
+  font-family: "raleway";
+}
+
+/* background goes navy when hovered, and text goes yellow fr "submit" */
+#submit:hover {
+  color: var(--yellow);
+  background: var(--navy);
+}
+
+/* Align Store Locations in a column, centered */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoop{
+padding-top: 1em;
+}
+
+.location {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.address{
+  margin-bottom: 1.5em;
+}
+
+
+/* TABLET STYLES BEGIN */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 4vw;
+  }
+
+  .title{
+    text-align: center;
+
+  }
+}
 
 /* DESKTOP STYLING BEGINS */
-  @media screen and (min-width: 1024px) 
-  {
-html{
-  font-size: 4vh;
-}
-    .nav-menu {
-      flex-flow: row wrap;
-      background: none;
-      width: 100%;
-      height: auto;
-      align-items: center;
-      box-shadow: none;
-      margin-top: 0;
-    }
-
-    .nav-menu a:hover {
-      background-color: var(--yellow);
-      border: var(--yellow);
-      border-radius: 50%;
-      width: fit-content;
-      height: fit-content;
-    }
-    
-
-    /* desktop nav styling */
-
-    /*  */
-    .logo-li {
-      margin-right: auto;
-    }
-
-    .logo-container {
-      padding: 0;
-    }
-
-    /* -----hover effect for nav items-----*/
-    .nav-menu a:hover {
-      background-color: var(--yellow);
-      border-radius: 3em;
-    }
-
-    /* ==SHOP== */
-    .card{
-      margin: 1em;
-      width: 15em;
-  height: 30em;
-    }
-
-    section .wrapper-shop{
-      display: flex;
-      width: 70%;
-      }
-
-    /* |||||||||||||||||Contents|||||||||||| */
-    /* make text contents and Graphic Content side by side */
-    .wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 100px;
-      justify-items: start;
-    }
-
-    h1 {
-      font-size: 3.5vw;
-    }
-
-    /* align text and graphic */
-    .inner {
-      align-self: flex-start;
-    }
-
-    img.spicey {
-      justify-self: end;
-      width: 100%;
-    }
-
-
-    /* Contact */
-    .wrapper-shop{
-      display: flex;
-      flex-direction: row;
-      margin: 2% auto;
-      overflow: hidden;
-    }
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 4vh;
   }
+
+  .nav-menu {
+    flex-flow: row wrap;
+    background: none;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    box-shadow: none;
+    margin-top: 0;
+  }
+
+  .nav-menu a:hover {
+    background-color: var(--yellow);
+    border: var(--yellow);
+    border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
+  }
+
+
+  /* desktop nav styling */
+
+  /*  */
+  .logo-li {
+    margin-right: auto;
+  }
+
+  .logo-container {
+    padding: 0;
+  }
+
+  /* -----hover effect for nav items-----*/
+  .nav-menu a:hover {
+    background-color: var(--yellow);
+    border-radius: 3em;
+  }
+
+  /* ==SHOP== */
+  .card {
+    margin: 1em;
+    width: 15em;
+    height: 30em;
+  }
+
+  section .wrapper-shop {
+    display: flex;
+    width: 70%;
+  }
+
+  /* |||||||||||||||||Contents|||||||||||| */
+  /* make text contents and Graphic Content side by side */
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+    justify-items: start;
+  }
+
+  h1 {
+    font-size: 3.5vw;
+  }
+
+  /* align text and graphic */
+  .inner {
+    align-self: flex-start;
+  }
+
+  img.spicey {
+    justify-self: end;
+    width: 100%;
+  }
+/* shop */
+
+.wrapper-shop{
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  margin: 0 1em;
+}
+  /* Contact */
+  .freezers-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-card{
+    padding: 0 2em;
+  }
+
+
+
+}
