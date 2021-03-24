@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/*http://meyerweb.com/eric/tools/css/reset 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -134,7 +134,7 @@ table {
   border-spacing: 0;
 }
 
-/* |||||||||||||||||||end of  */
+/* |||||||||||||||||||end of reset */
 
 html {
   /*This makes sure that the padding and border are included in the total width and height of the elements. */
@@ -151,6 +151,7 @@ html {
   box-sizing: inherit;
 }
 
+/* defining custom variable colors and font size for easy acess */
 :root {
   --grey: #3E3E3E;
   --maroon: #AF2833;
@@ -186,11 +187,13 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Centering Nav Bar links */
 .nav-menu li {
   display: flex;
   justify-content: center;
 }
 
+/* Styling Nav Bar Text */
 .nav-menu a {
   padding: 1em;
   color: var(--grey);
@@ -208,18 +211,7 @@ a {
   text-decoration: none;
   list-style: none;
 }
-
-.nav-menu a:hover {
-
-  background-color: var(--yellow);
-  border: var(--yellow);
-  border-radius: 50%;
-  width: fit-content;
-  height: fit-content;
-
-}
-
-
+/*  */
 
 /* -------------------
       FONT STYLING
@@ -245,7 +237,7 @@ h3 {
   font-size: 3.0vh;
 }
 
-h5{
+h5 {
   font-size: 20px;
 }
 
@@ -289,15 +281,11 @@ a.button {
   padding: 10px;
 }
 
-
-
 .button:hover {
   color: white;
   background-color: var(--navy);
   transition: 0.2s;
 }
-
-
 
 /* making landing page graphic responsive */
 .spicey {
@@ -305,7 +293,6 @@ a.button {
   height: auto;
   justify-content: center;
 }
-
 
 footer {
   padding: 1em;
@@ -330,117 +317,146 @@ footer {
 /* ||||||||||||||||| SHOP|||||||||||||||||||*/
 
 
-.card{
-background-color: #fff 0.19;
-
-width: 20em;
-height: 35em;
-border-radius: 199px 199px 60px 60px;
-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-display: flex;
-flex-direction: column;
-align-items: center;
-flex-wrap: nowrap;
-align-content: center;
+.card {
+  background-color: #fff;
+  width: 20em;
+  height: 35em;
+  border-radius: 199px 199px 60px 60px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
 }
 
-.product-img{
-width: 20em;
-border-radius: 200px;
-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-
+.product-img {
+  width: 20em;
+  border-radius: 200px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
-
-.product-text{
+.product-text {
   display: flex;
   align-items: center;
   flex-basis: 0;
-  
 }
 
-.shop-btn{
+.shop-btn {
   width: fit-content;
 }
-/* ||||||||||||||||| Mobile Styling Ends|||||||||||||||||||*/
 
-/* ||||||||||||||||||Tablet Styling Begins|||||||||||||||||||||*/
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  html {
-    font-size: 4vw;
-  }
-
-  /* Hamburger Menu for Tablet & mobile  */
-
+/* |||||||||||||Contact Page||||||||| */
+/* Make banner Image responsive */
+#banner {
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 
-/* ||||||||||||||||| Tablet Styling Ends|||||||||||||||||||*/
-
-/* ||||||||||||||||||Desktop Styling Begins|||||||||||||||||||||*/
-
-@media screen and (min-width: 1024px) {
-
-
-  .nav-menu {
-    flex-flow: row wrap;
-    background: none;
-    width: 100%;
-    height: auto;
-    align-items: center;
-    box-shadow: none;
-    margin-top: 0;
-  }
-
-  /* desktop nav styling */
-
-
-  /* position logo in top left corner of desktop */
-  /* .nav-menu li:first-child {
-    margin-right: auto;
-    width: 300px;
-    height: 0;
-    background-color: saddlebrown;
-  } */
-
-  .logo-li {
-    margin-right: auto;
-  }
-
-  .logo-container {
-    padding: 0;
-  }
-
-  /* -----hover effect for nav items-----*/
-  .nav-menu a:hover {
-    background-color: var(--yellow);
-    border-radius: 3em;
-  }
-
-
-
-  /* |||||||||||||||||Contents|||||||||||| */
-  /* make text contents and Graphic Content side by side */
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 100px;
-    justify-items: start;
-  }
-
-  h1 {
-    font-size: 3.5vw;
-  }
-
-  /* align text and graphic */
-  .inner {
-    align-self: flex-start;
-  }
-
-  img.spicey {
-    justify-self: end;
-    width: 100%;
-  }
-
+#banner img {
+  width: 100%;
 }
 
-/*  */
+/* ||||||||||||Cloud Banner|||||||||||||| */
+
+/* positioning clouds */
+#banner .clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* direct cloud movment to be in linear formation and repeatative */
+#banner .clouds img {
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+  animation: animate calc(8s * var(--i)) linear infinite;
+}
+
+/* entering from the X axis, and sliding across continously */
+@keyframes animate {
+  0% {
+    transform: translateX(-100%);
+}
+
+  100% {
+    transform: translateX(100%);
+}
+}
+/* TABLET STYLES BEGIN */
+  @media screen and (min-width: 768px) and (max-width: 1024px) 
+  {
+    html{
+    font-size: 4vw;}
+  }
+
+  @media screen and (min-width: 1024px) 
+  {
+html{
+  font-size: 4vh;
+}
+    .nav-menu {
+      flex-flow: row wrap;
+      background: none;
+      width: 100%;
+      height: auto;
+      align-items: center;
+      box-shadow: none;
+      margin-top: 0;
+    }
+
+    .nav-menu a:hover {
+      background-color: var(--yellow);
+      border: var(--yellow);
+      border-radius: 50%;
+      width: fit-content;
+      height: fit-content;
+    }
+    
+
+    /* desktop nav styling */
+
+    /*  */
+    .logo-li {
+      margin-right: auto;
+    }
+
+    .logo-container {
+      padding: 0;
+    }
+
+    /* -----hover effect for nav items-----*/
+    .nav-menu a:hover {
+      background-color: var(--yellow);
+      border-radius: 3em;
+    }
+
+    /* |||||||||||||||||Contents|||||||||||| */
+    /* make text contents and Graphic Content side by side */
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 100px;
+      justify-items: start;
+    }
+
+    h1 {
+      font-size: 3.5vw;
+    }
+
+    /* align text and graphic */
+    .inner {
+      align-self: flex-start;
+    }
+
+    img.spicey {
+      justify-self: end;
+      width: 100%;
+    }
+
+  }
