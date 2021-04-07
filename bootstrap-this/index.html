@@ -118,14 +118,14 @@
       </div>
 
     </div>
-    <hr>
+    <hr class="mt-3 mb-5">
     <!-- Instructions -->
 
     <div class="row">
-      <h1 class="text-center">Let's Begin!</h1>
+      <h1 class="text-center display-3">Let's Begin!</h1>
       <h2>Starter Template</h2>
       <p>For the quickest start, that doesnt require any downloads, is with Bootsrtaps <a href=""></a> </p>
-      <ol class="">
+      <ol>
         <li>Make sure your page is setup with an HTML5 doctype, that includes the viewport meta tag for optimal
           responsive behaviours.</li>
         <li class="mt-2">Click the button bellow, you will land on the Bootstrap 5 starter template.
@@ -149,28 +149,27 @@
         <p class="mb-0">Now lets Dive into some components...</p>
       </div>
 
-      <hr>
+      <hr class="mt-3 mb-5">
     </div>
 
     <!-- COMPONENTS WRAPPER -->
 
-    <h1 class="text-center">Components</h1>
+    <h1 class="text-center display-2">Components</h1>
     <p>Bootstrap comes with an extensive components library that includes buttons and lists to carousels and modals.
-      <div class="alert alert-info" role="alert">
+      <div class="alert alert-info mb-5" role="alert">
         Bootstrap comes with nearly two dozen components that are ready to use right out of the box.
       </div>
 
       <!-- TYPOGRAPHY SECTION -->
-      <h2>1. Typography</h2>
-      <p>We will absolutly be using this component the most, with most websites having text! Say goodbye to the days
-        of
+      <h2 class="display-4 mb-3">1. Typography</h2>
+      <p>We will absolutly be using this component the most, with most websites having text! Say goodbye to the days of
         tediously tweaking your css typhography and a warm <strong>HELLO</strong> to finally making font our friend.
       </p>
 
       <!-- HEADINGS -->
       <div class="row">
         <div class=" col bg-warning border-secondary">
-          <h3 class="text-center">Headings</h3>
+          <h3 class="display-6 my-4 text-center ">Headings</h3>
           <ul>
 
             <li>Bootstrap has a great default typesale of headings from h1-h6.
@@ -192,19 +191,19 @@
         </div>
 
         <!-- DISPLAY HEADINGS -->
-        <div class="col">
-          <h3 class="text-center">Display headings</h3>
+        <div class="col bg-info">
+          <h3 class="display-6 my-4 text-center">Display Headings</h3>
           <ul>
             <li>
               Display headings are for when you want a heading to really stand out from the rest.
             </li>
-            <li>Their scaling is larger and more defined./li>
+            <li>Their scaling is larger and more defined.
             <li>
               It does'nt matter what text format you are in, this display styling will overide.
             </li>
           </ul>
           <div class="text-center">
-            <h4 class="text-start">Example:</h4>
+            <h4 class="text-start pt-4">Example:</h4>
             <h1 class="display-1">Display 1</h1>
             <h2 class="display-2">Display 2</h2>
             <h1 class="display-3">Display 3</h1>
@@ -217,10 +216,10 @@
 
       <!-- ROW -->
       <div class="row">
-        <div class="col text-center">
+        <div class="col text-center bg-info">
 
           <!-- FONT SIZE -->
-          <h3>Font Size</h3>
+          <h3 class="display-6 my-4">Font Size</h3>
           <ul class="text-start">
             <li>With bootstrap we can promtly change the font-size of text too.</li>
             <li>This is different from headings
@@ -238,27 +237,148 @@
 
         <!-- WEIGHT & ITALICS -->
         <div class="col text-center bg-warning">
-          <h3>Font Weight & Italics</h3>
+          <h3 class="display-6 my-4">Font Weight & Italics</h3>
 
           <ul class="text-start">
             <li>font-style is articulated as <mark>".fst-*"</mark></li>
             <li>font-weight is abbreviated as <mark>.fw-*</mark></li>
           </ul>
-          <div>
-            <h4 class="text-start">Example:</h4>
-            <p class="fs-1">.fs-1 One</p>
-            <p class="fs-2">.fs-2 Two</p>
-            <p class="fs-3">.fs-3 Three</p>
-            <p class="fs-4">.fs-4 Four</p>
-            <p class="fs-5">.fs-5 Five</p>
-            <p class="fs-6">.fs-6 Six</p>
-          </div>
+          <h4 class="text-start pt-5">Example:</h4>
+          <p class="fs-1">.fs-1 One</p>
+          <p class="fs-2">.fs-2 Two</p>
+          <p class="fs-3">.fs-3 Three</p>
+          <p class="fs-4">.fs-4 Four</p>
+          <p class="fs-5">.fs-5 Five</p>
+          <p class="fs-6">.fs-6 Six</p>
         </div>
       </div>
 
+      <hr class="my-3 mb-5">
+      <!-- BUTTON SECTION -->
+      <div class="row">
+        <h2 class="display-4 mb-3">2. Buttons</h2>
+        <p>Who does'nt love buttons? Well you're going to love them even more now with Bootsraps library of buttons to
+          choose from! No more un-matching buttons across your site, with </p>
+        <ul>
+          <li>The <mark>.btn</mark> classes are designer to be used with the button element, but you can also use it
+            with "a" or input">" elements but some browsers may interpret this a bit differently.</li>
+        </ul>
+
+        <div class="row mt-4 mb-4">
+          <div class="col text-center ">
+
+            <!-- SOLID -->
+            <h3 class="display-6 my-4 text-center">Solid Buttons</h3>
+            <h4 class="text-start">Example:</h4>
+            <div class="flex-column justify-content-evenly justify-content-around flex-nowrap">
+              <button type="button" class="btn btn-primary m-2">btn-primary</button>
+              <button type="button" class="btn btn-secondary m-2">btn-secondary</button>
+              <button type="button" class="btn btn-success m-2">btn-success</button>
+              <button type="button" class="btn btn-danger m-2">btn-danger</button>
+              <button type="button" class="btn btn-warning m-2">btn-warning</button>
+              <button type="button" class="btn btn-info m-2">btn-info</button>
+              <button type="button" class="btn btn-light m-2">btn-light</button>
+              <button type="button" class="btn btn-dark m-2">btn-dark</button>
+
+              <button type="button" class="btn btn-link m-2">Link</button>
+
+
+            </div>
+          </div>
+
+          <!-- OUTLINE BUTTONS -->
+          <div class="col text-center">
+            <h3 class="display-6 my-4 text-center">Outline Buttons</h3>
+            <h4 class="text-start">Example:</h4>
+            <div class="flex-column justify-content-evenly justify-content-around flex-nowrap">
+              <button type="button" class="btn btn-outline-primary m-2">Primary</button>
+              <button type="button" class="btn btn-outline-secondary m-2">Secondary</button>
+              <button type="button" class="btn btn-outline-success m-2">Success</button>
+              <button type="button" class="btn btn-outline-danger m-2">Danger</button>
+              <button type="button" class="btn btn-outline-warning m-2">Warning</button>
+              <button type="button" class="btn btn-outline-info m-2">Info</button>
+              <button type="button" class="btn btn-outline-light
+              m-2">Light</button>
+              <button type="button" class="btn btn-outline-dark m-2">Dark</button>
+            </div>
+
+
+          </div>
+        </div>
+        <hr class="mt-3 mb-5">
+        <!-- CARDS -->
+        <div class="row">
+          <h2 class="display-4">3. Cards</h2>
+          <p>Geez, I have been waiting for this one. FINALLY! A template for cards instead of having to create them from
+            scratch every time! GLORY!</p>
+          <ul>
+            <li>It can hold a wide variety of content such as: headers, footers, images, and more!</li>
+            <li>Cards are built with as little html & css as possible, but still pulls through offering a lot of
+              customability.</li>
+            <li>Built with Flexbox it provides ease of alignment and little spacing utlilities needed. </li>
+            <li>They have no margin by defult, so use spacing utilities when needed.</li>
+            <li>They have no fixed width to start, making them defaulty fill the full width of its parent element- but
+              this is easily customizable with bootstraos sizing options</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h3 class="display-6 my-4 text-center">Basic With Button</h3>
+            <h4 class="text-start">Example:</h4>
+            <div class="card" style="width: 18rem;">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <h3 class="display-6 my-4 text-center">Kitchen Sink</h3>
+            <h4 class="text-start">Example:</h4>
+            <div class="card" style="width: 18rem;">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <h3 class="display-6 my-4 text-center">Header & Footer</h3>
+            <h4 class="text-start">Example:</h4>
+            <div class="card">
+              <div class="card-header">
+                Featured
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+
+
+        
+        </div>
+
+      </div>
+
   </div>
-
-
 
 
 
@@ -289,9 +409,6 @@
     column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
 
  
-  <h2>Breadcrumbs</h2>
-  <p>Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.
-  </p>
 
   <h2>List Group</h2>
   <p>List groups are a flexible and powerful component for displaying a series of content.</p> -->
