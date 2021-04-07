@@ -28,19 +28,17 @@
     * Optimize for all screens 
 
   INDEX||||||
-     Buttons: 
+     Buttons: https://getbootstrap.com/docs/5.0/components/buttons/
 
-     Colours: 
+     Colours: https://getbootstrap.com/docs/5.0/customize/color/
 
-     Cards: 
+     Cards: https://getbootstrap.com/docs/5.0/components/card/
 
-     Jumbotron: 
+     Typography: https://getbootstrap.com/docs/5.0/content/typography/
+
  -->
 
 </head>
-
-
-
 <body>
   <!--Basic Nav Bar  -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -56,20 +54,18 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Benefits</a>
+            <a class="nav-link active" href="#">Background</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Components</a>
+            <a class="nav-link active" href="#">Components</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-
 
   <!-- Banner Section -->
   <div class="jumbotron bg-warning p-4">
@@ -87,16 +83,17 @@
   <!-- Background -->
   <div class="container">
     <div class="row jumbotron bg-light mt-4">
-      <h2 class="text-center pt-3">Just a lil' Backrgound </h2>
+      <h2 class=" my-4 display-6">Just a lil' Backrgound</h2>
 
+      <!-- WHAT -->
       <div class="row pt-2">
         <div class="col-sm">
           <h3>What</h3>
           <p>In a nutshell, Bootsrap is an open-source collection of reusable pieces of code HTML, CSS, and Javascript
           </p>
           <p>Therefore, this is a time saver, and sweat and tears reducer for front-end developers!</p>
-
         </div>
+        <!-- WHO -->
         <div class="col-sm">
           <h3>Who</h3>
           <p>Developed by Twitter Designer/Developers Mark Otto and Jacob Thornton in mid-2010.</p>
@@ -109,6 +106,7 @@
             Fun fact: <br> It was originally called <i>Twitter Blueprint</i>
           </div>
         </div>
+        <!-- WHY -->
         <div class="col-sm">
           <h3>Why</h3>
           <p>Bootstraps mission is: <em class="fw-bold"> Making design and development easier.</em> <br> Behaving as a
@@ -116,23 +114,20 @@
             learning-curve. </p>
         </div>
       </div>
-
     </div>
+
     <hr class="mt-3 mb-5">
     <!-- Instructions -->
-
     <div class="row">
       <h1 class="text-center display-3">Let's Begin!</h1>
-      <h2>Starter Template</h2>
+      <h2 class="display-6 my-4">Starter Template</h2>
       <p>For the quickest start, that doesnt require any downloads, is with Bootsrtaps <a href=""></a> </p>
-      <ol>
+      <ol class="mx-4">
         <li>Make sure your page is setup with an HTML5 doctype, that includes the viewport meta tag for optimal
           responsive behaviours.</li>
         <li class="mt-2">Click the button bellow, you will land on the Bootstrap 5 starter template.
         </li>
         <li class="mt-2 mb-2">Copy the code snipit and paste it into a blank doc.</li>
-
-
         <!-- button that is a link -->
         <li>
           <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template"
@@ -153,7 +148,6 @@
     </div>
 
     <!-- COMPONENTS WRAPPER -->
-
     <h1 class="text-center display-2">Components</h1>
     <p>Bootstrap comes with an extensive components library that includes buttons and lists to carousels and modals.
       <div class="alert alert-info mb-5" role="alert">
@@ -161,99 +155,101 @@
       </div>
 
       <!-- TYPOGRAPHY SECTION -->
-      <h2 class="display-4 mb-3">1. Typography</h2>
-      <p>We will absolutly be using this component the most, with most websites having text! Say goodbye to the days of
-        tediously tweaking your css typhography and a warm <strong>HELLO</strong> to finally making font our friend.
-      </p>
+      <div>
+        <h2 class="display-4 mb-3">1. Typography</h2>
+        <p>We will absolutly be using this component the most, with most websites having text! Say goodbye to the days
+          of
+          tediously tweaking your css typhography and a warm <strong>HELLO</strong> to finally making font our friend.
+        </p>
 
-      <!-- HEADINGS -->
-      <div class="row">
-        <div class=" col bg-warning border-secondary">
-          <h3 class="display-6 my-4 text-center ">Headings</h3>
-          <ul>
 
-            <li>Bootstrap has a great default typesale of headings from h1-h6.
-            <li>You can either style them with the HTML
-              heading tags, or with a class!</li>
-            <li>Defining headings impacts the font-size, font-weight, and line-height</li>
-          </ul>
+        <div class="row">
+          <!-- HEADINGS -->
+          <div class=" col-sm bg-warning border-secondary">
+            <h3 class="display-6 my-4 text-center">Headings</h3>
+            <ul>
+              <li>Bootstrap has a great default typesale of headings from h1-h6.
+              <li>You can either style them with the HTML
+                heading tags, or with a class!</li>
+              <li>Defining headings impacts the font-size, font-weight, and line-height</li>
+            </ul>
 
-          <div class="text-center">
+            <div class="text-center">
+              <h4 class="text-start">Example:</h4>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+              <p>Paragraph Text</p>
+            </div>
+          </div>
+
+          <!-- DISPLAY HEADINGS -->
+          <div class="col-sm bg-info">
+            <h3 class="display-6 my-4 text-center">Display Headings</h3>
+            <ul>
+              <li>Display headings are for when you want a heading to really stand out from the rest. </li>
+              <li>Their scaling is larger and more defined.</li>
+              <li>
+                It does'nt matter what text format you are in, this display styling will overide.
+              </li>
+            </ul>
+            <div class="text-center">
+              <h4 class="text-start pt-4">Example:</h4>
+              <h1 class="display-1">Display 1</h1>
+              <h2 class="display-2">Display 2</h2>
+              <h1 class="display-3">Display 3</h1>
+              <h1 class="display-4">Display 4</h1>
+              <h1 class="display-5">Display 5</h1>
+              <h1 class="display-6">Display 6</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW -->
+        <div class="row">
+          <div class="col-sm text-center bg-info">
+
+            <!-- FONT SIZE -->
+            <h3 class="display-6 my-4">Font Size</h3>
+            <ul class="text-start">
+              <li>With bootstrap we can promtly change the font-size of text too.</li>
+              <li>This is different from headings
+                because it only impacts the font-size.</li>
+            </ul>
+
             <h4 class="text-start">Example:</h4>
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
-            <h4>Heading 4</h4>
-            <h5>Heading 5</h5>
-            <h6>Heading 6</h6>
-            <p>Paragraph Text</p>
+            <p class="fs-1">.fs-1 One</p>
+            <p class="fs-2">.fs-2 Two</p>
+            <p class="fs-3">.fs-3 Three</p>
+            <p class="fs-4">.fs-4 Four</p>
+            <p class="fs-5">.fs-5 Five</p>
+            <p class="fs-6">.fs-6 Six</p>
           </div>
-        </div>
 
-        <!-- DISPLAY HEADINGS -->
-        <div class="col bg-info">
-          <h3 class="display-6 my-4 text-center">Display Headings</h3>
-          <ul>
-            <li>
-              Display headings are for when you want a heading to really stand out from the rest.
-            </li>
-            <li>Their scaling is larger and more defined.
-            <li>
-              It does'nt matter what text format you are in, this display styling will overide.
-            </li>
-          </ul>
-          <div class="text-center">
-            <h4 class="text-start pt-4">Example:</h4>
-            <h1 class="display-1">Display 1</h1>
-            <h2 class="display-2">Display 2</h2>
-            <h1 class="display-3">Display 3</h1>
-            <h1 class="display-4">Display 4</h1>
-            <h1 class="display-5">Display 5</h1>
-            <h1 class="display-6">Display 6</h1>
+          <!-- WEIGHT & ITALICS -->
+          <div class="col-sm text-center bg-warning">
+            <h3 class="display-6 my-4">Font Weight & Italics</h3>
+
+            <ul class="text-start">
+              <li>font-style is articulated as <strong>".fst-*"</strong></li>
+              <li>font-weight is abbreviated as <strong>.fw-*</strong></li>
+            </ul>
+            <h4 class="text-start pt-5">Example:</h4>
+            <p class="fs-1">.fs-1 One</p>
+            <p class="fs-2">.fs-2 Two</p>
+            <p class="fs-3">.fs-3 Three</p>
+            <p class="fs-4">.fs-4 Four</p>
+            <p class="fs-5">.fs-5 Five</p>
+            <p class="fs-6">.fs-6 Six</p>
           </div>
-        </div>
-      </div>
-
-      <!-- ROW -->
-      <div class="row">
-        <div class="col text-center bg-info">
-
-          <!-- FONT SIZE -->
-          <h3 class="display-6 my-4">Font Size</h3>
-          <ul class="text-start">
-            <li>With bootstrap we can promtly change the font-size of text too.</li>
-            <li>This is different from headings
-              because it only impacts the font-size.</li>
-          </ul>
-
-          <h4 class="text-start">Example:</h4>
-          <p class="fs-1">.fs-1 One</p>
-          <p class="fs-2">.fs-2 Two</p>
-          <p class="fs-3">.fs-3 Three</p>
-          <p class="fs-4">.fs-4 Four</p>
-          <p class="fs-5">.fs-5 Five</p>
-          <p class="fs-6">.fs-6 Six</p>
-        </div>
-
-        <!-- WEIGHT & ITALICS -->
-        <div class="col text-center bg-warning">
-          <h3 class="display-6 my-4">Font Weight & Italics</h3>
-
-          <ul class="text-start">
-            <li>font-style is articulated as <mark>".fst-*"</mark></li>
-            <li>font-weight is abbreviated as <mark>.fw-*</mark></li>
-          </ul>
-          <h4 class="text-start pt-5">Example:</h4>
-          <p class="fs-1">.fs-1 One</p>
-          <p class="fs-2">.fs-2 Two</p>
-          <p class="fs-3">.fs-3 Three</p>
-          <p class="fs-4">.fs-4 Four</p>
-          <p class="fs-5">.fs-5 Five</p>
-          <p class="fs-6">.fs-6 Six</p>
         </div>
       </div>
 
       <hr class="my-3 mb-5">
+
       <!-- BUTTON SECTION -->
       <div class="row">
         <h2 class="display-4 mb-3">2. Buttons</h2>
@@ -265,8 +261,7 @@
         </ul>
 
         <div class="row mt-4 mb-4">
-          <div class="col text-center ">
-
+          <div class="col-sm text-center ">
             <!-- SOLID -->
             <h3 class="display-6 my-4 text-center">Solid Buttons</h3>
             <h4 class="text-start">Example:</h4>
@@ -279,15 +274,12 @@
               <button type="button" class="btn btn-info m-2">btn-info</button>
               <button type="button" class="btn btn-light m-2">btn-light</button>
               <button type="button" class="btn btn-dark m-2">btn-dark</button>
-
               <button type="button" class="btn btn-link m-2">Link</button>
-
-
             </div>
           </div>
 
           <!-- OUTLINE BUTTONS -->
-          <div class="col text-center">
+          <div class="col-sm text-center">
             <h3 class="display-6 my-4 text-center">Outline Buttons</h3>
             <h4 class="text-start">Example:</h4>
             <div class="flex-column justify-content-evenly justify-content-around flex-nowrap">
@@ -301,11 +293,11 @@
               m-2">Light</button>
               <button type="button" class="btn btn-outline-dark m-2">Dark</button>
             </div>
-
-
           </div>
         </div>
+
         <hr class="mt-3 mb-5">
+
         <!-- CARDS -->
         <div class="row">
           <h2 class="display-4">3. Cards</h2>
@@ -322,8 +314,9 @@
           </ul>
         </div>
 
-        <div class="row">
-          <div class="col">
+        <!-- Basic Card -->
+        <div class="row ">
+          <div class="col flex-column justify-content-evenly justify-content-around flex-nowrap">
             <h3 class="display-6 my-4 text-center">Basic With Button</h3>
             <h4 class="text-start">Example:</h4>
             <div class="card" style="width: 18rem;">
@@ -336,15 +329,16 @@
               </div>
             </div>
           </div>
-          <div class="col">
+
+          <!-- Kitchen SKink -->
+          <div class="col flex-column">
             <h3 class="display-6 my-4 text-center">Kitchen Sink</h3>
             <h4 class="text-start">Example:</h4>
             <div class="card" style="width: 18rem;">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="placeholder img">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">An item</li>
@@ -357,29 +351,29 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <h3 class="display-6 my-4 text-center">Header & Footer</h3>
-            <h4 class="text-start">Example:</h4>
-            <div class="card">
-              <div class="card-header">
-                Featured
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-
-        
         </div>
-
       </div>
+
+      <hr class="my-3 mb-5">
 
   </div>
 
+  <footer class="bg-dark text-white text-sm-start">
+    <div class="container p-4">
+      <div class="row">
+        <h1>Footer</h1>
+        <p>Finally, the infamous footer. But this time, it's a Bootstrap footer; you can just plop em' down and not have
+          to worry about overflowing, width issues, side-scrolling or the mutltiple other struggles that footers they
+          come with. Now we can just wrap it up and call it a day with an easy footer, thanks to Bootstrap changing the
+          game!</p>
+        <h3 class="display-6 my-4 text-center">Thats it Folks!</h3>
+        <h4 class="text-start text-center">Thanks for joining me on this little overview.</h4>
+        <div class="alert alert-success" role="alert">
+          Now its time to untie those boots and kick your feet up.
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 
@@ -388,7 +382,28 @@
 
 
 
-  <!-- 
+
+
+  <!-- Java Script in Footer -->
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
+
+<!-- 
+references:
+https://v4-alpha.getbootstrap.com/about/history/ 
+https://giphy.com/
+-->
+
+<!-- CONTENT LEFT OUT:
+
   <h2>Navbar</h2>
   <p> What you need to know with Bootstrap <strong>Navbars</strong> they:</p>
   <ul class="pointer">
@@ -412,37 +427,3 @@
 
   <h2>List Group</h2>
   <p>List groups are a flexible and powerful component for displaying a series of content.</p> -->
-
-
-  <!-- 
-<div class="row">
- <div class="col"></div>
-<P>And dont worry! It might feel like this right now: </P>
-<iframe src="https://giphy.com/embed/W1cYNxH44Otl6" width="100px" height="auto" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/W1cYNxH44Otl6">via GIPHY</a></p>
-</div>
-<div class="col">
-  <P>But with enough practice it will feel like this </P>
- <iframe src="https://giphy.com/embed/W1cYNxH44Otl6" width="200" height="auto" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/W1cYNxH44Otl6">via GIPHY</a></p>
-  </div> -->
-
-
-
-
-
-
-
-  <!-- Java Script in Footer -->
-
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
-
-<!-- 
-references:
-https://v4-alpha.getbootstrap.com/about/history/ -->
