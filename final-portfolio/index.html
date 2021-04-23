@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ginko Emdon Portfolio</title>
+
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -14,46 +14,59 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-  <!-- CSS Stylesheet link -->
+  <!-- Custom CSS Stylesheet link -->
   <link rel="stylesheet" href="./css/main.css">
 
+  <!-- Font Styles -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet"> -->
+
+  <!-- Font Awesome Link -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+
+
+  <title>Ginko Emdon Design Portfolio</title>
 </head>
 
 <body>
   <header>
-    <!--===========================================================
-    # General
-    ============================================================-->
 
     <!--===========================================================
     # Naviation Menu
     ============================================================-->
     <!-- This is a responsive navbar, that sticks to the top upon scrolling. Each menu item is linked to a section of the page via the use of IDs & Links. There are also dropdown features to specify the navigation items. -->
-    <nav class="navbar navbar-light bg-white navbar-expand-md sticky-top">
-      <div class="container-fluid">
 
-        <!-- Logo -->
-        <a class="navbar-brand" href="#home">
-          <img src=" https://dummyimage.com/102x30/007bff/ffffff?text=logo" height="30" alt="image">
+
+    <!-- End of Nav Bar -->
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <!-- Logo Title -->
+        <a class="navbar-brand display-3" href="#">
+          <h1>Ginko Emdon</h1>
         </a>
-        <!-- Mobile Nav Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3"
-          aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Mobile Menu Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Nav Menu Links -->
-        <div class="collapse navbar-collapse" id="navbarNav3">
-          <ul class="navbar-nav ms-auto">
+        <!-- Menu  -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto fs-4">
             <li class="nav-item active">
               <!-- Drop-down Menu Items for Portfolio Categories -->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="works" role="button" data-bs-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="#portfolio" id="works" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Portfolio
               </a>
@@ -72,12 +85,16 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-outline-dark ms-md-3" href="#contact">Reach Out</a>
+              <a class="btn btn-outline-light ms-md-3 fw-4" href="#contact">Reach Out</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+
+    <!-- other -->
+
   </header>
 
   <main>
@@ -91,19 +108,17 @@
       <div class="container">
         <div class="row  justify-content-start align-items-center d-flex  h-100 ">
           <div class="col-12 col-md-6  h-50 ">
-            <h1 class="display-3  text-dark mb-2 mt-5"><strong>Hello I'm Ginko,</strong> </h1>
-            <p class="lead display-6 text-dark mb-3"> Im a <strong>UX/UI Deisgner</strong>, focused on wellness,
-              inclusivity, environmental
-              change
-              and social impact through design.
+            <h1 class="display-2 fw-bold text-dark mb-2 mt-5" id="hello"><strong>Hello I'm Ginko,</strong> </h1>
+            <p class="lead display-6 text-dark mb-3 mt-4"> <strong class="fw-bold  ">UX/UI Deisgner</strong>, focused on
+              designing for wellness, environmental justice, and social impact.
             </p>
             <!-- Insert Typing Animation -->
             <p class="lead display-6 mb-3">
               Rooted in empathy, I design websites, products, services, and experiences that are not only seen,
               <u><em>but felt.</em> </u>
             </p>
-            <p>
-              <a href="#" class="btn btn-outline-dark btn-round m-2 ms-0  btn-lg  ">About Me</a>
+            <p class="">
+              <a href="#" class="btn btn-outline-dark btn-round m-2 ms-0  btn-lg ">About Me</a>
             </p>
             <div class="btn-container-wrapper p-relative d-block  zindex-1">
               <a class="btn btn-link btn-lg   mt-md-3 mb-4 scroll align-self-center text-light" href="#section-1">
@@ -122,11 +137,11 @@
      # Services
       ============================================================-->
     <!-- Im here for you -->
-    <section class="bg-light text-dark pt-5 pb-5">
+    <section class="bg-light text-dark pt-5 pb-5" id="services">
       <div class="position-relative overflow-hidden text-center">
         <div class="col-md-6  mx-auto ">
           <h1 class="">I am here for you!</h1>
-          <p class="lead">I am here for you! Wherever you are in your brands journey: whether that
+          <p class="lead h4">I am here for you! Wherever you are in your brands journey: whether that
             be
             years into your venture, or just starting out; I will meet you where you are at and build from there.</p>
         </div>
@@ -189,8 +204,9 @@
     <!--===========================================================
       # Portfolio 
       ================================================================-->
-    <section id="portfolio">
-      <h1 class="display-3 text-center">Selected Works</h1>
+    <section id="portfolio" class="pt-5 pb-1 mt-0 align-items-center"
+      style="min-height: 100vh; background-size: cover; background-image: url();">
+      <h1 class="display-3 fw-bold text-center m-5">Selected Works</h1>
       <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -236,24 +252,22 @@
       </div>
     </section>
     <!-- =======End Portfolio Section ======= -->
-
-
     <hr class="m-5">
     <!--===========================================================
      # About
       ============================================================-->
     <section class="m-5" id="about">
-      <h1 class="display-3 text-center">About Me</h1>
+      <h1 class="display-3  fw-bold text-center m-5">About Me</h1>
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-10 pt-3">
-          <img class="img-fluid" src="./assets/images/Ginko.jpg" id="ginko" alt="Picture of Ginko" />
+          <img class="img-fluid m" src="./assets/images/Ginko.jpg" id="ginko" alt="Picture of Ginko" />
         </div>
 
-        <div class="col g-2">
+        <div class="col g-8">
           <div class="row">
             <!-- My Design Beliefs -->
             <div class=" col-sm-10 col-md-10 col-lg-6 text-start">
-              <h2 class="display-6 my-4">My Design Beliefs</h2>
+              <h2 class="display-6 my-4 fw-bolder">My Design Beliefs</h2>
               <p class="h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                 ut
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -261,7 +275,7 @@
             </div>
             <!-- Outside of Work -->
             <div class=" col-sm-10 col-md-10 col-lg-6 text-start">
-              <h2 class="display-6 my-4">Outside of Work</h2>
+              <h2 class="display-6 my-4 fw-bolder">Outside of Work</h2>
               <p class="h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                 ut
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -273,7 +287,7 @@
           <div class="row">
             <!-- My Background-->
             <div class="col-sm-10 col-md-10 col-lg-6 text-start">
-              <h2 class="display-6 my-4">Background</h2>
+              <h2 class="display-6 my-4 fw-bolder">Background</h2>
               <p class="h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                 ut
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -282,7 +296,7 @@
             </div>
             <!-- Currently -->
             <div class="col-sm-10 col-md-10 col-lg-6 text-start">
-              <h2 class="display-6 my-4">Currently</h2>
+              <h2 class="display-6 my-4 fw-bolder">Currently</h2>
               <p class="h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                 ut
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -298,7 +312,7 @@
     <!--===========================================================
      # Contact
       ============================================================-->
-    <section class="pt-5 pb-5">
+    <section class="pt-5 pb-5" id="contact">
       <grammarly-extension data-grammarly-shadow-root="true"
         style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
       <div class="container">
@@ -307,7 +321,7 @@
             <div class="">
               <div class="row text-center justify-content-center">
                 <div class="col-12 col-md-9 col-lg-7">
-                  <h3 class="fw-bold display-4">Contact Us</h3>
+                  <h3 class="fw-bold display-3">Reach Out!</h3>
                   <p class="lead">Fusce dapibus, tellus ac cursus commodo,
                     tortor mauris condimentum nibh, ut fermentum massa justo sit
                     amet risus.</p>
@@ -352,7 +366,7 @@
     <!--===========================================================
      # Footer
       ============================================================-->
-    <section class="bg-white">
+    <section class="bg-white h6">
       <footer class="pt-4 pb-4 ">
         <div class="container">
           <div class="row text-center align-items-center">
@@ -362,22 +376,22 @@
             <!-- Site Map links -->
             <div class="col mt-4 mt-lg-0 text-center">
               <ul class="nav justify-content-center ">
-                  <li class="nav-item">
-                    <a class="nav-link active text-success" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-success" href="#portfolio">Works</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-success" href="#services">Services</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-success" href="#about">About</a>
-                  </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#portfolio">Works</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#about">About</a>
+                </li>
               </ul>
             </div>
+
             <!-- Social Icons -->
-            <div class="col-12 col-lg-2 mt-4 mt-lg-0 text-lg-right ">
+            <div class="col-12 col-lg-3 mt-5 mt-lg-0 text-lg-right justify-content-sm-center">
+
               <a href="#">
                 <i class="fab fa-2x fa-instagram link-dark" aria-hidden="true"></i>
               </a>
@@ -394,6 +408,11 @@
             </div>
           </div>
           <div class="row mt-4">
+            <div class="col text-center  col mt-4 mt-lg-0 text-center "> Made mindfully with Tea & Love
+              <i class="fa fa-coffee fa-spin"></i>
+            </div>
+          </div>
+          <div class="row mt-4">
             <div class="col text-center">
               © 2021 Ginko Designs
             </div>
@@ -406,16 +425,19 @@
 
 
   <!-- Java Script in Footer -->
+
   <!-- Optional JavaScript; choose one of the two! -->
+
   <!-- Option 1: Bootstrap Bundle with Popper -->
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous">
-  </script> -->
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
   </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>
