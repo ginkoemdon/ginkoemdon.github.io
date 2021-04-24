@@ -3,11 +3,13 @@
 --------------------------------------------------------------*/
 :root{
   --dark: #272623;
+  --light: #F0EAD2;
+  --brown: #8F7D46;
 }
 main {
   background-color: #8f7d46;
   background-image: linear-gradient(180deg, #8f7d46 0%, #6f6b41 66%);
-  color: #F0EAD2;
+  color: var(--light);
 }
 
 body,
@@ -18,7 +20,8 @@ nav {
 }
 
 #menu-icon {
-  color: #F0EAD2;
+  color: var(--dark);
+  background-color: var(--light);
 }
 
 .bg-dark {
@@ -27,8 +30,11 @@ nav {
 }
 
 .navbar-toggler-icon{
-  color:color: #F0EAD2
+  color: #F0EAD2;
+  border: var(--light);
+  text-decoration: var(--light);
 }
+
 a {
   text-decoration: none;
   color: #F0EAD2;
@@ -37,9 +43,67 @@ a {
 a i {
   padding-left: 0.5em;
 }
-
+/* Making all images responsive*/
+img{
+  width: 100%;
+  height: auto;
+}
 
 /*--------------------------------------------------------------
+# Button Styling
+--------------------------------------------------------------*/
+.btn{
+background-color: var(--dark);
+color: var(--light);
+}
+
+.btn:hover {
+	transition: 0.3s;
+  /* Font color */
+	color:var(--dark);
+  border-color:var(--light);
+  background-color: var(--light);
+}
+
+/* Hover State for Links */
+a:hover {
+	transition: 0.3s;
+	color:#666B46;
+}
+
+.btn-outline-light{
+  color: var(--light);
+  border-color: var(--light);
+
+}
+
+
+.btn-outline-light:hover{
+  background-color: var(--light);
+ 
+}
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+.card-body{
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+.card-link{
+  color: var(--dark);
+}
+
+.form-control{
+  background-color: var(--light);
+  border: var(--dark);
+}
+
+.form-control:active:after{
+  background-color: var(--light);
+}
+/*-----------
+---------------------------------------------------
                              ANIMATIONS
 --------------------------------------------------------------*/
 
