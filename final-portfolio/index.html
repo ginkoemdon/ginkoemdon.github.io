@@ -34,14 +34,16 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/site.webmanifest">
 
-
-
   <title>Ginko Emdon Design Portfolio</title>
 </head>
 
 <body>
   <header>
-
+    <!--===========================================================
+    # Geneeral
+    ============================================================-->
+  
+    
     <!--===========================================================
     # Naviation Menu
     ============================================================-->
@@ -49,14 +51,14 @@
 
 
     <!-- End of Nav Bar -->
-    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar  navbar-expand-lg  bg-dark">
       <div class="container-fluid">
         <!-- Logo Title -->
         <a class="navbar-brand display-3" href="#">
           <h1>Ginko Emdon</h1>
         </a>
         <!-- Mobile Menu Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        <button id="menu-icon" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,7 +70,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#portfolio" id="works" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Portfolio
+                Work
               </a>
               <!-- Portfolio Categories -->
               <ul class="dropdown-menu">
@@ -78,11 +80,12 @@
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Services</a>
-            </li>
+        <!-- The rest of Nav Items -->
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-outline-light ms-md-3 fw-4" href="#contact">Reach Out</a>
@@ -108,12 +111,12 @@
       <div class="container">
         <div class="row  justify-content-start align-items-center d-flex  h-100 ">
           <div class="col-12 col-md-6  h-50 ">
-            <h1 class="display-2 fw-bold text-dark mb-2 mt-5" id="hello"><strong>Hello I'm Ginko,</strong> </h1>
-            <p class="lead display-6 text-dark mb-3 mt-4"> <strong class="fw-bold  ">UX/UI Deisgner</strong>, focused on
+            <h1 class="display-2 fw-bold  mb-2 mt-5" id="hello"><strong>Hello I'm Ginko,</strong> </h1>
+            <p class="lead fs-2 lh-1 mb-3 mt-4"> <strong class="fw-bold  ">UX/UI Deisgner</strong>, focused on
               designing for wellness, environmental justice, and social impact.
             </p>
             <!-- Insert Typing Animation -->
-            <p class="lead display-6 mb-3">
+            <p class="lead fs-2 lh-1 mb-3">
               Rooted in empathy, I design websites, products, services, and experiences that are not only seen,
               <u><em>but felt.</em> </u>
             </p>
@@ -133,74 +136,7 @@
       </div>
     </section>
 
-    <!--===========================================================
-     # Services
-      ============================================================-->
-    <!-- Im here for you -->
-    <section class="bg-light text-dark pt-5 pb-5" id="services">
-      <div class="position-relative overflow-hidden text-center">
-        <div class="col-md-6  mx-auto ">
-          <h1 class="">I am here for you!</h1>
-          <p class="lead h4">I am here for you! Wherever you are in your brands journey: whether that
-            be
-            years into your venture, or just starting out; I will meet you where you are at and build from there.</p>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row text-center">
-          <div class="col">
-          </div>
-        </div>
-        <div class="row justify-content-center  d-flex text-center mt-5">
-          <div class="col-md-3 col-feature">
-            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
-              <i class="fas fa-2x fa-users"></i>
-            </div>
-            <h4>User Experience</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse cursus erat sed sem sagittis cursus.</p>
-            <p>
-              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
-            </p>
-          </div>
-          <div class="col-md-3 col-feature">
-            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
-              <em class="fa fa-2x fa-desktop text-dark"></em>
-            </div>
-            <h4>Website Design</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse cursus erat sed sem sagittis cursus.</p>
-            <p>
-              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
-            </p>
-          </div>
-          <div class="col-md-3 col-feature">
-            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
-              <em class="fa fa-2x fa-cubes text-dark"></em>
-            </div>
-            <h4>Brand Architecture</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse cursus erat sed sem sagittis cursus.</p>
-            <p>
-              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
-            </p>
-          </div>
-          <div class="col-md-3 col-feature">
-            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
-              <i class="fas fa-2x fa-camera"></i>
-
-            </div>
-            <h4>Photography</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse cursus erat sed sem sagittis cursus.</p>
-            <p>
-              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!--===========================================================
       # Portfolio 
       ================================================================-->
@@ -253,6 +189,7 @@
     </section>
     <!-- =======End Portfolio Section ======= -->
     <hr class="m-5">
+
     <!--===========================================================
      # About
       ============================================================-->
@@ -307,7 +244,73 @@
         </div>
       </div>
     </section>
-    <hr>
+<!--===========================================================
+     # Services
+      ============================================================-->
+    <!-- Im here for you -->
+    <section class=" bg-dark pt-5 pb-5" id="services">
+      <div class="position-relative overflow-hidden text-center">
+        <div class="col-md-6  mx-auto ">
+          <h1 class="display-6">I am here for you!</h1>
+          <p class="lead h4">I am here for you! Wherever you are in your brands journey: whether that
+            be
+            years into your venture, or just starting out; I will meet you where you are at and build from there.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+          </div>
+        </div>
+        <div class="row justify-content-center  d-flex text-center mt-5">
+          <div class="col-md-3 col-feature">
+            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
+              <i class="fas fa-2x fa-users"></i>
+            </div>
+            <h4>User Experience</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse cursus erat sed sem sagittis cursus.</p>
+            <p>
+              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
+            </p>
+          </div>
+          <div class="col-md-3 col-feature">
+            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
+              <em class="fa fa-2x fa-desktop"></em>
+            </div>
+            <h4>Website Design</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse cursus erat sed sem sagittis cursus.</p>
+            <p>
+              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
+            </p>
+          </div>
+          <div class="col-md-3 col-feature">
+            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
+              <em class="fa fa-2x fa-cubes "></em>
+            </div>
+            <h4>Brand Architecture</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse cursus erat sed sem sagittis cursus.</p>
+            <p>
+              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
+            </p>
+          </div>
+          <div class="col-md-3 col-feature">
+            <div class=" rounded-circle justify-center border border-secondary d-inline-block p-4 mb-4">
+              <i class="fas fa-2x fa-camera"></i>
+
+            </div>
+            <h4>Photography</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse cursus erat sed sem sagittis cursus.</p>
+            <p>
+              <a class="btn btn-md btn-outline-primary mt-2" href="#" role="button">View details</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!--===========================================================
      # Contact
@@ -366,44 +369,46 @@
     <!--===========================================================
      # Footer
       ============================================================-->
-    <section class="bg-white h6">
+    <section class="bg-dark h6">
       <footer class="pt-4 pb-4 ">
         <div class="container">
           <div class="row text-center align-items-center">
-            <div class="col-12 col-lg-2 text-lg-start">
-              <img alt="image" src=" https://dummyimage.com/102x40/007bff/ffffff?text=LOGO" height="40">
+            <div class="col-12 col-lg-2 text-lg-star>
+
+                <a href="#" class="navbar-brand display-3">
+                  <h1>Ginko Emdon </h1></a>
             </div>
             <!-- Site Map links -->
-            <div class="col mt-4 mt-lg-0 text-center">
-              <ul class="nav justify-content-center ">
-
+            <div class="col">
+              <ul class="nav justify-content-center mx-auto ps-l-5 ps-md-5 ms-md-0 ms-l-3 ">
                 <li class="nav-item">
-                  <a class="nav-link text-success" href="#portfolio">Works</a>
+                  <a class="nav-link text-success " href="#portfolio">Work</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link text-success mx-3" href="#about">About</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-success" href="#services">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-success" href="#about">About</a>
                 </li>
               </ul>
             </div>
 
             <!-- Social Icons -->
-            <div class="col-12 col-lg-3 mt-5 mt-lg-0 text-lg-right justify-content-sm-center">
+            <div class="col-12 col-lg-3 mt-5 mt-lg-0 text-lg-right justify-content-sm-center link-primary">
 
               <a href="#">
-                <i class="fab fa-2x fa-instagram link-dark" aria-hidden="true"></i>
+                <i class="fab fa-2x fa-instagram" aria-hidden="true"></i>
               </a>
               <a href="#">
-                <i class="fab fa-2x fa-behance-square link-dark"></i>
+                <i class="fab fa-2x fa-behance-square"></i>
               </a>
 
               <a href="#">
-                <i class="fab fa-2x fa-github-square link-dark"></i>
+                <i class="fab fa-2x fa-github-square"></i>
               </a>
               <a href="#">
-                <i class="fab fa-2x fa-linkedin link-dark"></i>
+                <i class="fab fa-2x fa-linkedin"></i>
               </a>
             </div>
           </div>
