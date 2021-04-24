@@ -4,41 +4,35 @@
 
 main {
   background-color: #8f7d46;
-background-image: linear-gradient(180deg, #8f7d46 0%, #6f6b41 66%);
-color: #F0EAD2;
+  background-image: linear-gradient(180deg, #8f7d46 0%, #6f6b41 66%);
+  color: #F0EAD2;
 }
 
-body, nav, {
+body,
+nav {
   /* font-family: 'Poppins', sans-serif; */
   font-family: 'Raleway', sans-serif;
   color: #F0EAD2;
 }
 
 #menu-icon {
-color: #F0EAD2;#F0EAD2;
+  color: #F0EAD2;
 }
 
 .bg-dark {
-  color:#F0EAD2;
+  color: #F0EAD2;
   background-color: #272623;
 }
 
 a {
   text-decoration: none;
-  color:  #F0EAD2;;
+  color: #F0EAD2;
 }
 
 a i {
   padding-left: 0.5em;
 }
 
-/* html {
-  /*This makes sure that the padding and border are included in the total width and height of the elements. */
-/* box-sizing: border-box;
-  background-color: #F7CE68;
-  background-image: linear-gradient(180deg, #F7CE68 0%, #e88f4f 50%, #c74c5a 100%);
-
-} */
 
 /*--------------------------------------------------------------
                              ANIMATIONS
@@ -184,5 +178,3 @@ a i {
   -webkit-animation: bounce-in-top 1.1s both;
   animation: bounce-in-top 2s both;
 }
-
-
