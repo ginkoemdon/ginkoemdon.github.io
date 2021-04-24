@@ -1,7 +1,9 @@
 /*--------------------------------------------------------------
 # General Styling 
 --------------------------------------------------------------*/
-
+:root{
+  --dark: #272623;
+}
 main {
   background-color: #8f7d46;
   background-image: linear-gradient(180deg, #8f7d46 0%, #6f6b41 66%);
@@ -24,6 +26,9 @@ nav {
   background-color: #272623;
 }
 
+.navbar-toggler-icon{
+  color:color: #F0EAD2
+}
 a {
   text-decoration: none;
   color: #F0EAD2;
