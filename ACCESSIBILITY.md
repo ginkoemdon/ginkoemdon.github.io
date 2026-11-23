@@ -2,6 +2,8 @@
 
 **Rule, Nov 22, 2026 (Ginko): every page on this site must be user-friendly and WCAG 2.2 AA accessible, while keeping Ginko's Webflow branding intact.**
 
+**Rule, Nov 23, 2026 (Ginko): accessibility is a rule across the board. Every colour, theme, font, and interaction in PEERSPECT — and every prototype — must be accessible, not just checked afterwards. WCAG 2.2 AA minimum, verified by contrast calculation, in both light and dark themes. No palette, logo, or interaction ships if it fails AA.**
+
 This is not a nice-to-have. It applies to the landing page, the prototypes index, and every prototype subpage, including placeholders. If a new prototype breaks the rule, it does not ship until it is fixed.
 
 ## 1. WCAG 2.2 AA — the bar
