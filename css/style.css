@@ -249,8 +249,8 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
    thread-and-eye mark shows. Form to Function's logo is transparent, so
    it sits on white. Rough concepts sits on egg. */
 .nav-dropdown-link .thumb-logo-peerspect { background: #0b5e54; }
-.nav-dropdown-link .thumb-logo-form { background: #fff; }
-.nav-dropdown-link .thumb-logo-rough { background: var(--egg); }
+.nav-dropdown-link .thumb-logo-form { background: #e9a13b; }
+.nav-dropdown-link .thumb-logo-rough { background: #f8c05e; }
 /* Hamburger — Webflow .menu-icon1, shown only under 991px */
 .menu-button {
   display: none;
