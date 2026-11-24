@@ -355,6 +355,10 @@
     /* Landing — first-time welcome, short and scannable */
     .landing { text-align:center; }
     .landing h2 { font-size:1.6rem; }
+    /* Nov 23 2026: centre the four pillar tags (Access, Sensory,
+       Environment, Context) in the middle of the landing screen.
+       .ps-tags is flex, so text-align alone does not centre them. */
+    .landing .ps-tags { justify-content:center; }
     .landing .landing-list { text-align:left; list-style:none; padding:0; margin:16px 0; display:grid; gap:16px; }
     .landing .landing-list li { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 20px; }
     .landing .landing-list strong { color:var(--teal-dark); }
@@ -975,7 +979,7 @@
       <section class="screen landing" id="screen-landing" aria-labelledby="landing-h" hidden>
         <div class="screen-head">
           <div aria-hidden="true">
-            <svg width="72" height="72" viewBox="0 0 56 56" role="img" aria-label="PEERSPECT mark: two peers sharing one eye"><circle cx="18" cy="20" r="11" fill="#14665a"/><circle cx="38" cy="20" r="11" fill="#8ecdc0"/><ellipse cx="28" cy="40" rx="16" ry="9" fill="none" stroke="#14665a" stroke-width="2.5"/><circle cx="28" cy="40" r="5" fill="#14665a"/></svg>
+            <svg width="108" height="108" viewBox="0 0 56 56" role="img" aria-label="PEERSPECT mark: two peers sharing one eye"><circle cx="18" cy="20" r="11" fill="#14665a"/><circle cx="38" cy="20" r="11" fill="#8ecdc0"/><ellipse cx="28" cy="40" rx="16" ry="9" fill="none" stroke="#14665a" stroke-width="2.5"/><circle cx="28" cy="40" r="5" fill="#14665a"/></svg>
           </div>
           <h2 id="landing-h">PEERSPECT</h2>
           <p><strong>Your guide to how places actually feel.</strong></p>
