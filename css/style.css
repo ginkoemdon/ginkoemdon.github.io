@@ -277,8 +277,17 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   background: #000;
   width: 24px;
   height: 2px;
+  transition: transform 0.3s, opacity 0.3s;
 }
 .menu-icon1_line-middle { margin-top: 6px; margin-bottom: 6px; }
+/* Hamburger to X, Nov 24 2026: when the menu is open (.nav-open), the top
+   line moves down 8px and rotates 45deg, the bottom line moves up 8px and
+   rotates -45deg, and the middle line fades out, like Webflow's icon.
+   The three lines are 2px high with 6px gaps (18px total), so 8px puts
+   the top and bottom lines on the centre line. */
+.nav.nav-open .menu-icon1_line-top { transform: translateY(8px) rotate(45deg); }
+.nav.nav-open .menu-icon1_line-middle { opacity: 0; }
+.nav.nav-open .menu-icon1_line-bottom { transform: translateY(-8px) rotate(-45deg); }
 /* Flower button — Webflow's "reach out" button, here for Ginko's Portfolio */
 .flower-button {
   border: 1px solid var(--brown);
@@ -542,7 +551,10 @@ footer a { color: var(--earth); }
     border-bottom: 1px solid #000;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
+    /* Nov 24 2026: was gap 0, so the Prototypes underline (bottom -3px)
+       sat right on the Ginko's Portfolio button's top border. 20px
+       keeps the underline clear of that border. */
+    gap: 1.25rem;
     padding: 1rem 5% 2rem;
   }
   .nav.nav-open .nav-links { display: flex; }

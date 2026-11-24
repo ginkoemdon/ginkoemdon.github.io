@@ -101,8 +101,13 @@
     .pg-flower:hover { background:#c9c972; }
     .pg-menu-button { display:none; background:transparent; border:0; cursor:pointer; padding:0; }
     .pg-menu-icon { flex-direction:column; justify-content:center; align-items:center; width:48px; height:48px; display:flex; }
-    .pg-menu-icon span { background:#000; width:24px; height:2px; }
+    .pg-menu-icon span { background:#000; width:24px; height:2px; transition:transform .3s, opacity .3s; }
     .pg-menu-icon span + span { margin-top:6px; }
+    /* Hamburger to X, Nov 24 2026: same geometry as the shared nav, 2px
+       lines with 6px gaps, so 8px puts the outer lines on the centre. */
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(1) { transform:translateY(8px) rotate(45deg); }
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(2) { opacity:0; }
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(3) { transform:translateY(-8px) rotate(-45deg); }
     /* Intro overview: short lines, lists, breathing room. No huge header:
        the PEERSPECT title is 1.6rem, section titles 1.15rem. */
     .web-wrap { font-family:"Poppins", system-ui, sans-serif; }
@@ -191,7 +196,7 @@
       .pg-nav .logo img.logo-img { display:none; }
       .pg-nav .logo img.logo-g { display:block; }
       .pg-menu-button { display:block; }
-      .pg-nav-links { display:none; position:absolute; top:4.5rem; left:0; right:0; background:#e3e0d8; border-bottom:1px solid #000; flex-direction:column; align-items:flex-start; gap:0; padding:1rem 5% 2rem; }
+      .pg-nav-links { display:none; position:absolute; top:4.5rem; left:0; right:0; background:#e3e0d8; border-bottom:1px solid #000; flex-direction:column; align-items:flex-start; gap:1.25rem; padding:1rem 5% 2rem; } /* Nov 24 2026: was gap 0, so the Prototypes underline sat on the Ginko's Portfolio button's top border. */
       .pg-nav.nav-open .pg-nav-links { display:flex; }
       .pg-dropdown { width:100%; flex-direction:column; align-items:flex-start; }
       .pg-dropdown-list { position:static; width:auto; border:0; background:#e3e0d8; padding:1rem 0; }
