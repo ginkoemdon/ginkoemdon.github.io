@@ -27,7 +27,7 @@
     :root {
       --teal:#14665a; --teal-dark:#0e4a40; --pine:#2f5d3e; --honey:#f2c14e; --honey-light:#f6cf6e;
       --amber:#8a4a08; --amber-bg:#fdf0d8; --amber-ink:#8a4a08;
-      --ink:#1a2b26; --muted:#3f5148; --bg:#f4f1ea; --card:#fffefa; --line:#c9c1ac;
+      --ink:#1a2b26; --muted:#3f5148; --muted-soft:#5f7268; --bg:#f4f1ea; --card:#fffefa; --line:#c9c1ac;
       --line-soft:#e9e4d6; --soft:#e9f0ea; --tag-bg:#f1eee6; --track:#e9e4d6; --map-bg:#eef3ec;
       --card-shadow:0 2px 10px rgba(26,43,38,.10);
       --teal-tint:#8ecdc0; --focus:#14665a; --danger:#b3261e;
@@ -40,7 +40,7 @@
     html[data-theme="dark"] {
       --teal:#8ecdc0; --teal-dark:#fdfbf7; --pine:#a8c9a8; --honey:#f6cf6e; --honey-light:#f6cf6e;
       --amber:#f6cf6e; --amber-bg:#214f45; --amber-ink:#f6cf6e;
-      --ink:#fdfbf7; --muted:#d5e6de; --bg:#14201d; --card:#243530; --line:#47645a;
+      --ink:#fdfbf7; --muted:#d5e6de; --muted-soft:#a9c4b6; --bg:#14201d; --card:#243530; --line:#47645a;
       --line-soft:#2f453d; --soft:#2a3f38; --tag-bg:#2a3f38; --track:#2f453d; --map-bg:#1d2f2a;
       --card-shadow:0 2px 10px rgba(0,0,0,.30);
       --teal-tint:#8ecdc0; --focus:#f6cf6e; --danger:#ffb3ab;
@@ -49,7 +49,7 @@
       html:not([data-theme="light"]) {
         --teal:#8ecdc0; --teal-dark:#fdfbf7; --pine:#a8c9a8; --honey:#f6cf6e; --honey-light:#f6cf6e;
         --amber:#f6cf6e; --amber-bg:#214f45; --amber-ink:#f6cf6e;
-        --ink:#fdfbf7; --muted:#d5e6de; --bg:#14201d; --card:#243530; --line:#47645a;
+        --ink:#fdfbf7; --muted:#d5e6de; --muted-soft:#a9c4b6; --bg:#14201d; --card:#243530; --line:#47645a;
         --line-soft:#2f453d; --soft:#2a3f38; --tag-bg:#2a3f38; --track:#2f453d; --map-bg:#1d2f2a;
         --card-shadow:0 2px 10px rgba(0,0,0,.30);
         --teal-tint:#8ecdc0; --focus:#f6cf6e; --danger:#ffb3ab;
@@ -101,8 +101,13 @@
     .pg-flower:hover { background:#c9c972; }
     .pg-menu-button { display:none; background:transparent; border:0; cursor:pointer; padding:0; }
     .pg-menu-icon { flex-direction:column; justify-content:center; align-items:center; width:48px; height:48px; display:flex; }
-    .pg-menu-icon span { background:#000; width:24px; height:2px; }
+    .pg-menu-icon span { background:#000; width:24px; height:2px; transition:transform .3s, opacity .3s; }
     .pg-menu-icon span + span { margin-top:6px; }
+    /* Hamburger to X, Nov 24 2026: same geometry as the shared nav, 2px
+       lines with 6px gaps, so 8px puts the outer lines on the centre. */
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(1) { transform:translateY(8px) rotate(45deg); }
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(2) { opacity:0; }
+    .pg-nav.nav-open .pg-menu-icon span:nth-child(3) { transform:translateY(-8px) rotate(-45deg); }
     /* Intro overview: short lines, lists, breathing room. No huge header:
        the PEERSPECT title is 1.6rem, section titles 1.15rem. */
     .web-wrap { font-family:"Poppins", system-ui, sans-serif; }
@@ -171,9 +176,9 @@
        while the case study above it is 1080px centred with 1.5rem
        padding. Give it the same wrap, so logo, email, divider and
        copyright line up with the content above. */
-    .pg-footer { max-width:1080px; margin:0 auto; padding:6rem clamp(1.5rem, 4vw, 4rem) 0; box-sizing:border-box; color:#49433d; font-size:.9rem; font-family:"Poppins", system-ui, sans-serif; min-width:0; } /* Same Webflow rhythm as the shared footer (6rem top, 6rem under the top row, copyright row space-between with 2rem padding), but the side padding matches the case-study wrap's clamp so the footer lines up with the content above it. */
+    .pg-footer { max-width:none; margin:0; padding:6rem 5% 0; box-sizing:border-box; color:#49433d; font-size:.9rem; font-family:"Poppins", system-ui, sans-serif; min-width:0; } /* Webflow footer, Nov 24 2026: full width, NO max-width, 5% side padding, so the logo hits the left page margin and Hit my line / LinkedIn hit the right, like the shared footer on the landing page. Was max-width 1080px, centred, which left it inset from the margins. Same rhythm as the shared footer: 6rem top, 6rem under the top row, copyright row space-between with 2rem padding, made mindfully left, thank-you right. */
     .pg-footer a { color:#3b342f; }
-    .pg-footer-top { display:grid; grid-template-columns:1fr 1fr; column-gap:4vw; align-items:start; padding-bottom:6rem; }
+    .pg-footer-top { display:grid; grid-template-columns:1fr 1fr; column-gap:4vw; place-content:center space-between; align-items:start; padding-bottom:6rem; }
     .pg-footer-logo img { width:144px; max-height:3.5rem; display:block; }
     .pg-footer-email { display:flex; flex-direction:column; gap:1rem; align-items:flex-start; }
     .pg-footer-email-label { font-size:.75rem; font-weight:600; color:#3b342f; }
@@ -191,18 +196,21 @@
       .pg-nav .logo img.logo-img { display:none; }
       .pg-nav .logo img.logo-g { display:block; }
       .pg-menu-button { display:block; }
-      .pg-nav-links { display:none; position:absolute; top:4.5rem; left:0; right:0; background:#e3e0d8; border-bottom:1px solid #000; flex-direction:column; align-items:flex-start; gap:0; padding:1rem 5% 2rem; }
+      .pg-nav-links { display:none; position:absolute; top:4.5rem; left:0; right:0; background:#e3e0d8; border-bottom:1px solid #000; flex-direction:column; align-items:flex-start; gap:1.25rem; padding:1rem 5% 2rem; } /* Nov 24 2026: was gap 0, so the Prototypes underline sat on the Ginko's Portfolio button's top border. */
       .pg-nav.nav-open .pg-nav-links { display:flex; }
       .pg-dropdown { width:100%; flex-direction:column; align-items:flex-start; }
       .pg-dropdown-list { position:static; width:auto; border:0; background:#e3e0d8; padding:1rem 0; }
       .pg-footer { padding-top:5rem; }
-      .pg-footer-top { grid-template-columns:1fr; row-gap:3rem; padding-bottom:5rem; }
-      .pg-footer-copyright { justify-content:center; flex-direction:column; gap:1rem; }
+      .pg-footer-top { padding-bottom:5rem; }
     }
     @media (max-width:767px) {
       .pg-footer { padding-top:3.5rem; }
-      .pg-footer-top { padding-bottom:3.5rem; }
+      .pg-footer-top { grid-template-columns:1fr; row-gap:3rem; padding-bottom:3.5rem; }
+      .pg-footer-copyright { justify-content:center; flex-direction:column; gap:1rem; }
     }
+    /* Noise overlay removed Nov 25 2026: no grain on prototype pages,
+       landing pages only. */
+    #view-web, #view-app { position:relative; z-index:1; }
     /* App header, Nov 23 2026: one clean bar, not three back buttons.
        PEERSPECT mark on the left, theme on the right, one X to close.
        The X exits fullscreen and returns to the case study. Esc does
@@ -224,6 +232,11 @@
     .app-header .app-logo-mark .lm-dot { fill:#fff; }
     .app-header .app-logo-mark .lm-eye { fill:#fff; }
     .app-header .app-logo-mark .lm-pupil { fill:#1d2b28; }
+    /* Big landing logo, Nov 27 2026: the Large Map + Thread logo
+       from logo-exploration.html (the wide map tile, not the app
+       icon), on the landing screen, replacing the old Shared Eye
+       mark. Colours are the logo's own fixed colours. */
+    .landing-logo-mark { width:240px; height:160px; display:block; margin:0 auto 8px; }
     .app-header .spacer { flex:1; }
     .app-header .theme-toggle { border:1px solid var(--line); border-radius:50%; padding:0; width:44px; height:44px; min-width:44px; min-height:44px; font-weight:700; background:var(--card); box-shadow:none; display:grid; place-items:center; font-size:1.25rem; line-height:1; }
     .app-header .theme-toggle .theme-icon { display:block; }
@@ -249,6 +262,8 @@
     a { color:var(--teal); }
     button { font:inherit; cursor:pointer; }
     button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+    /* Headings and other script-focused messages are focused on arrival for screen readers, Nov 27 2026: they are not interactive, so no visible outline (the teal ring kept appearing around PEERSPECT on entry). This must beat the #view-app :focus-visible rule further down, so it carries the #view-app id. Interactive controls keep their ring. */
+    #view-app [tabindex="-1"]:focus { outline:none; }
     /* App shell: a normal page section, full width up to 720px. No fixed
        height, no overflow hidden, no phone frame. */
     .app { max-width:720px; margin:0 auto; background:var(--bg); }
@@ -301,6 +316,8 @@
     .peer-visual .peer-fill { height:100%; background:var(--teal); border-radius:999px; }
     .peer-notes { list-style:none; padding:0; margin:12px 0 0; display:grid; gap:8px; }
     .peer-notes li { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:12px; padding:12px 16px; font-size:.95rem; }
+    .peer-notes .peer-meta { margin:0 0 2px; font-size:.8rem; color:var(--muted); }
+    .peer-notes .peer-quote { margin:0; font-size:1.05rem; font-weight:700; color:var(--ink); line-height:1.45; }
     /* Cross-check a peer report, Nov 24 2026: one question per
        tap, anonymous, same trust count as the check-in "still"
        questions. */
@@ -486,6 +503,46 @@
     .visit-item-rating { display:inline-block; background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:2px 10px; font-weight:700; font-size:.85rem; margin:4px 0 0; }
     .visit-total { font-weight:700; color:var(--teal-dark); border-top:1px solid var(--line-soft); padding-top:10px; }
     .visit-empty { background:var(--card); border:1px dashed var(--line); border-radius:16px; padding:20px; }
+    /* Your last visits, two views, Nov 24 2026: List view is one
+       expandable row per visit (date, place, rating in the
+       summary; the full card inside when open), and Calendar
+       view is a month grid where each day shows its visits as
+       coloured chips. Colours come from the visit's own rating,
+       never colour alone: every chip also carries the place
+       name, and the detail below the calendar shows the rating
+       in words. */
+    .visit-item { background:var(--card); border:1px solid var(--line); border-radius:16px; margin:0 0 12px; overflow:hidden; }
+    .visit-item summary { list-style:none; cursor:pointer; display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; padding:14px 16px; min-height:44px; }
+    .visit-item summary::-webkit-details-marker { display:none; }
+    .visit-item summary:focus-visible { outline:3px solid var(--focus); outline-offset:-3px; border-radius:16px; }
+    .visit-item .visit-chev { font-weight:800; color:var(--teal-dark); transition:transform .18s ease; }
+    .visit-item[open] .visit-chev { transform:rotate(90deg); }
+    .visit-item .visit-sum-date { font-weight:800; }
+    .visit-item .visit-sum-place { font-weight:700; }
+    .visit-item .visit-card { border:0; border-top:1px solid var(--line-soft); border-radius:0; margin:0; }
+    .visit-cal-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:8px 0 12px; }
+    .visit-cal-head h4 { margin:0; font-size:1.05rem; }
+    .visit-cal-grid { display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:4px; }
+    .visit-cal-dow { font-weight:700; font-size:.8rem; text-align:center; padding:4px 0; color:var(--muted); }
+    .visit-cal-day { min-height:64px; min-width:0; border:1px solid var(--line); border-radius:10px; background:var(--card); padding:4px; text-align:left; cursor:pointer; font:inherit; color:inherit; }
+    .visit-cal-day:hover { border-color:var(--teal); }
+    .visit-cal-day:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+    .visit-cal-day[aria-pressed="true"] { outline:3px solid var(--teal); outline-offset:1px; }
+    .visit-cal-day.empty { background:transparent; border-color:transparent; cursor:default; }
+    .visit-cal-day .day-num { display:block; font-weight:800; font-size:.9rem; }
+    .visit-cal-chip { display:block; font-size:.7rem; font-weight:700; line-height:1.3; border-radius:999px; padding:2px 6px; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .visit-cal-chip.cal-up { background:#14665a; color:#fff; }
+    .visit-cal-chip.cal-meh { background:#f2c14e; color:#372c1f; }
+    .visit-cal-chip.cal-down { background:#8c4a24; color:#fff; }
+    .visit-cal-chip.cal-none { background:transparent; border:1px dashed var(--line); color:var(--muted); }
+    .visit-cal-legend { list-style:none; padding:0; margin:12px 0; display:flex; flex-wrap:wrap; gap:8px 16px; font-size:.9rem; }
+    .visit-cal-legend .legend-swatch { display:inline-block; width:16px; height:16px; border-radius:5px; vertical-align:middle; margin-right:6px; }
+    .visit-cal-legend .legend-swatch.cal-up { background:#14665a; }
+    .visit-cal-legend .legend-swatch.cal-meh { background:#f2c14e; }
+    .visit-cal-legend .legend-swatch.cal-down { background:#8c4a24; }
+    .visit-cal-legend .legend-swatch.cal-none { background:transparent; border:1px dashed var(--line); }
+    .visit-cal-detail { margin-top:16px; }
+    .visit-cal-detail h4 { margin:0 0 8px; }
     /* Menu preview on desktop, Nov 24 2026: the base grid above
        already sizes the boxes, so no separate wide rule that
        stretched them tall. */
@@ -532,7 +589,7 @@
        saved profile / last time's picks, and see live how many
        places fit as you pick. */
     .onboard-quick { display:grid; gap:20px; margin:0 0 24px; }
-    .onboard-quick h3 { font-size:1rem; margin:8px 0 0; color:var(--teal-dark); }
+    .onboard-quick h3, .onboard-section-h { font-size:1rem; margin:8px 0 0; color:var(--teal-dark); }
     .quick-card { text-align:left; background:var(--card); border:1.5px solid var(--line); border-radius:16px; padding:16px 20px; font:inherit; color:var(--ink); cursor:pointer; min-height:44px; }
     .quick-card strong { display:block; color:var(--teal-dark); font-size:1.05rem; }
     .quick-card span { display:block; font-size:.95rem; color:var(--muted); margin-top:.25rem; }
@@ -623,7 +680,7 @@
     .ps-bar span { display:block; height:100%; background:var(--teal); }
     .ps-badge { display:inline-block; background:var(--amber-bg); border:2px solid #8a4a08; color:var(--amber-ink); border-radius:999px; padding:.25rem .75rem; font-weight:700; }
     .ps-input { padding:12px 16px; border:2px solid var(--muted); border-radius:12px; font:inherit; width:100%; min-height:44px; background:var(--card); color:var(--ink); }
-    /* Save today's filters, Nov 24 2026: name box and save
+    /* Save today's needs, Nov 24 2026: name box and save
        button side by side, not full width; wraps to one
        column on a narrow phone. The preview below shows the
        filters being saved, as oval tags, live. */
@@ -642,38 +699,64 @@
     .ps-answer { display:block; width:100%; text-align:left; background:var(--card); border:2px solid var(--teal); color:var(--teal-dark); border-radius:12px; padding:16px; margin:8px 0; font-weight:700; min-height:52px; }
     .ps-answer:hover { background:var(--soft); }
     .ps-panel { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:20px; }
-    /* Pagination dots, Nov 24 2026: cleaned up on mobile. The old
-       active rule shrank the button itself to 20px wide while it
-       stayed 44px tall, with a 3px border and outline, so the
-       active dot looked like a thin vertical pill. Now every
-       button stays a 44px touch target, every dot is a circle,
-       and the active one is simply filled and a touch bigger,
-       never colour alone, with the "1 of 4" count beside Back /
-       Next underneath. */
-    .dots { display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:center; padding:12px 0 4px; min-width:0; max-width:100%; box-sizing:border-box; }
-    .dots button { width:44px; height:44px; min-height:44px; min-width:44px; border:0; background:none; padding:0; display:grid; place-items:center; cursor:pointer; }
-    .dots button::after { content:""; width:10px; height:10px; border-radius:50%; border:2px solid var(--teal); background:var(--card); box-sizing:border-box; }
-    .dots button[aria-current="true"]::after { background:var(--teal); width:12px; height:12px; }
-    .dots button:focus-visible { outline:3px solid var(--focus); outline-offset:2px; border-radius:8px; }
-    /* Bookmark polish, Nov 24 2026: the old toggle rebuilt the
-       whole card or place page on every tap, so it flashed and
-       jumped, and the button changed width as Bookmark became
-       Bookmarked. Now the button updates in place: a fixed
-       width, so nothing shifts; the star gives a small pop when
-       it fills; and a short toast confirms where it went. The
-       word and aria-pressed stay, so it is still clear without
-       colour alone, and the pop and toast both switch off under
-       reduced motion. */
-    .bm-btn { min-width:152px; }
-    .bm-btn .bm-star { display:inline-block; }
+    /* Pagination dots removed, Nov 24 2026: with 12 places there
+       were 12 dots, far too many. The count between Back and Next
+       ("1 of 12") already says where you are, so the dots are
+       gone and the count is the only pagination. */
+    /* Bookmark is a save icon, Nov 24 2026: the text Bookmark
+       button is gone from every place card, to cut text. One
+       drawn bookmark icon, bottom right of the card: outline
+       when not saved, filled when saved, so the state is never
+       colour alone. It keeps the old behaviour exactly: same
+       toggle, same Saved list, same toast. The icon gives a
+       small pop when it fills; the pop and toast both switch
+       off under reduced motion. 44px touch target, visible
+       focus, aria-label, no visible text. */
+    .bm-icon-btn { width:44px; height:44px; min-width:44px; min-height:44px; padding:0; border:1px solid var(--line); border-radius:12px; background:var(--card); color:var(--teal-dark); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+    .bm-icon-btn svg { width:22px; height:22px; display:block; }
+    .bm-icon-btn:hover { background:var(--soft); }
+    .bm-icon-btn:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+    .bm-icon-btn.is-on { background:var(--soft); border-color:var(--teal); }
     /* The pop runs only on a tap, via the .pop class, so a
        bookmarked place does not pop again every time its card
        is drawn. */
-    .bm-btn.pop .bm-star { animation:bm-pop .28s ease; }
+    .bm-icon-btn.pop svg { animation:bm-pop .28s ease; }
     @keyframes bm-pop { 0% { transform:scale(.5); } 60% { transform:scale(1.3); } 100% { transform:scale(1); } }
     .bm-toast { position:fixed; left:50%; bottom:92px; transform:translate(-50%, 8px); background:var(--ink); color:var(--card); border-radius:999px; padding:10px 18px; font-size:.9rem; font-weight:700; box-shadow:0 4px 14px rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; z-index:50; max-width:90vw; text-align:center; }
     .bm-toast.show { opacity:1; transform:translate(-50%, 0); }
-    @media (prefers-reduced-motion: reduce) { .bm-btn.pop .bm-star { animation:none; } .bm-toast { transition:none; } }
+    @media (prefers-reduced-motion: reduce) { .bm-icon-btn.pop svg { animation:none; } .bm-toast { transition:none; } }
+    /* Bookmarked places as expandable cards, Nov 25 2026: the
+       Saved list used to be plain text (name + area) with no way
+       to see the place without leaving Saved. Each bookmark is
+       now a small card; tap its header to expand it in place,
+       showing the match, address, how it feels right now and a
+       short menu note, plus Open place for the full detail.
+       The header is a real button, 44px minimum, with a drawn
+       chevron that flips when open. */
+    #bookmark-list { list-style:none; margin:12px 0 0; padding:0; display:grid; gap:12px; }
+    .bm-card { border:1px solid var(--line); border-radius:14px; background:var(--card); overflow:hidden; }
+    .bm-card-head { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:none; border:0; padding:14px 16px; cursor:pointer; font:inherit; color:inherit; min-height:52px; }
+    .bm-card-head:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+    .bm-card-title { font-weight:700; }
+    .bm-card-head .bm-chev { margin-left:auto; flex:0 0 auto; display:inline-flex; transition:transform .2s ease; }
+    .bm-card.open .bm-chev { transform:rotate(180deg); }
+    .bm-card-body { padding:0 16px 16px; display:grid; gap:10px; }
+    .bm-card-body p { margin:0; }
+    .bm-card-actions { display:flex; gap:10px; flex-wrap:wrap; }
+    /* Save icon on the All places list cards, Nov 24 2026: the
+       icon is a sibling of the whole-card button, never nested
+       inside it, pinned to the card's bottom right corner. The
+       card content keeps 40px of air at the bottom so the icon
+       never covers the name, match, distance or tags. */
+    #view-app .compact-list li { position:relative; }
+    #view-app .compact-list li .card-open { padding-bottom:40px; }
+    #view-app .compact-list li .bm-icon-btn { position:absolute; right:8px; bottom:8px; z-index:2; }
+    /* Save icon in the focus card actions and on place detail:
+       at the right end of the actions row, bottom right of the
+       card, Open place keeps the rest of the row. */
+    .focus-actions .bm-icon-btn { margin-left:auto; }
+    #place-foot .bm-icon-btn { flex:0 0 44px; align-self:center; }
+    #view-app #place-foot .bm-icon-btn { align-self:flex-end; }
     .step { display:flex; gap:12px; align-items:center; justify-content:space-between; }
     .step .ps-btn { flex:0 0 auto; }
     [hidden] { display:none !important; }
@@ -706,7 +789,7 @@
     .align-line::before { content:"\2713  "; font-weight:700; }
     /* Match score + oval tags, Nov 23 2026: "5 of 5" in bold teal,
        then the matched filters as eye-grabbing oval tags. */
-    .match-score { display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:1.1rem; color:var(--teal-dark); white-space:nowrap; }
+    .match-score { display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:1.1rem; color:var(--teal); white-space:nowrap; }
     .match-tags { margin:.5rem 0; }
     .match-tags li, .match-tags span[role="listitem"] { font-weight:700; }
     .ps-tags span[role="listitem"] { border-radius:999px; padding:4px 12px; font-size:.9rem; background:var(--tag-bg); }
@@ -731,7 +814,7 @@
     .discover-filters summary::after { content:"\25BE"; font-size:1.25rem; line-height:1; color:var(--teal-dark); flex:0 0 auto; transition:transform .15s ease; }
     .discover-filters[open] summary::after { transform:rotate(180deg); }
     .ps-card.align-good { border:2px solid var(--teal); background:var(--soft); box-shadow:0 4px 14px rgba(11,94,84,.12); }
-    .dist-line { font-weight:700; color:var(--teal-dark); margin:.4rem 0; }
+    .dist-line { font-weight:700; color:var(--muted); margin:.4rem 0; }
     /* Map / List toggle */
     .view-toggle { display:flex; background:var(--line-soft); border-radius:999px; padding:4px; gap:4px; margin:12px 0 16px; }
     .view-toggle button { flex:1; border:0; background:none; border-radius:999px; padding:.55rem .5rem; font-weight:700; min-height:44px; color:var(--muted); display:inline-flex; align-items:center; justify-content:center; gap:6px; }
@@ -739,6 +822,29 @@
     .view-toggle button[aria-pressed="true"] { background:var(--card); color:var(--teal-dark); box-shadow:0 1px 4px rgba(0,0,0,.18); }
     .map-wrap { position:relative; background:var(--map-bg); border:1px solid var(--line); border-radius:16px; overflow:hidden; margin:16px 0; }
     .map-wrap svg { display:block; width:100%; height:auto; }
+    /* Map canvas, Nov 24 2026: the SVG and the HTML pins both live
+       inside this one box, so zooming it keeps every pin on its
+       street. Pins are positioned by %, so widening the canvas
+       scales the map and the pins stay anchored. */
+    .map-canvas { position:relative; width:100%; }
+    .map-canvas svg { display:block; width:100%; height:auto; }
+    /* Expand map button, Nov 24 2026: top right of the map, 44px
+       touch target, always visible so the map can be opened big. */
+    .map-expand-btn { position:absolute; top:8px; right:8px; z-index:5; min-height:44px; padding:8px 14px; border-radius:999px; border:2px solid var(--teal); background:var(--card); color:var(--teal-dark); font-weight:700; font-size:.85rem; cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,.2); }
+    .map-expand-btn:hover { background:var(--soft); }
+    .map-expand-btn:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+    /* Zoom bar, Nov 24 2026: only shown while the map is expanded.
+       Zoom steps are 1x, 1.5x, 2x, 2.5x, 3x; the canvas widens
+       with the zoom and the map scrolls inside the expanded view. */
+    .map-zoom-bar { display:none; align-items:center; gap:8px; margin:0 0 12px; flex-wrap:wrap; }
+    .map-zoom-bar .ps-btn { min-height:44px; min-width:44px; }
+    .map-zoom-label { font-weight:700; min-width:52px; text-align:center; }
+    /* Expanded map, Nov 24 2026: the whole Map view becomes a
+       full-screen sheet over the app, so the map is big enough
+       to read and zoom. Escape or Close map leaves it. */
+    #view-map.map-expanded { position:fixed; inset:0; z-index:70; background:var(--card); padding:16px; overflow:auto; }
+    #view-map.map-expanded .map-wrap { margin:0; border-radius:16px; overflow:visible; }
+    #view-map.map-expanded .map-zoom-bar { display:flex; }
     /* Map pins, Nov 23 2026: bigger pins that show the place name
        plus its match count, not just a number. Fixed teal, not
        var(--teal), or in dark mode white text sat on the light
@@ -828,9 +934,46 @@
        area, and the matched oval tags when the place matches
        today. The button styling stays from ?v=16. */
     .compact-list .card-open { background:none; border:0; text-align:left; width:100%; padding:0; font:inherit; color:var(--ink); cursor:pointer; display:block; }
-    /* Focus card actions, Nov 24 2026: Open place and Bookmark
-       share one row, side by side on desktop, stacked on phone. */
-    .focus-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    /* All places, Nov 24 2026: back to a normal vertical list.
+       The framed horizontal side-scroll did not work on
+       Ginko's phone, and a vertical list is the simpler read
+       with 12 places: no scroll-snap, no gesture fighting, no
+       Prev/Next wiring, the browser handles it natively.
+       Heading stays in both views and follows sort. Cards keep
+       everything they had: match, distance top-right, type and
+       area, tags in Full view, tap to open. Card type is
+       nuanced, not loud: name darkest and bold, match line
+       teal, distance muted grey, secondary details a softer
+       grey. All AA on the card in light and dark
+       (muted 8.4/10.0, muted-soft 5.1/6.9, teal 6.8/7.2). */
+    /* Full / Condensed toggle, Nov 24 2026: near the All places
+       heading, same control in List and Map view, both kept in
+       sync, choice kept for the session, Condensed is the
+       default. Condensed hides the needs tags, so cards are
+       shorter and more places fit; Full shows the tags.
+       Pressed is never colour alone: filled background,
+       shadow, bold and underline. */
+    .card-view-toggle { display:flex; background:var(--line-soft); border-radius:999px; padding:4px; gap:4px; margin:8px 0 12px; max-width:320px; }
+    .card-view-toggle button { flex:1; border:0; background:none; border-radius:999px; padding:.55rem .5rem; font-weight:700; min-height:44px; color:var(--muted); cursor:pointer; font-size:.95rem; }
+    .card-view-toggle button:hover { background:var(--soft); }
+    .card-view-toggle button[aria-pressed="true"] { background:var(--card); color:var(--teal-dark); box-shadow:0 1px 4px rgba(0,0,0,.18); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:2px; }
+    /* List card top row, Nov 24 2026: same layout as the featured
+       card's .focus-top. Name on the left, distance and travel
+       time top-right in the same words and format, e.g.
+       "0.4 km · 6 min walk", from the same p.distLabel. The name
+       wraps if it needs to, the distance stays put, top-right,
+       and never overlaps the name or the tags. */
+    #view-app .list-top { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin:0 0 .2rem; }
+    #view-app .list-top strong { min-width:0; color:var(--ink); }
+    #view-app .list-top .dist-line { flex:0 0 auto; margin:0; white-space:nowrap; text-align:right; }
+    /* Secondary details on place cards, Nov 24 2026: type and
+       area, and the focus card's quiet lines, in a softer grey
+       than the distance. Still AA on the card, light and dark. */
+    #view-app #focus-card .ps-muted, #view-app .compact-list .ps-muted { color:var(--muted-soft); }
+    /* Focus card actions, Nov 24 2026: Open place and the save
+       icon share one row, side by side on desktop, stacked on
+       phone, icon at the right end. */
+    .focus-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; align-items:center; }
     .focus-actions .ps-btn { flex:1 1 160px; }
     /* Landing — first-time welcome, short and scannable */
     .landing { text-align:center; }
@@ -889,8 +1032,6 @@
     #view-app .app-nav .ico { font-size:1.25rem; }
     #view-app .screen { animation:ps-screen-in .18s ease; }
     @keyframes ps-screen-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
-    #view-app .dots button::after { width:10px; height:10px; border-width:2px; }
-    #view-app .dots button[aria-current="true"]::after { width:12px; height:12px; border-radius:50%; background:var(--teal); }
     #view-app .step { gap:8px; }
     #view-app .step .ps-btn { background:none; border:0; box-shadow:none; text-decoration:underline; padding:10px 8px; min-height:44px; width:auto; flex:0 0 auto; color:var(--teal-dark); }
     #view-app .step .ps-btn-secondary { background:none; }
@@ -943,7 +1084,7 @@
     #view-app .landing .landing-list li:nth-child(4) { border-left:6px solid #8a4a08; }
     /* Match card breathing room, Nov 23 2026: more air, and a
        nested alignment card inside it, so you can see exactly
-       which of your filters this place matches, and which it
+       which of your needs this place matches, and which it
        does not. The outer card is calm, the inner card does
        the explaining. */
     #view-app #focus-card .ps-facts { gap:12px; margin:.75rem 0; }
@@ -993,7 +1134,7 @@
       #view-app:not(.embedded) #view-map { display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); column-gap:24px; align-items:start; }
       #view-app:not(.embedded) #view-map .map-wrap { grid-column:1; }
       #view-app:not(.embedded) #view-map p.ps-muted { grid-column:1; }
-      #view-app:not(.embedded) #view-map #map-distance-list { grid-column:2; grid-row:1 / span 2; margin-top:0; }
+      #view-app:not(.embedded) #view-map .map-places { grid-column:2; grid-row:1 / span 2; margin-top:0; min-width:0; }
       #view-app:not(.embedded) #priority-groups { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 20px; align-items:start; }
       #view-app:not(.embedded) #priority-groups .onboard-group { margin-bottom:20px; }
       #view-app:not(.embedded) .ps-kv { grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:32px; }
@@ -1029,7 +1170,7 @@
     #view-app.force-web:not(.embedded) #view-map { display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); column-gap:24px; align-items:start; }
     #view-app.force-web:not(.embedded) #view-map .map-wrap { grid-column:1; }
     #view-app.force-web:not(.embedded) #view-map p.ps-muted { grid-column:1; }
-    #view-app.force-web:not(.embedded) #view-map #map-distance-list { grid-column:2; grid-row:1 / span 2; margin-top:0; }
+    #view-app.force-web:not(.embedded) #view-map .map-places { grid-column:2; grid-row:1 / span 2; margin-top:0; min-width:0; }
     #view-app.force-web:not(.embedded) #priority-groups { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 20px; align-items:start; }
     #view-app.force-web:not(.embedded) #priority-groups .onboard-group { margin-bottom:20px; }
     #view-app.force-web:not(.embedded) .ps-kv { grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:32px; }
@@ -1064,10 +1205,11 @@
     #view-app .app-nav button[aria-current="page"] { border:0; outline:0; text-decoration:none; font-weight:700; }
     #view-app .app-nav button[aria-current="page"] .nav-label { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px; }
     #view-app .app-nav .ico { text-decoration:none; }
-    /* Removed Nov 24 2026: this rule shrank the active dot button
-       to 20px wide, which made it look like a thin vertical pill
-       on mobile. Active is now just a filled, slightly bigger
-       circle, set in the base .dots rules above. */
+    /* Removed Nov 24 2026: this rule shrank the active pagination
+       dot button to 20px wide, which made it look like a thin
+       vertical pill on mobile. The pagination dots were removed
+       entirely later the same day; only the "1 of 12" count
+       between Back and Next remains. */
     #view-app .rate-btn[aria-pressed="true"] { border-width:3px; outline:2px solid var(--ink); outline-offset:1px; }
     #view-app .rate-btn[aria-pressed="true"]::before { content:"\2713  "; }
     #view-app .ps-answer[aria-pressed="true"], #view-app .ps-answer[aria-checked="true"] { border-width:3px; outline:2px solid var(--ink); outline-offset:1px; }
@@ -1077,7 +1219,7 @@
     #view-app .ps-btn:active { outline:3px solid var(--focus); outline-offset:2px; }
     #view-app #focus-card h3 { font-size:1.4rem; line-height:1.2; margin:.25rem 0 .1rem; color:var(--teal-dark); }
     #view-app .focus-top { display:flex; justify-content:space-between; gap:12px; align-items:baseline; margin:0 0 .25rem; }
-    #view-app .focus-top .dist-line { margin:0; font-weight:700; color:var(--teal-dark); }
+    #view-app .focus-top .dist-line { margin:0; font-weight:700; color:var(--muted); }
     #view-app .fit-line { font-weight:700; color:var(--teal-dark); margin:.4rem 0; }
     #view-app .ps-facts li strong { color:var(--teal-dark); }
     /* Pillar tags and place-card tags use the same one-colour-per-group
@@ -1189,7 +1331,6 @@
     #view-app .onboard-group summary:hover, #view-app .discover-filters summary:hover, #view-app .save-preview summary:hover, #view-app .biz-why summary:hover { background:var(--soft); border-radius:12px; }
     #view-app .onboard-group .group-chev { transition:transform .18s ease; }
     #view-app .back-web:hover { background:var(--soft); border-radius:8px; }
-    #view-app .dots button:hover::after { border-color:var(--teal-dark); }
     #view-app .discover-filters[open] > *:not(summary), #view-app .onboard-group[open] > *:not(summary), #view-app .biz-why[open] > *:not(summary), #view-app #all-filters:not([hidden]), #view-app #view-map:not([hidden]), #view-app #view-list:not([hidden]) { animation:ps-drop-in .18s ease; }
     #view-app .ps-confirm { font-weight:700; color:var(--teal-dark); animation:ps-confirm-in .18s ease; }
     #view-app .ps-confirm::before { content:"\2713  "; font-weight:800; }
@@ -1398,7 +1539,7 @@
   <!-- View 1: web page view (default). Ginko's Playground menu at the top,
        small and normal, then the PEERSPECT intro and a button to see the
        prototype. This is a normal web page: the whole page scrolls. -->
-  <div id="view-web">
+  <div id="view-web" hidden>
     <header class="pg-nav">
       <div class="pg-nav-inner">
         <a class="logo" href="../../index.html" aria-label="Ginko's Prototype Playground — home">
@@ -1413,7 +1554,7 @@
             <button class="pg-link pg-toggle" type="button" aria-expanded="false" aria-haspopup="true">Prototypes &#9662;</button>
             <div class="pg-dropdown-list">
               <span class="pg-dropdown-group">Featured</span>
-              <a class="pg-dropdown-link" href="./index.html"><span class="pg-thumb pg-thumb-img pg-thumb-logo-peerspect"><img src="./favicon/logo.svg" alt="" /></span><span><strong>PEERSPECT</strong><span>Your guide to how places actually feel.</span></span></a>
+              <a class="pg-dropdown-link" href="./index.html?app"><span class="pg-thumb pg-thumb-img pg-thumb-logo-peerspect"><img src="./favicon/logo.svg" alt="" /></span><span><strong>PEERSPECT</strong><span>Your guide to how places actually feel.</span></span></a>
               <a class="pg-dropdown-link" href="../from-form-to-function/index.html"><span class="pg-thumb pg-thumb-img pg-thumb-logo-form"><img src="../from-form-to-function/favicon/logo.svg" alt="" /></span><span><strong>Form to Function</strong><span>Turns complicated forms into plain language instructions.</span></span></a>
               <hr class="pg-dropdown-divider" />
               <span class="pg-dropdown-group">Rough concepts</span>
@@ -1448,7 +1589,7 @@
         <h2 id="cs-context">Context</h2>
         <p class="cs-subtitle">A peer layer on business listings, so you can tell how an establishment feels before you go.</p>
         <div class="cs-context">
-          <div class="cs-card"><h3>What</h3><p>Experiential filters on establishment and business listings, not reviews.</p></div>
+          <div class="cs-card"><h3>What</h3><p>Experiential needs, matched to establishment and business listings, not reviews.</p></div>
           <div class="cs-card"><h3>Who</h3><p>Disabled and neurodiverse people first, and business owners who want to understand them. Useful for everyone.</p></div>
           <div class="cs-card"><h3>When</h3><p>Concept and prototype, November 2026.</p></div>
           <div class="cs-card"><h3>How</h3><p>Anonymous peer check-ins, one tap at a time.</p></div>
@@ -1476,7 +1617,7 @@
         <div class="cs-card cs-feature cs-use use-access"><p class="cs-deliverable">Discover</p><p class="cs-use-when">I need a quiet place to work</p><h3>Find a place that fits today</h3><p>Start with Quiet morning in one tap, or pick your own. As you pick, it says how many places fit. You see only those, nearest first, with distance and how to get there.</p><ul class="cs-tags"><li>Quiet morning</li><li>Low sensory</li><li>Co-working</li></ul></div>
         <div class="cs-card cs-feature cs-use use-here"><p class="cs-deliverable">Check-in</p><p class="cs-use-when">I am here now, is it still calm?</p><h3>Check in, in one tap</h3><p>One question at a time, anonymous, while you are there. Sound is multi-select, music and talking can happen at once. “Still” questions show the earlier peer report first.</p><ul class="cs-tags"><li>One question</li><li>Anonymous</li><li>Live</li></ul></div>
         <div class="cs-card cs-feature cs-use use-biz"><p class="cs-deliverable">Business dashboard</p><p class="cs-use-when">I run a place, what should I change?</p><h3>See what to fix, without raw data</h3><p>A dashboard, not just bars: stats, ring gauges, how the day feels, and AI suggestions that cite the data, like a quiet hour. No names, no raw data.</p><ul class="cs-tags"><li>Visual patterns</li><li>Gentle suggestions</li><li>Private</li></ul></div>
-        <p>Underneath all three: 92 filters in six groups, <strong>Access, Sensory, Environment, Context, Inclusion, and Menu</strong>. Returning users can start from a saved profile, or last time's picks, in one tap.</p>
+        <p>Underneath all three: 92 needs in six groups, <strong>Access, Sensory, Environment, Context, Inclusion, and Menu</strong>. Returning users can start from a saved profile, or last time's picks, in one tap.</p>
       </section>
 
       <section aria-labelledby="cs-process">
@@ -1485,7 +1626,7 @@
         <ol class="cs-timeline">
           <li><span class="cs-num">1</span><h3>Ask the question</h3><p>I could not tell from reviews if a place would work for me that day.</p></li>
           <li><span class="cs-num honey">2</span><h3>Name the model</h3><p>One star became four groups: Access, Sensory, Environment, Context.</p></li>
-          <li><span class="cs-num pine">3</span><h3>See it, don&apos;t list it</h3><p>One question at a time, options I could see, not just read. Onboarding starts with a day, not a blank list of 92 filters.</p></li>
+          <li><span class="cs-num pine">3</span><h3>See it, don&apos;t list it</h3><p>One question at a time, options I could see, not just read. Onboarding starts with a day, not a blank list of 92 needs.</p></li>
           <li><span class="cs-num">4</span><h3>Fix the words</h3><p>Yes or Not really did not answer how loud it was. Sound became level plus type, and type became multi-select, because sounds happen at once.</p></li>
           <li><span class="cs-num honey">5</span><h3>Build the system</h3><p>Palette, type, spacing, and content rules together. Accessibility as a rule.</p></li>
           <li><span class="cs-num pine">6</span><h3>Break it, fix it</h3><p>The first version felt like a page on my site. I rebuilt the frame so the app feels like its own world.</p></li>
@@ -1496,7 +1637,7 @@
         <h2 id="cs-decisions">Key decisions</h2>
         <p class="cs-subtitle">Four choices that kept the design simple, customisable, anonymous, and visual.</p>
         <p class="cs-note">Tap a card to open it.</p>
-        <details class="cs-card"><summary>Four groups, not one long list</summary><p>A long list creates overload. Four groups are easier to scan.</p><p><strong>Trade-off:</strong> some filters fit two groups. I placed each once, to keep scanning fast.</p></details>
+        <details class="cs-card"><summary>Four groups, not one long list</summary><p>A long list creates overload. Four groups are easier to scan.</p><p><strong>Trade-off:</strong> some needs fit two groups. I placed each once, to keep scanning fast.</p></details>
         <details class="cs-card"><summary>No pick limit</summary><p>A three-pick limit worked against agency. Accessibility means customisability.</p><p><strong>Trade-off:</strong> more picks can dilute a match, so a place needs at least half of them, minimum two.</p></details>
         <details class="cs-card"><summary>Anonymous prompts, not named reviews</summary><p>Low effort and safer, with peer confirmation for trust. “Still” questions now show the earlier report first, so the prompt makes sense.</p><p><strong>Trade-off:</strong> no follow-up with the reporter, so peer confirmation has to carry the trust instead.</p></details>
         <details class="cs-card"><summary>Visual dashboard, not raw data</summary><p>Owners see patterns and suggestions, never who said what.</p><p><strong>Trade-off:</strong> owners get less detail, but a suggestion they can act on.</p></details>
@@ -1553,7 +1694,7 @@
         <p class="cs-note">This is the real prototype, not a screenshot. Pick a screen on the left, use it live on the right, or open it fullscreen.</p>
         <div class="cs-hifi-layout">
         <div class="cs-screen-grid">
-          <article class="cs-card cs-screen"><div class="cs-screen-media" aria-hidden="true">Discover</div><div class="cs-screen-body"><h3>Discover</h3><p>Map and list views, distance and transport, only the filters you picked today.</p><button class="cs-screen-link" type="button" data-preview-screen="discover">Show this screen</button></div></article>
+          <article class="cs-card cs-screen"><div class="cs-screen-media" aria-hidden="true">Discover</div><div class="cs-screen-body"><h3>Discover</h3><p>Map and list views, distance and transport, only the needs you picked today.</p><button class="cs-screen-link" type="button" data-preview-screen="discover">Show this screen</button></div></article>
           <article class="cs-card cs-screen"><div class="cs-screen-media" aria-hidden="true">I am here</div><div class="cs-screen-body"><h3>I am here</h3><p>One question at a time, anonymous. Sound is multi-select, and “still” questions show the earlier peer report.</p><button class="cs-screen-link" type="button" data-preview-screen="here">Show this screen</button></div></article>
         </div>
         <p class="cs-note">The rest, including the Business dashboard, is in the live prototype. <button class="cs-screen-link" type="button" data-open-prototype>Open the live prototype</button></p>
@@ -1608,7 +1749,7 @@
   </div>
   <!-- View 2: prototype view. No huge header, no Playground banner.
        Only a small controls row: a discreet back link, theme, expand. -->
-  <div id="view-app" hidden>
+  <div id="view-app">
   <div class="app-wrap">
   <div class="app" id="peerspect-app">
     <div class="app-header">
@@ -1617,7 +1758,7 @@
       <span class="spacer"></span>
       <button class="view-size-cycle" id="view-size-cycle" type="button" data-mode="auto" aria-label="Preview size: Auto. Tap to switch to Desktop"><svg class="ico-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="13" height="10" rx="2"/><rect x="13" y="10" width="9" height="10" rx="2"/><path d="M6 18h4"/></svg><svg class="ico-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><svg class="ico-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></button>
       <button class="theme-toggle" type="button" data-theme-btn aria-label="Switch to dark mode"><span class="theme-icon" aria-hidden="true">☾</span></button>
-      <button class="app-close" id="close-app" type="button" aria-label="Close prototype and return to case study">&times;</button>
+      <button class="app-close" id="close-app" type="button" aria-label="Close prototype and return to Ginko's Prototype Playground">&times;</button>
     </div>
     <!-- Selected filter colour switcher removed from the header,
          Nov 24 2026. The Current (neutral) style is in use. The
@@ -1625,11 +1766,9 @@
          below, so the switcher can be brought back. -->
     <main id="main" class="app-main">
       <!-- 0. LANDING — first screen, before onboarding. -->
-      <section class="screen landing" id="screen-landing" aria-labelledby="landing-h" hidden>
+      <section class="screen landing" id="screen-landing" aria-labelledby="landing-h">
         <div class="screen-head">
-          <div aria-hidden="true">
-            <svg width="108" height="108" viewBox="0 0 56 56" role="img" aria-label="PEERSPECT mark: two peers sharing one eye"><circle cx="18" cy="20" r="11" fill="#14665a"/><circle cx="38" cy="20" r="11" fill="#8ecdc0"/><ellipse cx="28" cy="40" rx="16" ry="9" fill="none" stroke="#14665a" stroke-width="2.5"/><circle cx="28" cy="40" r="5" fill="#14665a"/></svg>
-          </div>
+          <svg class="landing-logo-mark" width="240" height="160" viewBox="0 0 120 80" aria-hidden="true"><rect x="6" y="6" width="108" height="68" rx="12" fill="#eaf3f0"/><path d="M6 40 H114 M42 6 V74 M78 6 V74" stroke="#fff" stroke-width="5"/><path d="M18 58 C40 62 52 30 60 30 C70 30 84 52 102 22" stroke="#a35f3c" stroke-width="3" fill="none" stroke-dasharray="1 0" stroke-linecap="round"/><circle cx="18" cy="58" r="6" fill="#0b5e54"/><circle cx="102" cy="22" r="6" fill="#f8c05e" stroke="#a35f3c" stroke-width="2"/><path d="M50 30 Q60 20 70 30 Q60 40 50 30 Z" fill="#fff"/><circle cx="60" cy="30" r="4" fill="#1d2b28"/></svg>
           <h2 id="landing-h">PEERSPECT</h2>
           <p><strong>Your guide to how places actually feel.</strong></p>
         </div>
@@ -1647,11 +1786,12 @@
       <section class="screen" id="screen-onboard" aria-labelledby="onboard-h" hidden>
         <div class="screen-head">
           <h2 id="onboard-h">What would make a place feel right today?</h2>
-          <p>Pick a type of day, like a quiet morning, or choose your own filters below. Takes about a minute. You can change it anytime.</p>
+          <p>Pick a type of day, like a quiet morning, or choose your own needs below. Takes about a minute. You can change it anytime.</p>
         </div>
         <div class="screen-scroll">
           <div id="onboard-quick" class="onboard-quick" aria-label="Quick start"></div>
-          <p id="onboard-fit" class="ps-muted" aria-live="polite">Pick a starting point, or open a category below.</p>
+          <h3 class="onboard-section-h">Select your needs</h3>
+          <p id="onboard-fit" class="ps-muted" aria-live="polite">Choose a starting point above, or pick the needs that matter most below.</p>
           <div id="priority-groups"></div>
           <p id="priority-count" class="ps-muted" aria-live="polite">0 picked</p>
         </div>
@@ -1665,7 +1805,7 @@
       <section class="screen" id="screen-discover" aria-labelledby="places-h" hidden>
         <div class="screen-head">
           <h2 id="places-h">Discover</h2>
-          <p id="tailored-note">No filters picked yet. Showing all twelve real cafés.</p>
+          <p id="tailored-note">No needs picked yet. Showing all twelve real cafés.</p>
           <div class="view-toggle" role="group" aria-label="Choose map view or list view">
             <button type="button" id="view-list-btn" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>List view</button>
             <button type="button" id="view-map-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>Map view</button>
@@ -1674,18 +1814,26 @@
         </div>
         <div class="screen-scroll" id="discover-scroll">
           <details class="discover-filters">
-            <summary>Filters and sort</summary>
+            <summary>Needs filters</summary>
             <label for="sort-select">Sort by</label>
             <select class="ps-input" id="sort-select">
               <option value="distance" selected>Nearest first</option>
               <option value="match">Best match first</option>
             </select>
-            <ul class="ps-chips wrap" id="tailored-chips" aria-label="Your filters for today"></ul>
-            <button class="ps-btn ps-btn-secondary ps-btn-small" id="toggle-all-filters" type="button" aria-expanded="false">See all filters</button>
+            <ul class="ps-chips wrap" id="tailored-chips" aria-label="Your needs for today"></ul>
+            <button class="ps-btn ps-btn-secondary ps-btn-small" id="toggle-all-filters" type="button" aria-expanded="false">See all needs</button>
             <div id="all-filters" hidden></div>
           </details>
           <div id="view-map" hidden>
+            <div class="map-zoom-bar" id="map-zoom-bar" aria-label="Map zoom controls">
+              <button class="ps-btn ps-btn-secondary" id="map-zoom-out" type="button" aria-label="Zoom out">−</button>
+              <span class="map-zoom-label" id="map-zoom-label" aria-live="polite">100%</span>
+              <button class="ps-btn ps-btn-secondary" id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
+              <button class="ps-btn ps-btn-secondary" id="map-zoom-reset" type="button">Reset zoom</button>
+            </div>
             <div class="map-wrap" id="map-wrap" aria-label="Sample schematic map of Montreal places">
+              <button class="map-expand-btn" id="map-expand-btn" type="button" aria-expanded="false">⤢ Expand map</button>
+              <div class="map-canvas" id="map-canvas">
               <svg viewBox="0 0 640 420" role="img" aria-label="Schematic map, not to scale: Jarry Park top left, with Rue Jarry, Rue Jean-Talon, Avenue Van Horne and Rue Rachel running east to west, crossed by Avenue du Parc, Boulevard Saint-Laurent and Rue Saint-Denis; neighbourhoods Villeray, Mile End, Plateau-Mont-Royal and Outremont; twelve real cafés pinned">
                 <rect class="map-land" width="640" height="420"/>
                 <rect class="map-park" x="24" y="16" width="150" height="58" rx="14"/>
@@ -1720,6 +1868,7 @@
                 <path class="map-thread" d="M115 92 C 240 80, 320 110, 358 126 C 380 190, 360 240, 397 286 C 300 300, 160 290, 102 252 C 80 210, 90 130, 115 92 Z" aria-hidden="true"/>
                 <text class="map-street" x="24" y="404">Metro line (sample) · Thread connecting peer insights</text>
               </svg>
+              </div>
             </div>
             <p class="ps-muted">Sample schematic map. Not to scale, no live listings. Tap a pin to open a place.</p>
             <ul class="map-legend" aria-label="Map legend">
@@ -1727,12 +1876,18 @@
               <li><span class="legend-pin match" aria-hidden="true"></span>Matches today: name and match count on the pin</li>
               <li><span class="legend-pin few" aria-hidden="true"></span>Fewer matches</li>
             </ul>
+            <div class="map-places" id="map-all-places">
+            <h3 id="map-all-places-h">All places, nearest first</h3>
+            <div class="card-view-toggle" role="group" aria-label="All places card view">
+              <button type="button" data-card-view="condensed" aria-pressed="true">Condensed</button>
+              <button type="button" data-card-view="full" aria-pressed="false">Full</button>
+            </div>
             <ul class="compact-list" id="map-distance-list"></ul>
+            </div>
           </div>
           <div id="view-list">
           <div class="discover-main">
           <article class="ps-card" id="focus-card" aria-live="polite"></article>
-          <div class="dots" id="place-dots" role="group" aria-label="Choose a place"></div>
           <div class="step">
             <button class="ps-btn ps-btn-secondary" id="prev-place" type="button">← Back</button>
             <span class="ps-muted" id="place-count"></span>
@@ -1741,6 +1896,10 @@
           </div>
           <div class="discover-side">
           <h3 id="all-places-h">All places, nearest first</h3>
+          <div class="card-view-toggle" role="group" aria-label="All places card view">
+            <button type="button" data-card-view="condensed" aria-pressed="true">Condensed</button>
+            <button type="button" data-card-view="full" aria-pressed="false">Full</button>
+          </div>
           <ul class="compact-list" id="compact-list"></ul>
           </div>
           </div>
@@ -1776,19 +1935,19 @@
         <div class="screen-head"><h2 id="profiles-h">Saved</h2><p>Profiles, order prep list, and bookmarks.</p></div>
         <div class="screen-scroll">
           <section class="ps-panel" aria-labelledby="save-profile-h">
-            <h3 id="save-profile-h">Save today's filters</h3>
-            <p>Name this set of filters so you can use it again later.</p>
+            <h3 id="save-profile-h">Save today's needs</h3>
+            <p>Name this set of needs so you can use it again later.</p>
             <div class="save-row">
               <div class="save-field">
                 <label for="profile-name">Profile name</label>
                 <input class="ps-input" id="profile-name" type="text" placeholder="e.g. Quiet morning" />
               </div>
-              <button class="ps-btn" id="save-profile" type="button">Save today's filters</button>
+              <button class="ps-btn" id="save-profile" type="button">Save today's needs</button>
             </div>
             <details class="save-preview" id="save-preview">
-              <summary id="save-preview-summary">See the filters you are saving</summary>
-              <ul class="ps-tags match-tags" id="save-preview-tags" aria-label="Filters you are saving"></ul>
-              <p class="ps-muted" id="save-preview-empty" hidden>No filters picked yet</p>
+              <summary id="save-preview-summary">See the needs you are saving</summary>
+              <ul class="ps-tags match-tags" id="save-preview-tags" aria-label="Needs you are saving"></ul>
+              <p class="ps-muted" id="save-preview-empty" hidden>No needs picked yet</p>
             </details>
             <p id="profile-status" class="ps-muted" aria-live="polite"></p>
             <ul id="profile-list"></ul>
@@ -1803,6 +1962,10 @@
           <section class="ps-panel" aria-labelledby="visits-h">
             <h3 id="visits-h">Your last visits</h3>
             <p class="ps-muted">Only you see this. What you ordered, and how it was, so you remember next time.</p>
+            <div class="view-toggle" role="group" aria-label="How to see your visits">
+              <button type="button" id="visits-list-btn" aria-pressed="true">List view</button>
+              <button type="button" id="visits-cal-btn" aria-pressed="false">Calendar view</button>
+            </div>
             <div id="visit-list" class="visit-list"></div>
             <button class="ps-btn ps-btn-secondary ps-btn-small" id="clear-visits" type="button">Clear visits</button>
           </section>
@@ -2479,7 +2642,7 @@
       });
       var fit=$("onboard-fit");
       if(fit){
-        if(!selectedFilters.length){ fit.textContent="Pick a starting point, or open a category below."; }
+        if(!selectedFilters.length){ fit.textContent="Choose a starting point above, or pick the needs that matter most below."; }
         else {
           var fits=PLACES.filter(function(p){ return alignmentFor(p); }).length;
           fit.textContent=selectedFilters.length+" picked. "+fits+" of "+PLACES.length+" places fit today. Tap “See places for today” when you are ready.";
@@ -2507,7 +2670,7 @@
       var h=document.createElement("h3"); h.textContent="Start with a day"; box.appendChild(h);
       ONBOARD_PRESETS.forEach(function(pr){
         var b=document.createElement("button"); b.type="button"; b.className="quick-card"; b.setAttribute("aria-pressed","false");
-        b.innerHTML="<strong>"+pr.name+"</strong><span>"+pr.desc+" "+pr.filters.length+" filters.</span>";
+        b.innerHTML="<strong>"+pr.name+"</strong><span>"+pr.desc+" "+pr.filters.length+" needs.</span>";
         b.addEventListener("click", function(){
           box.querySelectorAll(".quick-card").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
           b.setAttribute("aria-pressed","true"); applyOnboardFilters(pr.filters);
@@ -2518,7 +2681,7 @@
         var hp=document.createElement("h3"); hp.textContent="Your profiles. Tap one to go straight to places"; box.appendChild(hp);
         profiles.forEach(function(prof){
           var b=document.createElement("button"); b.type="button"; b.className="quick-card";
-          b.innerHTML="<strong>"+prof.name+"</strong><span>"+prof.filters.length+" filters, saved.</span>";
+          b.innerHTML="<strong>"+prof.name+"</strong><span>"+prof.filters.length+" needs, saved.</span>";
           b.addEventListener("click", function(){
             activeFilters=new Set(prof.filters); selectedFilters=(prof.priorities||prof.filters).slice();
             save("peerspect-last-filters-v1", selectedFilters);
@@ -2530,7 +2693,7 @@
       var last=load("peerspect-last-filters-v1", []);
       if(last && last.length){
         var bl=document.createElement("button"); bl.type="button"; bl.className="quick-card";
-        bl.innerHTML="<strong>Use last time</strong><span>"+last.length+" filters from your last visit.</span>";
+        bl.innerHTML="<strong>Use last time</strong><span>"+last.length+" needs from your last visit.</span>";
         bl.addEventListener("click", function(){ applyOnboardFilters(last); finishOnboarding(); });
         box.appendChild(bl);
       }
@@ -2598,8 +2761,8 @@
     }
     function renderTailored(){
       var box = $("tailored-chips"); box.innerHTML = "";
-      if(activeFilters.size === 0){ $("tailored-note").textContent = "No filters picked yet. Showing all twelve real cafés."; renderSavePreview(); return; }
-      $("tailored-note").textContent = "Tailored for today. Tap a filter to turn it off.";
+      if(activeFilters.size === 0){ $("tailored-note").textContent = "No needs picked yet. Showing all twelve real cafés."; renderSavePreview(); return; }
+      $("tailored-note").textContent = "Tailored for today. Tap a need to turn it off.";
       Array.from(activeFilters).forEach(function(k){ var li=document.createElement("li"); li.appendChild(chipFor(k)); box.appendChild(li); });
       renderSavePreview();
     }
@@ -2610,7 +2773,7 @@
       var det=$("save-preview"), sum=$("save-preview-summary"), tags=$("save-preview-tags"), empty=$("save-preview-empty"), btn=$("save-profile");
       if(!det) return;
       var n=activeFilters.size;
-      sum.textContent = n ? "See the "+n+" filter"+(n===1?"":"s")+" you are saving" : "See the filters you are saving";
+      sum.textContent = n ? "See the "+n+" need"+(n===1?"":"s")+" you are saving" : "See the needs you are saving";
       btn.disabled = n===0;
       btn.setAttribute("aria-disabled", n===0 ? "true" : "false");
       tags.innerHTML="";
@@ -2637,7 +2800,7 @@
     $("sort-select").addEventListener("change", function(){ sortMode = this.value; renderPlaces(); });
     $("toggle-all-filters").addEventListener("click", function(){
       var box=$("all-filters"); var open=box.hidden; box.hidden=!open;
-      this.setAttribute("aria-expanded", open?"true":"false"); this.textContent = open?"Hide all filters":"See all filters";
+      this.setAttribute("aria-expanded", open?"true":"false"); this.textContent = open?"Hide all needs":"See all needs";
       if(open) renderAllFilters();
     });
 
@@ -2687,16 +2850,16 @@
     function matchOvalsHTML(p){
       var m = matchScore(p); if(!m) return "";
       return '<span class="match-score">✓ ' + m.count + ' of ' + m.total + '</span>' +
-        '<ul class="ps-tags match-tags" aria-label="Filters this place matches">' + matchTagItems(m, false) + '</ul>';
+        '<ul class="ps-tags match-tags" aria-label="Needs this place meets">' + matchTagItems(m, false) + '</ul>';
     }
     function matchOvalsInlineHTML(p){
       var m = matchScore(p); if(!m) return "";
       return '<span class="match-score">✓ ' + m.count + ' of ' + m.total + '</span>' +
-        '<span class="ps-tags match-tags" role="list" aria-label="Filters this place matches">' + matchTagItems(m, true) + '</span>';
+        '<span class="ps-tags match-tags" role="list" aria-label="Needs this place meets">' + matchTagItems(m, true) + '</span>';
     }
     function matchAriaText(p){
       var m = matchScore(p); if(!m) return "";
-      return "Matches " + m.count + " of " + m.total + " of your filters: " + m.matched.map(function(f){ return FILTER_LABELS[f]||f; }).join(", ");
+      return "Matches " + m.count + " of " + m.total + " of your needs: " + m.matched.map(function(f){ return FILTER_LABELS[f]||f; }).join(", ");
     }
     function renderPlaces(){
       scored = PLACES.map(function(p){
@@ -2708,8 +2871,11 @@
       } else {
         scored.sort(function(a,b){ return b.matches.length - a.matches.length || a.place.distKm - b.place.distKm; });
       }
+      var placesLabel = sortMode === "match" ? "All places, best match first" : "All places, nearest first";
       var allH = $("all-places-h");
-      if(allH) allH.textContent = sortMode === "match" ? "All places, best match first" : "All places, nearest first";
+      if(allH) allH.textContent = placesLabel;
+      var mapH = $("map-all-places-h");
+      if(mapH) mapH.textContent = placesLabel;
       focusIndex = 0; renderFocus(); renderMap(); renderCompactList();
     }
     function setView(view){
@@ -2722,6 +2888,37 @@
          the top when switching between them, Nov 24 2026. */
       resetScroll();
     }
+    /* Expand map and zoom, Nov 24 2026: Expand map opens the Map
+       view as a full-screen sheet; Zoom in and out widen the
+       canvas in half steps from 1x to 3x, and the map scrolls
+       inside the sheet. Pins stay anchored because they are
+       positioned by % inside the canvas. Escape closes it. */
+    var mapZoom = 1;
+    function applyMapZoom(){
+      var canvas = $("map-canvas"); if(canvas) canvas.style.width = (mapZoom * 100) + "%";
+      var label = $("map-zoom-label"); if(label) label.textContent = Math.round(mapZoom * 100) + "%";
+      var out = $("map-zoom-out"); if(out) out.disabled = mapZoom <= 1;
+      var zin = $("map-zoom-in"); if(zin) zin.disabled = mapZoom >= 3;
+    }
+    function setMapExpanded(on){
+      var view = $("view-map"), btn = $("map-expand-btn"); if(!view || !btn) return;
+      view.classList.toggle("map-expanded", on);
+      btn.setAttribute("aria-expanded", on ? "true" : "false");
+      btn.textContent = on ? "✕ Close map" : "⤢ Expand map";
+      if(on){ mapZoom = 1; applyMapZoom(); $("map-zoom-out").focus({preventScroll:true}); }
+      else { btn.focus({preventScroll:true}); }
+    }
+    (function(){
+      var btn = $("map-expand-btn"); if(!btn) return;
+      btn.addEventListener("click", function(){ setMapExpanded(!$("view-map").classList.contains("map-expanded")); });
+      $("map-zoom-in").addEventListener("click", function(){ mapZoom = Math.min(3, mapZoom + 0.5); applyMapZoom(); });
+      $("map-zoom-out").addEventListener("click", function(){ mapZoom = Math.max(1, mapZoom - 0.5); applyMapZoom(); });
+      $("map-zoom-reset").addEventListener("click", function(){ mapZoom = 1; applyMapZoom(); });
+      document.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && $("view-map").classList.contains("map-expanded")) setMapExpanded(false);
+      });
+      applyMapZoom();
+    })();
     /* List card, restored to the ?v=14 content, Nov 24 2026:
        name and match, distance, transport and area, and the
        full matched oval tags with the muted dashed "Not
@@ -2732,10 +2929,17 @@
        The em dashes in the ?v=14 strings are commas here, per
        the ?v=17 copy rules. */
     function listCardHTML(p, align){
-      return "<strong>" + p.name + "</strong>, " + p.distLabel + "<br/><span class='ps-muted'>" + p.type + " · " + p.area + "</span>" + (align ? "<br/>" + matchOvalsInlineHTML(p) : "");
+      /* Condensed (default) shows the match as one short line,
+         "4 of 5", with no tags. Full shows the match score plus
+         the matched needs tags. Both keep name, distance top
+         right, type and area. */
+      var extra = "";
+      if(cardView === "full"){ if(align) extra = "<br/>" + matchOvalsInlineHTML(p); }
+      else { var m = matchScore(p); if(m) extra = "<br/><span class=\"match-score\">✓ " + m.count + " of " + m.total + "</span>"; }
+      return "<span class=\"list-top\"><strong>" + p.name + "</strong><span class=\"dist-line\">" + p.distLabel + "</span></span>" + "<span class='ps-muted'>" + p.type + " · " + p.area + "</span>" + extra;
     }
     function renderMap(){
-      var wrap = $("map-wrap"); if(!wrap) return;
+      var wrap = $("map-canvas") || $("map-wrap"); if(!wrap) return;
       wrap.querySelectorAll(".map-pin").forEach(function(el){ el.remove(); });
       var here = document.createElement("span"); here.className="map-pin here";
       here.innerHTML = '<span class="pin-name">★ You are here</span><span class="pin-score">Jarry Park</span>';
@@ -2761,10 +2965,33 @@
           b.innerHTML = listCardHTML(p, align);
           b.addEventListener("click", function(){ showPlace(p.id); });
           li.appendChild(b);
+          li.appendChild(makeBmIconBtn(p));
           list.appendChild(li);
         });
       }
     }
+    /* Full / Condensed card view, Nov 24 2026: one toggle near
+       each All places heading, both kept in sync. Condensed is
+       the default and hides the needs tags on the list cards;
+       Full shows them. The choice is kept for the session.
+       The focus card is untouched by this toggle. */
+    var cardView = loadSession("peerspect-card-view-v1", "condensed");
+    if(cardView !== "full" && cardView !== "condensed") cardView = "condensed";
+    function loadSession(key, fallback){ try { var v = sessionStorage.getItem(key); return v == null ? fallback : JSON.parse(v); } catch(e){ return fallback; } }
+    function saveSession(key, val){ try { sessionStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+    function syncCardViewToggles(){
+      document.querySelectorAll(".card-view-toggle button").forEach(function(b){
+        b.setAttribute("aria-pressed", b.getAttribute("data-card-view") === cardView ? "true" : "false");
+      });
+    }
+    function setCardView(mode){
+      if(mode !== "full" && mode !== "condensed") return;
+      cardView = mode; saveSession("peerspect-card-view-v1", mode);
+      syncCardViewToggles(); renderCompactList(); renderMap();
+    }
+    document.querySelectorAll(".card-view-toggle button").forEach(function(b){
+      b.addEventListener("click", function(){ setCardView(b.getAttribute("data-card-view")); });
+    });
     function renderCompactList(){
       var ul = $("compact-list"); if(!ul) return; ul.innerHTML = "";
       scored.forEach(function(s){
@@ -2774,16 +3001,17 @@
         b.innerHTML = listCardHTML(p, align);
         b.addEventListener("click", function(){ showPlace(p.id); });
         li.appendChild(b);
+        li.appendChild(makeBmIconBtn(p));
         ul.appendChild(li);
       });
     }
     function renderFocus(){
-      var card = $("focus-card"), dots = $("place-dots");
+      var card = $("focus-card");
       if(!scored.length) return;
       var s = scored[focusIndex], p = s.place;
       var align = alignmentFor(p);
       card.className = "ps-card" + (align ? " align-good" : "");
-      var matchText = activeFilters.size===0 ? "No filters picked yet" : '<span class="match-score">✓ ' + s.matches.length + ' of ' + activeFilters.size + '</span>';
+      var matchText = activeFilters.size===0 ? "No needs picked yet" : '<span class="match-score">✓ ' + s.matches.length + ' of ' + activeFilters.size + '</span>';
       var shownTags = (s.matches.length ? s.matches : p.tags).slice(0,3);
       /* Focus card, restored to the ?v=14 content, Nov 24 2026:
          match and distance, type, area and transport, the
@@ -2798,23 +3026,16 @@
         '<p class="focus-top"><span class="ps-match">' + matchText + '</span><span class="dist-line">' + p.distLabel + '</span></p>' +
         '<h3>' + p.name + '</h3>' +
         '<p class="ps-muted" style="margin:.2rem 0;">' + p.type + ' · ' + p.area + '</p>' +
-        (function(){ if(!activeFilters.size) return ""; var m = matchScore(p); var matchedTags = m.matched.length ? '<ul class="ps-tags match-tags" aria-label="Filters this place matches">' + matchTagItems(m, false) + '</ul>' : '<p class="ps-muted">None of your filters matched here yet.</p>'; var missed = m.unmatched.length ? '<p class="align-missed-label">Not matched here</p><ul class="ps-tags match-tags" aria-label="Filters this place does not match">' + m.unmatched.map(function(f){ return '<li class="tag-missed">' + (FILTER_LABELS[f]||f) + '</li>'; }).join("") + '</ul>' : ""; return '<div class="align-card"><h4>Why this matches <span class="align-count">' + m.count + ' of ' + m.total + '</span></h4>' + matchedTags + missed + (align ? '' : '<p class="align-summary">No strong match yet, ' + m.count + ' of ' + m.total + ' of your filters.</p>') + '</div>'; })() +
+        (function(){ if(!activeFilters.size) return ""; var m = matchScore(p); var matchedTags = m.matched.length ? '<ul class="ps-tags match-tags" aria-label="Needs this place meets">' + matchTagItems(m, false) + '</ul>' : '<p class="ps-muted">None of your needs matched here yet.</p>'; var missed = m.unmatched.length ? '<p class="align-missed-label">Not matched here</p><ul class="ps-tags match-tags" aria-label="Needs this place does not meet">' + m.unmatched.map(function(f){ return '<li class="tag-missed">' + (FILTER_LABELS[f]||f) + '</li>'; }).join("") + '</ul>' : ""; return '<div class="align-card"><h4>Why this matches <span class="align-count">' + m.count + ' of ' + m.total + '</span></h4>' + matchedTags + missed + (align ? '' : '<p class="align-summary">No strong match yet, ' + m.count + ' of ' + m.total + ' of your needs.</p>') + '</div>'; })() +
         '<ul class="ps-facts"><li><strong>Lighting:</strong> ' + p.lighting + '</li><li><strong>Sound:</strong> ' + (p.soundLevel||'') + ', ' + p.sound + '</li><li><strong>What you will hear:</strong> ' + (p.soundSources||[]).join("; ") + '</li><li><strong>Crowd:</strong> ' + p.crowding + '</li></ul>' +
         '<ul class="ps-tags">' + shownTags.map(function(t){ return '<li class="'+tagClass(t)+'">'+(FILTER_LABELS[t]||t)+'</li>'; }).join("") + '</ul>' +
         '<p class="ps-muted">Confirmed by ' + p.confirmed + ' peers · Anonymous</p>' +
         '<div class="focus-actions"><button class="ps-btn" id="focus-open" type="button">Open place</button>' +
-        '<button class="ps-btn ps-btn-secondary bm-btn' + (bookmarks.has(p.id)?" is-on":"") + '" id="focus-bm" type="button"><span class="bm-star" aria-hidden="true">' + (bookmarks.has(p.id)?"★":"☆") + '</span> ' + (bookmarks.has(p.id)?"Bookmarked":"Bookmark") + '</button></div>';
+        '<button class="bm-icon-btn" id="focus-bm" type="button" data-place="' + p.id + '" data-name="' + p.name + '">' + bmIconSVG(bookmarks.has(p.id)) + '</button></div>';
       $("focus-open").addEventListener("click", function(){ showPlace(p.id); });
-      paintBmBtn($("focus-bm"), bookmarks.has(p.id));
+      paintBmBtn($("focus-bm"), bookmarks.has(p.id), p.name);
       $("focus-bm").addEventListener("click", function(){ toggleBookmark(p.id, $("focus-bm")); });
       $("place-count").textContent = (focusIndex+1) + " of " + scored.length;
-      dots.innerHTML = "";
-      scored.forEach(function(_, i){
-        var d = document.createElement("button"); d.type="button"; d.setAttribute("aria-label","Show place " + (i+1));
-        d.setAttribute("aria-current", i===focusIndex?"true":"false");
-        d.addEventListener("click", function(){ focusIndex=i; renderFocus(); var nd=$("place-dots").children[i]; if(nd) nd.focus({preventScroll:true}); });
-        dots.appendChild(d);
-      });
     }
     $("prev-place").addEventListener("click", function(){ focusIndex = (focusIndex-1+scored.length)%scored.length; renderFocus(); $("prev-place").focus({preventScroll:true}); });
     $("next-place").addEventListener("click", function(){ focusIndex = (focusIndex+1)%scored.length; renderFocus(); $("next-place").focus({preventScroll:true}); });
@@ -2836,14 +3057,19 @@
     function visitCardEl(v, opts){
       opts = opts || {};
       var card=document.createElement("article"); card.className="visit-card";
-      var head=document.createElement("div"); head.className="visit-card-head";
-      var d=document.createElement("h4");
-      var dv=new Date(v.date+"T12:00:00");
-      d.textContent = isNaN(dv.getTime()) ? v.date : dv.toLocaleDateString(undefined, {weekday:"short", day:"numeric", month:"short", year:"numeric"});
-      head.appendChild(d);
-      if(opts.mostRecent){ var tag=document.createElement("span"); tag.className="visit-tag"; tag.textContent="Most recent"; head.appendChild(tag); }
-      var rate=document.createElement("span"); rate.className="visit-rating"; rate.textContent=ratingVisual(v.rating); head.appendChild(rate);
-      card.appendChild(head);
+      /* noHead, Nov 24 2026: in the List view the expandable
+         summary already shows the date, place and rating, so
+         the card inside skips its own date and rating head. */
+      if(!opts.noHead){
+        var head=document.createElement("div"); head.className="visit-card-head";
+        var d=document.createElement("h4");
+        var dv=new Date(v.date+"T12:00:00");
+        d.textContent = isNaN(dv.getTime()) ? v.date : dv.toLocaleDateString(undefined, {weekday:"short", day:"numeric", month:"short", year:"numeric"});
+        head.appendChild(d);
+        if(opts.mostRecent){ var tag=document.createElement("span"); tag.className="visit-tag"; tag.textContent="Most recent"; head.appendChild(tag); }
+        var rate=document.createElement("span"); rate.className="visit-rating"; rate.textContent=ratingVisual(v.rating); head.appendChild(rate);
+        card.appendChild(head);
+      }
       if(opts.showPlaceName){ var pl=document.createElement("p"); pl.className="visit-place"; pl.textContent=v.place; card.appendChild(pl); }
       if(v.answers && v.answers.length){
         var expH=document.createElement("p"); expH.className="visit-sub"; expH.textContent="Your experience"; card.appendChild(expH);
@@ -2911,7 +3137,7 @@
       var gH=document.createElement("h3"); gH.textContent="At a glance"; glance.appendChild(gH);
       var dl = document.createElement("dl"); dl.className="detail-kv";
       var dlHTML = '<div><dt>Address</dt><dd><a href="'+p.mapsUrl+'" target="_blank" rel="noopener">'+p.address+'</a></dd></div><div><dt>Area</dt><dd>'+p.area+'</dd></div><div><dt>Distance</dt><dd>'+p.distLabel+'</dd></div><div><dt>Getting there</dt><dd>'+p.transport+'</dd></div>' + (p.phone ? '<div><dt>Phone</dt><dd><a href="tel:'+p.phone.replace(/[^+0-9]/g,"")+'">'+p.phone+'</a></dd></div>' : '') + (p.hours ? '<div><dt>Hours</dt><dd>'+p.hours+'</dd></div>' : '') + '<div><dt>Access</dt><dd>'+p.access+'</dd></div>';
-      if(alignDetail){ var mDetail = matchScore(p); dlHTML += '<div><dt>Match</dt><dd>Matches ' + mDetail.count + ' of ' + mDetail.total + ' of your filters</dd></div>'; }
+      if(alignDetail){ var mDetail = matchScore(p); dlHTML += '<div><dt>Match</dt><dd>Matches ' + mDetail.count + ' of ' + mDetail.total + ' of your needs</dd></div>'; }
       dl.innerHTML = dlHTML;
       glance.appendChild(dl);
       grid.appendChild(glance);
@@ -2989,8 +3215,8 @@
          recent peer notes already in the sample data. The old
          count bar is gone, Nov 24 2026: it was a proportion
          against the most-confirmed sample place, with no stated
-         total next to it. Cross-check, Nov 24 2026: each note
-         has a "Cross-check this report" button. Tapping asks
+         total next to it. Peer check, Nov 24 2026: each note
+         has a "Peer check this report" button. Tapping asks
          that report's "still" question once, anonymously —
          "A peer reported 30 minutes ago: the music was soft.
          Is the music still soft right now?" — with answers
@@ -2999,7 +3225,7 @@
          for today, today for yesterday). Answering counts as a
          peer cross-check in the trust data (milestones), bumps
          that report's "Confirmed by X peers" line, and the
-         button becomes "You cross-checked this". */
+         button becomes "You peer-checked this". */
       var peerCard = document.createElement("section"); peerCard.className="ps-panel place-section"; peerCard.setAttribute("aria-label","Peer reports");
       var peerH=document.createElement("h3"); peerH.textContent="Peer reports"; peerCard.appendChild(peerH);
       var peerDiv = document.createElement("div"); peerDiv.className="peer-visual";
@@ -3011,13 +3237,15 @@
         var notesUl=document.createElement("ul"); notesUl.className="peer-notes";
         reportQs.forEach(function(q, qi){
           var li=document.createElement("li");
-          var quote=document.createElement("p"); quote.style.margin="0"; quote.textContent="“"+q.c+"”"; li.appendChild(quote);
+          var rm=q.c.match(/^A peer reported (.+?): (.+)$/);
+          if(rm){ var meta=document.createElement("p"); meta.className="peer-meta"; meta.textContent="A peer reported "+rm[1]; li.appendChild(meta); }
+          var quote=document.createElement("p"); quote.className="peer-quote"; quote.textContent="“"+capFirst(rm?rm[2]:q.c)+"”"; li.appendChild(quote);
           var key=p.id+"|"+qi;
           function confirmedCount(){ return (q.cc||0) + ((crosschecks[key]&&crosschecks[key].count)||0); }
-          function confText(mine){ var n=confirmedCount(); return "Confirmed by "+n+" peer"+(n===1?"":"s")+(mine?" · including your cross-check":""); }
+          function confText(mine){ var n=confirmedCount(); return "Confirmed by "+n+" peer"+(n===1?"":"s")+(mine?" · including your peer check":""); }
           var conf=document.createElement("p"); conf.className="peer-confirmed"; conf.textContent=confText(!!(crosschecks[key]&&crosschecks[key].answered)); li.appendChild(conf);
           var done=!!(crosschecks[key]&&crosschecks[key].answered);
-          var btn=document.createElement("button"); btn.type="button"; btn.className="ps-btn ps-btn-secondary ps-btn-small"; btn.textContent="Cross-check this report"; btn.style.minHeight="44px"; btn.hidden=done;
+          var btn=document.createElement("button"); btn.type="button"; btn.className="ps-btn ps-btn-secondary ps-btn-small"; btn.textContent="Peer check this report"; btn.style.minHeight="44px"; btn.hidden=done;
           li.appendChild(btn);
           var qBox=document.createElement("div"); qBox.className="crosscheck-q"; qBox.hidden=true;
           var qText=document.createElement("p"); qText.innerHTML="<strong>"+q.q+"</strong>"; qBox.appendChild(qText);
@@ -3035,7 +3263,7 @@
             ansRow.appendChild(b);
           });
           li.appendChild(qBox);
-          var crossed=document.createElement("p"); crossed.className="peer-crossed ps-confirm"; crossed.hidden=!done; crossed.textContent="You cross-checked this"; li.appendChild(crossed);
+          var crossed=document.createElement("p"); crossed.className="peer-crossed ps-confirm"; crossed.hidden=!done; crossed.textContent="You peer-checked this"; li.appendChild(crossed);
           btn.addEventListener("click", function(){ qBox.hidden=false; btn.hidden=true; });
           notesUl.appendChild(li);
         });
@@ -3062,7 +3290,7 @@
         body.appendChild(vt);
       }
       var foot = $("place-foot"); foot.innerHTML = "";
-      var bm=document.createElement("button"); bm.type="button"; bm.className="ps-btn ps-btn-secondary bm-btn"; paintBmBtn(bm, bookmarks.has(p.id));
+      var bm=document.createElement("button"); bm.type="button"; bm.className="bm-icon-btn"; bm.setAttribute("data-place", p.id); bm.setAttribute("data-name", p.name); paintBmBtn(bm, bookmarks.has(p.id), p.name);
       bm.addEventListener("click", function(){ toggleBookmark(p.id, bm); });
       var here=document.createElement("button"); here.type="button"; here.className="ps-btn"; here.textContent="I'm here, check in";
       here.addEventListener("click", function(){ $("here-place").value=p.id; showScreen("here"); startCheckin(); });
@@ -3071,17 +3299,42 @@
     }
     $("back-to-discover").addEventListener("click", function(){ showScreen("discover"); });
 
-    /* Bookmark polish helpers, Nov 24 2026: paint one bookmark
-       button in place, and show a short toast, instead of
-       rebuilding the card or page on every tap. */
+    /* Bookmark save-icon helpers, Nov 24 2026: one drawn bookmark
+       icon, outline when not saved, filled when saved. Paint one
+       icon in place, and show a short toast, instead of
+       rebuilding the card or page on every tap. Every icon for
+       the same place is repainted together, so the list cards,
+       the focus card and place detail never disagree. */
     var bmToastTimer = null;
     function showBmToast(msg){ var t=$("bm-toast"); if(!t) return; t.textContent=msg; t.classList.add("show"); if(bmToastTimer) clearTimeout(bmToastTimer); bmToastTimer=setTimeout(function(){ t.classList.remove("show"); }, 2600); }
-    function paintBmBtn(btn, on){ btn.innerHTML='<span class="bm-star" aria-hidden="true">'+(on?"★":"☆")+'</span> '+(on?"Bookmarked":"Bookmark"); btn.setAttribute("aria-pressed", on?"true":"false"); btn.classList.toggle("is-on", on); }
+    function bmIconSVG(on){
+      return '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">' +
+        (on ? '<path d="M6 3h12v18l-6-4.6L6 21z" fill="currentColor"/>' :
+              '<path d="M6 3h12v18l-6-4.6L6 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>') +
+        '</svg>';
+    }
+    function paintBmBtn(btn, on, name){
+      btn.innerHTML = bmIconSVG(on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", (on ? "Remove bookmark for " : "Bookmark ") + (name || "this place"));
+      btn.title = on ? "Bookmarked, tap to remove" : "Bookmark this place";
+      btn.classList.toggle("is-on", on);
+    }
+    function makeBmIconBtn(p){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "bm-icon-btn";
+      b.setAttribute("data-place", p.id); b.setAttribute("data-name", p.name);
+      paintBmBtn(b, bookmarks.has(p.id), p.name);
+      b.addEventListener("click", function(e){ e.stopPropagation(); toggleBookmark(p.id, b); });
+      return b;
+    }
     function toggleBookmark(placeId, btn){
       var on;
       if(bookmarks.has(placeId)){ bookmarks.delete(placeId); on=false; } else { bookmarks.add(placeId); on=true; }
       save("peerspect-bookmarks-v1", Array.from(bookmarks)); renderPrep();
-      paintBmBtn(btn, on);
+      document.querySelectorAll('.bm-icon-btn[data-place]').forEach(function(b){
+        if(b.getAttribute("data-place") === placeId) paintBmBtn(b, on, b.getAttribute("data-name") || "");
+      });
       if(on){ btn.classList.add("pop"); setTimeout(function(){ btn.classList.remove("pop"); }, 320); showBmToast("Bookmarked. Find it in Saved."); }
       else { showBmToast("Bookmark removed."); }
     }
@@ -3115,26 +3368,148 @@
       $("profile-name").value=""; renderProfiles();
     });
     $("profile-name").addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); $("save-profile").click(); } });
+    /* Bookmarked places as expandable cards, Nov 25 2026: the
+       list used to be plain text (name + area) with no way to
+       see the place without leaving Saved. Each bookmark is now
+       a small card; tap its header to expand it in place, with
+       the match, address, how it feels right now and a short
+       menu note, plus Open place for the full place detail.
+       Expanding keeps you on Saved; nothing navigates away
+       until you tap Open place. */
     function renderPrep(){
       var box=$("prep-list");
       renderCartInto(box, prep, {backToMenu:true, emptyText:"Nothing yet. Open a place and add a menu item."});
       var bl=$("bookmark-list"); bl.innerHTML="";
-      if(!bookmarks.size) bl.innerHTML="<li class='ps-muted'>No places bookmarked yet.</li>";
-      Array.from(bookmarks).forEach(function(id){ var p=PLACES.find(function(x){ return x.id===id; }); if(p){ var li=document.createElement("li"); li.textContent=p.name+", "+p.area; bl.appendChild(li); } });
+      if(!bookmarks.size){ bl.innerHTML="<li class='ps-muted'>No places bookmarked yet.</li>"; return; }
+      Array.from(bookmarks).forEach(function(id){
+        var p=PLACES.find(function(x){ return x.id===id; }); if(!p) return;
+        var li=document.createElement("li"); li.className="bm-card";
+        var head=document.createElement("button"); head.type="button"; head.className="bm-card-head"; head.setAttribute("aria-expanded","false");
+        var title=document.createElement("span"); title.className="bm-card-title"; title.textContent=p.name; head.appendChild(title);
+        var meta=document.createElement("span"); meta.className="ps-muted"; meta.textContent=p.area+" · "+p.distLabel; head.appendChild(meta);
+        var chev=document.createElement("span"); chev.className="bm-chev"; chev.setAttribute("aria-hidden","true");
+        chev.innerHTML='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        head.appendChild(chev);
+        var body=document.createElement("div"); body.className="bm-card-body"; body.hidden=true;
+        var type=document.createElement("p"); type.className="ps-muted"; type.textContent=p.type; body.appendChild(type);
+        var addr=document.createElement("p"); var addrLink=document.createElement("a"); addrLink.href=p.mapsUrl; addrLink.target="_blank"; addrLink.rel="noopener"; addrLink.textContent=p.address; addr.appendChild(addrLink); body.appendChild(addr);
+        var match=document.createElement("div");
+        if(activeFilters.size){ match.innerHTML=matchOvalsHTML(p); }
+        else { match.innerHTML="<p class='ps-muted'>Pick what matters today to see how this place matches.</p>"; }
+        body.appendChild(match);
+        var feels=document.createElement("p"); feels.textContent="Right now, in peers' words: "+p.sound+". "+p.lighting+". "+p.crowding+"."; body.appendChild(feels);
+        if(p.menuNote){ var mn=document.createElement("p"); mn.className="ps-muted"; mn.textContent=p.menuNote; body.appendChild(mn); }
+        var actions=document.createElement("div"); actions.className="bm-card-actions";
+        var open=document.createElement("button"); open.type="button"; open.className="ps-btn"; open.textContent="Open place";
+        open.addEventListener("click", function(){ showPlace(p.id); }); actions.appendChild(open);
+        var remove=document.createElement("button"); remove.type="button"; remove.className="ps-btn ps-btn-secondary"; remove.textContent="Remove bookmark";
+        remove.addEventListener("click", function(){ toggleBookmark(p.id, remove); }); actions.appendChild(remove);
+        body.appendChild(actions);
+        head.addEventListener("click", function(){ var isOpen=li.classList.toggle("open"); body.hidden=!isOpen; head.setAttribute("aria-expanded", isOpen?"true":"false"); });
+        li.appendChild(head); li.appendChild(body); bl.appendChild(li);
+      });
     }
     $("clear-prep").addEventListener("click", function(){ prep=[]; save("peerspect-prep-v1", prep); renderPrep(); });
-    /* Your last visits, Nov 24 2026: was one comma-joined
-       line per visit — raw data. Now a summary line, then
-       visits grouped by place, each visit its own card
-       (visitCardEl, shared with place detail). Most recent
-       first, in each group and overall. Only saved visit
-       data is used; nothing is invented. */
+    /* Your last visits, two views, Nov 24 2026: was one
+       comma-joined line per visit, then cards grouped by
+       place. Now List view is one expandable row per visit
+       (most recent first, most recent open), and Calendar
+       view is a month grid where tapping a day shows that
+       day's visits below. Colours come from the visit's own
+       rating: Loved it is high alignment, So-so is mixed,
+       Not for me is low alignment, no rating is uncoloured.
+       Only saved visit data is used, except for the labelled
+       sample visits below, which only appear if you ask for
+       them from the empty state. */
+    var visitsView = "list";
+    var calNow = new Date(); var calYear = calNow.getFullYear(), calMonth = calNow.getMonth(), calSelected = null;
+    function visitDateLabel(dateStr){
+      var dv=new Date(dateStr+"T12:00:00");
+      return isNaN(dv.getTime()) ? dateStr : dv.toLocaleDateString(undefined, {weekday:"short", day:"numeric", month:"short", year:"numeric"});
+    }
+    function visitCalClass(r){ return r==="up" ? "cal-up" : r==="meh" ? "cal-meh" : r==="down" ? "cal-down" : "cal-none"; }
+    function daysAgoStr(n){ return new Date(Date.now() - n*86400000).toISOString().slice(0,10); }
+    function loadSampleVisits(){
+      visits = [
+        {place:"Café Pinocchio", placeId:"pinocchio", date:daysAgoStr(2), rating:"up", answers:[{q:"How loud is it right now?", a:"Quiet"}], order:[{item:"Cappuccino", qty:1, price:"$4.50"}]},
+        {place:"Café Vito", placeId:"vito", date:daysAgoStr(5), rating:"meh", answers:[{q:"How loud is it right now?", a:"A bit loud"}], order:[{item:"Espresso", qty:1, price:"$3.50"}]},
+        {place:"Café Velours", placeId:"velours", date:daysAgoStr(9), rating:"down", answers:[{q:"How loud is it right now?", a:"Loud"}], order:[{item:"Espresso", qty:1, price:"$3.50"}]},
+        {place:"Larue & Fils", placeId:"larue", date:daysAgoStr(12), rating:null, answers:[{q:"How loud is it right now?", a:"Quiet"}], order:[{item:"Cappuccino", qty:1, price:"$4.50"}]}
+      ];
+      save("peerspect-visits-v1", visits); renderVisits();
+    }
+    function renderVisitList(ul, ordered){
+      ordered.forEach(function(v, i){
+        var item=document.createElement("details"); item.className="visit-item"; if(i===0) item.open=true;
+        var sum=document.createElement("summary");
+        var chev=document.createElement("span"); chev.className="visit-chev"; chev.setAttribute("aria-hidden","true"); chev.textContent="›"; sum.appendChild(chev);
+        var dt=document.createElement("span"); dt.className="visit-sum-date"; dt.textContent=visitDateLabel(v.date); sum.appendChild(dt);
+        var pl=document.createElement("span"); pl.className="visit-sum-place"; pl.textContent=v.place; sum.appendChild(pl);
+        var rt=document.createElement("span"); rt.className="visit-rating"; rt.textContent=ratingVisual(v.rating); sum.appendChild(rt);
+        item.appendChild(sum);
+        item.appendChild(visitCardEl(v, {noHead:true, showPlaceName:false, mostRecent:i===0}));
+        ul.appendChild(item);
+      });
+    }
+    function renderVisitCalendar(ul, ordered){
+      var byDate={}; ordered.forEach(function(v){ (byDate[v.date]=byDate[v.date]||[]).push(v); });
+      var head=document.createElement("div"); head.className="visit-cal-head";
+      var prev=document.createElement("button"); prev.type="button"; prev.className="ps-btn ps-btn-secondary ps-btn-small"; prev.textContent="← Previous month"; prev.setAttribute("aria-label","Previous month");
+      prev.addEventListener("click", function(){ calMonth--; if(calMonth<0){ calMonth=11; calYear--; } renderVisits(); });
+      var label=document.createElement("h4"); label.textContent=new Date(calYear, calMonth, 1).toLocaleDateString(undefined, {month:"long", year:"numeric"});
+      var next=document.createElement("button"); next.type="button"; next.className="ps-btn ps-btn-secondary ps-btn-small"; next.textContent="Next month →"; next.setAttribute("aria-label","Next month");
+      next.addEventListener("click", function(){ calMonth++; if(calMonth>11){ calMonth=0; calYear++; } renderVisits(); });
+      head.appendChild(prev); head.appendChild(label); head.appendChild(next); ul.appendChild(head);
+      var grid=document.createElement("div"); grid.className="visit-cal-grid";
+      ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].forEach(function(d){ var c=document.createElement("div"); c.className="visit-cal-dow"; c.textContent=d; grid.appendChild(c); });
+      var firstOffset=(new Date(calYear, calMonth, 1).getDay()+6)%7, daysInMonth=new Date(calYear, calMonth+1, 0).getDate();
+      for(var i=0;i<firstOffset;i++){ var pad=document.createElement("div"); pad.className="visit-cal-day empty"; grid.appendChild(pad); }
+      for(var d=1; d<=daysInMonth; d++){
+        var dateStr=calYear+"-"+String(calMonth+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+        var day=document.createElement("button"); day.type="button"; day.className="visit-cal-day";
+        var num=document.createElement("span"); num.className="day-num"; num.textContent=d; day.appendChild(num);
+        var dayVisits=byDate[dateStr]||[];
+        dayVisits.forEach(function(v){
+          var chip=document.createElement("span"); chip.className="visit-cal-chip "+visitCalClass(v.rating); chip.textContent=v.place; day.appendChild(chip);
+        });
+        day.setAttribute("aria-pressed", calSelected===dateStr ? "true" : "false");
+        day.setAttribute("aria-label", visitDateLabel(dateStr) + (dayVisits.length ? ", " + dayVisits.length + (dayVisits.length===1 ? " visit" : " visits") + ": " + dayVisits.map(function(v){ return v.place + ", " + ratingLabel(v.rating); }).join("; ") : ", no visit"));
+        /* dateStr is var-scoped, so the click handler takes a copy
+           of this day's date, or every day would select the last. */
+        day.addEventListener("click", (function(ds){ return function(){ calSelected=ds; renderVisits(); }; })(dateStr));
+        grid.appendChild(day);
+      }
+      ul.appendChild(grid);
+      var legend=document.createElement("ul"); legend.className="visit-cal-legend"; legend.setAttribute("aria-label","Calendar legend: colour shows how the visit went for you");
+      [["cal-up","Loved it: high alignment"],["cal-meh","So-so: mixed"],["cal-down","Not for me: low alignment"],["cal-none","No rating yet"]].forEach(function(pair){
+        var li=document.createElement("li"); var sw=document.createElement("span"); sw.className="legend-swatch "+pair[0]; sw.setAttribute("aria-hidden","true"); li.appendChild(sw); li.appendChild(document.createTextNode(pair[1])); legend.appendChild(li);
+      });
+      ul.appendChild(legend);
+      var detail=document.createElement("div"); detail.className="visit-cal-detail";
+      if(calSelected){
+        var dh=document.createElement("h4"); dh.textContent="Visits on " + visitDateLabel(calSelected); detail.appendChild(dh);
+        var sel=byDate[calSelected]||[];
+        if(!sel.length){ var none=document.createElement("p"); none.className="ps-muted"; none.textContent="No visit on this day."; detail.appendChild(none); }
+        sel.forEach(function(v, i){ detail.appendChild(visitCardEl(v, {mostRecent:i===0, showPlaceName:true})); });
+      } else {
+        var hint=document.createElement("p"); hint.className="ps-muted"; hint.textContent="Tap a day to see where you went and how it was."; detail.appendChild(hint);
+      }
+      ul.appendChild(detail);
+    }
     function renderVisits(){
       var ul=$("visit-list"); if(!ul) return; ul.innerHTML="";
+      var lb=$("visits-list-btn"), cb=$("visits-cal-btn");
+      if(lb) lb.setAttribute("aria-pressed", visitsView==="list" ? "true" : "false");
+      if(cb) cb.setAttribute("aria-pressed", visitsView==="cal" ? "true" : "false");
       if(!visits.length){
         var empty=document.createElement("div"); empty.className="visit-empty";
         empty.innerHTML="<p><strong>No visits yet.</strong></p><p class='ps-muted'>Check in at a place and it will show up here, with what you got and how it was.</p>";
-        ul.appendChild(empty); return;
+        ul.appendChild(empty);
+        var sample=document.createElement("button"); sample.type="button"; sample.className="ps-btn ps-btn-secondary ps-btn-small"; sample.textContent="See sample visits";
+        sample.addEventListener("click", loadSampleVisits);
+        ul.appendChild(sample);
+        var sampleNote=document.createElement("p"); sampleNote.className="ps-muted"; sampleNote.textContent="Sample only: four made-up visits across this month, one Loved it, one So-so, one Not for me and one unrated, so you can try both views. Clear visits removes them."; ul.appendChild(sampleNote);
+        return;
       }
       var ordered = visits.slice().reverse();
       var places = []; ordered.forEach(function(v){ if(places.indexOf(v.placeId)<0) places.push(v.placeId); });
@@ -3144,19 +3519,10 @@
       sum.textContent = ordered.length + (ordered.length===1 ? " visit" : " visits") + " · " + places.length + (places.length===1 ? " place" : " places");
       if(most) sum.textContent += " · Most ordered: " + most + " (" + mostCount + (mostCount===1 ? " time" : " times") + ")";
       ul.appendChild(sum);
-      var groups = [];
-      ordered.forEach(function(v){
-        var g=null; groups.forEach(function(x){ if(x.placeId===v.placeId) g=x; });
-        if(!g){ g={placeId:v.placeId, place:v.place, list:[]}; groups.push(g); }
-        g.list.push(v);
-      });
-      groups.forEach(function(g){
-        var wrap=document.createElement("div"); wrap.className="visit-group";
-        var gh=document.createElement("h4"); gh.textContent=g.place + ": " + g.list.length + (g.list.length===1 ? " visit" : " visits"); wrap.appendChild(gh);
-        g.list.forEach(function(v, i){ wrap.appendChild(visitCardEl(v, {mostRecent:i===0, showPlaceName:false})); });
-        ul.appendChild(wrap);
-      });
+      if(visitsView==="cal") renderVisitCalendar(ul, ordered); else renderVisitList(ul, ordered);
     }
+    $("visits-list-btn").addEventListener("click", function(){ visitsView="list"; renderVisits(); });
+    $("visits-cal-btn").addEventListener("click", function(){ visitsView="cal"; renderVisits(); });
     $("clear-visits").addEventListener("click", function(){ visits=[]; save("peerspect-visits-v1", visits); renderVisits(); });
     /* Trust milestones, Nov 24 2026: demo thresholds, counted
        locally and anonymously. Progress is counted two ways:
@@ -3352,7 +3718,7 @@
        "Is this still true?" cross-check. Answering reuses the
        place-detail counting: it counts as a peer cross-check in
        the trust data, bumps that report's confirmation count,
-       and marks it "You cross-checked this". The key matches
+       and marks it "You peer-checked this". The key matches
        place detail (placeId plus the report's index among that
        place's reports), so a cross-check in either place shows
        in the other. */
@@ -3379,7 +3745,7 @@
     function renderCrosscheck(focusKey){
       var box=$("crosscheck-box"); if(!box) return; box.innerHTML="";
       var p = PLACES.find(function(x){ return x.id===hereSelect.value; }) || PLACES[0];
-      var h=document.createElement("h3"); h.textContent="Peer cross-check"; box.appendChild(h);
+      var h=document.createElement("h3"); h.textContent="Peer check"; box.appendChild(h);
       var why=document.createElement("p"); why.className="ps-muted";
       why.textContent="Places change through the day, so checking what a peer reported keeps it trustworthy for the next person who needs it. Your check is anonymous.";
       box.appendChild(why);
@@ -3387,17 +3753,18 @@
       if(!reports.length){
         var none=document.createElement("p"); none.className="ps-muted"; none.textContent="No peer reports to check here yet."; box.appendChild(none); return;
       }
-      var sub=document.createElement("p"); sub.className="ps-muted"; sub.textContent="Most recent reports at "+p.name+". Tap an answer to cross-check one."; box.appendChild(sub);
+      var sub=document.createElement("p"); sub.className="ps-muted"; sub.textContent="Most recent reports at "+p.name+". Tap an answer to peer check one."; box.appendChild(sub);
       var ul=document.createElement("ul"); ul.className="peer-notes";
       reports.forEach(function(r){
         var li=document.createElement("li");
-        var quote=document.createElement("p"); quote.style.margin="0"; quote.textContent="\u201c"+capFirst(r.text)+"\u201d \u00b7 "+r.age; li.appendChild(quote);
+        var meta=document.createElement("p"); meta.className="peer-meta"; meta.textContent="A peer reported "+r.age; li.appendChild(meta);
+        var quote=document.createElement("p"); quote.className="peer-quote"; quote.textContent="\u201c"+capFirst(r.text)+"\u201d"; li.appendChild(quote);
         function confirmedCount(){ return (r.q.cc||0) + ((crosschecks[r.key]&&crosschecks[r.key].count)||0); }
         var conf=document.createElement("p"); conf.className="peer-confirmed";
         var done=!!(crosschecks[r.key]&&crosschecks[r.key].answered);
-        function confText(){ var n=confirmedCount(); return "Confirmed by "+n+" peer"+(n===1?"":"s")+(done?" \u00b7 including your cross-check":""); }
+        function confText(){ var n=confirmedCount(); return "Confirmed by "+n+" peer"+(n===1?"":"s")+(done?" \u00b7 including your peer check":""); }
         conf.textContent=confText(); li.appendChild(conf);
-        var crossed=document.createElement("p"); crossed.className="peer-crossed ps-confirm"; crossed.hidden=!done; crossed.textContent="You cross-checked this"; li.appendChild(crossed);
+        var crossed=document.createElement("p"); crossed.className="peer-crossed ps-confirm"; crossed.hidden=!done; crossed.textContent="You peer-checked this"; li.appendChild(crossed);
         if(!done){
           var qText=document.createElement("p"); qText.innerHTML="<strong>Is this still true?</strong>"; li.appendChild(qText);
           var ansRow=document.createElement("div"); ansRow.className="rate-row"; li.appendChild(ansRow);
@@ -3614,7 +3981,7 @@
         var again=document.createElement("button"); again.type="button"; again.className="ps-btn ps-btn-secondary checkin-again"; again.textContent="Check in again";
         again.addEventListener("click", function(){ startCheckin(); }); box.appendChild(again); return;
       }
-      if(checkin.generic && checkin.step===0){ var gn=document.createElement("p"); gn.className="ps-muted"; gn.textContent="No filters picked for today, so these are general questions. Pick filters for today and the questions will match them."; box.appendChild(gn); }
+      if(checkin.generic && checkin.step===0){ var gn=document.createElement("p"); gn.className="ps-muted"; gn.textContent="No needs picked for today, so these are general questions. Pick needs for today and the questions will match them."; box.appendChild(gn); }
       var prog=document.createElement("p"); prog.className="ps-muted"; prog.textContent="Question "+(checkin.step+1)+" of "+checkin.questions.length; box.appendChild(prog);
       var current = checkin.questions[checkin.step];
       /* Nov 23 2026: "still" questions only make sense with the
@@ -3942,9 +4309,10 @@
       showScreen(name);
       if(!opts.noScroll) smoothScrollTo(livePreview);
     }
-    /* The live preview is always there in High fidelity, so load
-       Discover into it on page load, without scrolling the page. */
-    if(livePreview && liveSlot) showPreview("discover", {noScroll:true});
+    /* The live preview is only for the case study, so load Discover
+       into it on page load only in case-study mode. In app mode the
+       app is already the default view, so skip the embed-and-restore. */
+    if(livePreview && liveSlot && /[?&]case-study(?:=|&|$)/.test(location.search)) showPreview("discover", {noScroll:true});
     function closePreview(){
       restoreApp();
       viewApp.hidden = true;
@@ -3979,7 +4347,22 @@
     $("see-prototype").addEventListener("click", showApp);
     $("see-prototype-2").addEventListener("click", showApp);
     document.querySelectorAll("[data-open-prototype]").forEach(function(b){ b.addEventListener("click", showApp); });
-    $("close-app").addEventListener("click", showWeb);
+    $("close-app").addEventListener("click", function(){ location.href = "../../index.html"; });
+    /* Prototype first, Nov 27 2026: the app is the default view now.
+       Every PEERSPECT link opens the prototype start, plain URL
+       included (?app still works). The case study is not linked
+       anywhere; it opens only with ?case-study, for further
+       development. Expanded layout, no fullscreen on load (it
+       needs a tap). */
+    if(/[?&]case-study(?:=|&|$)/.test(location.search) || location.hash === "#case-study"){
+      showWeb();
+    } else {
+      restoreApp();
+      viewWeb.hidden = true; viewApp.hidden = false;
+      if(!appShown){ appShown = true; showScreen("landing"); }
+      resetScroll();
+      setExpand(true);
+    }
     function setExpand(on){
       document.body.classList.toggle("expanded", on);
       document.body.classList.toggle("fs-mode", on);
@@ -3987,7 +4370,6 @@
     document.addEventListener("fullscreenchange", function(){
       var fs = !!document.fullscreenElement;
       setExpand(fs);
-      if(!fs && !viewApp.hidden && appShown) showWeb();
     });
     /* Playground frame behaviour: mobile menu, Prototypes dropdown,
        footer email copy. Same behaviour as the Playground home page. */
@@ -4016,9 +4398,10 @@
         var s = d.querySelector("summary"); if(s) s.setAttribute("aria-expanded", d.open ? "true" : "false");
       }
     }, true);
-    /* Init: web page view first. */
-    showWeb(); showScreen("landing");
-    renderTailored(); renderPlaces(); renderAllFilters(); renderProfiles(); renderPrep(); renderVisits(); renderTrust(); renderBiz(); renderCheckinIntro(); renderOnboardQuick(); renderCrosscheck();
+    /* Init: the app view is the default (see above); the case
+       study opens only with ?case-study. */
+    showScreen("landing");
+    renderTailored(); renderPlaces(); syncCardViewToggles(); renderAllFilters(); renderProfiles(); renderPrep(); renderVisits(); renderTrust(); renderBiz(); renderCheckinIntro(); renderOnboardQuick(); renderCrosscheck();
   })();
   </script>
 </body>

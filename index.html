@@ -10,13 +10,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="icon" href="./assets/favicon/favicon.ico">
   <link rel="manifest" href="./assets/favicon/site.webmanifest">
-  <meta name="description" content="Ginko's Prototype Playground — AI-first design, with critical judgment and human exploration. Prototypes in progress." />
+  <meta name="description" content="Ginko's Prototype Playground — AI is the terrain. I map it. Directing AI with critical judgment into working prototypes you can test." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/style.css?v=20261124a" />
+  <link rel="stylesheet" href="./css/style.css?v=20261125a" />
 </head>
 <body id="top">
+  <div class="noise c-noise" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to main content</a>
   <!-- Nav — style copied from Webflow (mindfullydesign.webflow.io), own simple JS, no Webflow JS.
        Logo, 4.5rem bar, blur, Krona One menu, 1px underline, flower button.
@@ -35,7 +36,7 @@
           <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-haspopup="true">Prototypes <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"/></svg></button>
           <div class="nav-dropdown-list">
             <span class="nav-dropdown-group">Featured</span>
-            <a class="nav-dropdown-link" href="./prototypes/peerspect/index.html"><span class="thumb thumb-img thumb-logo-peerspect"><img src="prototypes/peerspect/favicon/logo.svg" alt="" /></span><span><strong>PEERSPECT</strong><span>Your guide to how places actually feel.</span></span></a>
+            <a class="nav-dropdown-link" href="./prototypes/peerspect/index.html?app"><span class="thumb thumb-img thumb-logo-peerspect"><img src="prototypes/peerspect/favicon/logo.svg" alt="" /></span><span><strong>PEERSPECT</strong><span>Your guide to how places actually feel.</span></span></a>
             <a class="nav-dropdown-link" href="./prototypes/from-form-to-function/index.html"><span class="thumb thumb-img thumb-logo-form"><img src="prototypes/from-form-to-function/favicon/logo.svg" alt="" /></span><span><strong>Form to Function</strong><span>Turns complicated forms into plain language instructions.</span></span></a>
             <hr class="nav-dropdown-divider" />
             <span class="nav-dropdown-group">Rough concepts</span>
@@ -50,8 +51,9 @@
 
     <main id="main">
       <section class="hero">
-        <p class="eyebrow">AI prototyping lab</p>
-        <h1>AI-first design, with critical judgment and <span class="valued">human exploration</span>.</h1>
+        <p class="eyebrow">AI design lab</p>
+        <h1 class="stylized">AI is the terrain. I map it.</h1>
+        <p class="h1-subline">Directing AI with critical judgment into working prototypes you can test.</p>
         <!-- Hero adventure, drawn in code (inline SVG + css/style.css) —
              a mystical path winds from the foreground through a smooth
              jungle in Ginko's palette, past coloured mountains, to a
@@ -75,25 +77,25 @@
           </svg>
         </figure>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#featured-work">View experiments ↓</a>
+          <a class="btn btn-primary" href="#featured-work">See the experiments ↓</a>
         </div>
       </section>
 
       <section id="featured-work">
         <div class="casestudy-rows">
           <article class="case-study-block">
-            <div class="img-wrapper"><a href="./prototypes/peerspect/index.html" aria-label="PEERSPECT — view prototype"><img src="assets/illustrations/peerspect.svg" alt="" loading="lazy" class="cs-thumbnail-img shadow-large" /></a></div>
+            <div class="img-wrapper"><a href="./prototypes/peerspect/index.html?app" aria-label="PEERSPECT — view prototype"><img src="assets/illustrations/peerspect.svg" alt="" loading="lazy" class="cs-thumbnail-img shadow-large" /></a></div>
             <div class="cs-thumnbail-card"><div class="ch_card"><div class="card-content">
               <div class="tag-item is-trans"><span class="text-style-muted">2026</span></div>
-              <h3 class="portfolio-card_heading">PEERSPECT; find places by how they feel</h3>
-              <p class="text-size-medium">PEERSPECT helps disabled and neurodiverse people know if a place matches their needs before they go. Instead of reading reviews, filter by access, sensory experience, environment, and context, and check in anonymously while you're there.</p>
-              <div class="margin-vertical margin-medium"><a href="./prototypes/peerspect/index.html" class="button is-link is-icon"><span>View prototype</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+              <h3 class="portfolio-card_heading">Peerspect: discover places by how they feel</h3>
+              <p class="text-size-medium">For disabled and neurodiverse people, know if a place matches your needs before you go, from peer reports instead of reviews.</p>
+              <div class="margin-vertical margin-medium"><a href="./prototypes/peerspect/index.html?app" class="button is-link is-icon"><span>View prototype</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
               <div class="padding-top padding-small top-line"><div class="list-of-tags"><span class="tag-item">Accessibility</span><span class="tag-item">Inclusive Design</span><span class="tag-item">UX/UI</span><span class="tag-item">Community</span></div></div>
             </div></div></div>
           </article>
 
           <article class="case-study-block">
-            <div class="img-wrapper"><a href="./prototypes/from-form-to-function/index.html" aria-label="Form to Function — view prototype"><img src="assets/illustrations/from-form-to-function.svg" alt="" loading="lazy" class="cs-thumbnail-img shadow-large" /></a></div>
+            <div class="img-wrapper"><a href="./prototypes/from-form-to-function/index.html" aria-label="Form to Function — view prototype"><img src="assets/illustrations/from-form-to-function.svg?v=5" alt="" loading="lazy" class="cs-thumbnail-img shadow-large" /></a></div>
             <div class="cs-thumnbail-card"><div class="ch_card"><div class="card-content">
               <div class="tag-item is-trans"><span class="text-style-muted">2026</span></div>
               <h3 class="portfolio-card_heading">Form to Function</h3>
