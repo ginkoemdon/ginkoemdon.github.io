@@ -23,6 +23,41 @@
   --lime: #afa477;
   --sand: #e1d8c7;
   --muted: #49433d;
+  /* Theme layer — Light / Dark brown / Dark graphite, Nov 28 2026.
+     The palette vars above stay fixed: they are also used as dark
+     fills with light text (e.g. earth buttons, forest chips), so
+     only this semantic layer — and the text-role vars --cream,
+     --sand, --muted, --rust-text, --tangerine-text — change per
+     theme. See the theme blocks at the end of this file. */
+  --bg: #e3e0d8;
+  --text: #3b342f;
+  --link: #184b44;
+  --focus: #184b44;
+  --nav-bg: rgba(227, 224, 216, 0.70);
+  --nav-text: #3b342f;
+  --dropdown-bg: #ffffff;
+  --dropdown-border: #000000;
+  --btn-border: #372c1f;
+  --btn-primary-bg: #3b342f;
+  --btn-primary-text: #e3e0d8;
+  --tag-bg: #f7bf5e;
+  --tag-text: #3e3327;
+  --tag-border: #000000;
+  --card-surface: #fefefe;
+  --card-year: #504945;
+  --card-heading: #3e3327;
+  --card-body: #52483d;
+  --h1-stroke: #372c1f;
+  --h1-subline: #372c1f;
+  --border: rgba(59, 52, 47, 0.14);
+  --border-strong: rgba(59, 52, 47, 0.25);
+  --surface-2: #ffffff;
+  --flag-bg: #fff3cd;
+  --ok-tint-bg: #f2f7f5;
+  --private-tint-bg: #f3ecec;
+  --shadow-soft: rgba(59, 52, 47, 0.10);
+  --shadow: rgba(59, 52, 47, 0.12);
+  --shadow-strong: rgba(59, 52, 47, 0.18);
 }
 
 * { box-sizing: border-box; }
@@ -33,16 +68,16 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--egg);
-  color: var(--earth);
+  background: var(--bg);
+  color: var(--text);
   font-family: "Poppins", system-ui, -apple-system, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
 }
 
 /* WCAG 2.2 AA site rule — see ACCESSIBILITY.md. Branding intact, text colours darkened to pass. */
-:focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; border-radius: 4px; }
-.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--earth); color: var(--egg); padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--btn-primary-bg); color: var(--btn-primary-text); padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
 .skip-link:focus { top: 1rem; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 main a { text-underline-offset: 3px; }
@@ -57,24 +92,24 @@ button { min-width: 44px; }
 /* Product shell — each prototype is its own product inside the Playground.
    Playground nav/footer keep Ginko branding. Inside, the product has its own
    name, promise, accent and app chrome, so it reads as a product, not a portfolio page. */
-.product-shell { background: var(--cream); border: 1px solid rgba(59,52,47,.14); border-radius: 24px; padding: 1.75rem; margin: 1rem 0 2rem; box-shadow: 0 12px 30px rgba(59,52,47,.10); }
+.product-shell { background: var(--cream); border: 1px solid var(--border); border-radius: 24px; padding: 1.75rem; margin: 1rem 0 2rem; box-shadow: 0 12px 30px var(--shadow-soft); }
 .product-head { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
 .product-mark { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font-family: "Krona One", sans-serif; font-size: 1rem; color: #fff; background: var(--product-accent, var(--forest)); flex-shrink: 0; }
 .product-head h1 { margin: 0; }
 .product-tagline { color: var(--muted); margin: 0.25rem 0 0; max-width: 640px; }
 .product-meta { font-size: 0.85rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--rust-text); margin: 0 0 0.5rem; }
-.how-to { background: #fff; border: 1px solid rgba(59,52,47,.14); border-left: 6px solid var(--product-accent, var(--forest)); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+.how-to { background: var(--surface-2); border: 1px solid var(--border); border-left: 6px solid var(--product-accent, var(--forest)); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0; }
 .how-to h2 { font-size: 1rem; margin: 0 0 0.5rem; }
 .how-to ol { margin: 0; padding-left: 1.25rem; }
 .how-to li { margin: 0.25rem 0; }
 
 
-a { color: var(--forest); }
+a { color: var(--link); }
 a:hover { color: var(--tangerine-text); }
 
 h1, h2, h3 {
   font-family: "Krona One", sans-serif;
-  color: var(--earth);
+  color: var(--text);
   line-height: 1.2;
   font-weight: 700;
 }
@@ -120,8 +155,14 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
    transparent background, padding 1rem 1.25rem, 12px, weight 500,
    letter-spacing 1.5px, hover background lizard #c9c972,
    with a 20px x 1px earth line to the left of the text. */
+/* Nav translucency, Nov 28 2026: Webflow's nav is background
+   transparent + blur(20px). This bar was rgba egg at 0.92, nearly
+   opaque, so nothing showed through. It is now 0.70 egg + blur(20px):
+   page content shows through softly, and the text still passes AA
+   even over the darkest hero art (5.63:1, see the theme notes at the
+   end of this file). A fully transparent bar would fail over dark art. */
 .nav {
-  background: rgba(227, 224, 216, 0.92);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   align-items: center;
@@ -162,7 +203,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 }
 .nav-links a.nav-link,
 .nav-links button.nav-link {
-  color: var(--earth);
+  color: var(--nav-text);
   letter-spacing: 1.5px;
   text-transform: none;
   background: transparent;
@@ -184,7 +225,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .nav-links a.nav-link::after,
 .nav-links button.nav-link::after {
   content: "";
-  background: #000;
+  background: var(--nav-text);
   height: 1px;
   width: 100%;
   position: absolute;
@@ -198,7 +239,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .nav-links button.nav-link:hover::after,
 .nav-links button.nav-link:focus-visible::after { opacity: 1; }
 .nav-links a.nav-link:hover,
-.nav-links button.nav-link:hover { color: var(--earth); }
+.nav-links button.nav-link:hover { color: var(--nav-text); }
 /* Prototypes dropdown — Webflow .navbar11_menu-dropdown style, own JS toggle */
 .nav-dropdown { position: relative; min-width: 44px; min-height: 44px; display: flex; align-items: center; }
 .nav-dropdown .nav-toggle { gap: 0.5rem; }
@@ -209,8 +250,8 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
-  border: 1px solid #000;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
   width: 20rem;
   padding: 1.5rem;
   z-index: 20;
@@ -223,7 +264,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   align-items: flex-start;
   padding: 0.25rem 0;
   text-decoration: none;
-  color: var(--earth);
+  color: var(--text);
   font-family: "Poppins", sans-serif;
 }
 .nav-dropdown-link:hover { color: var(--tangerine-text); }
@@ -241,7 +282,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
    object-fit contain + padding, on a background that matches the mark. */
 .nav-dropdown-group { font-family: "Krona One", sans-serif; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .nav-dropdown-group:not(:first-child) { margin-top: 0.5rem; }
-.nav-dropdown-divider { border: 0; border-top: 1px solid rgba(59, 52, 47, 0.25); margin: 0; }
+.nav-dropdown-divider { border: 0; border-top: 1px solid var(--border-strong); margin: 0; }
 .nav-dropdown-link .thumb-img { overflow: hidden; background: #fff; padding: 6px; }
 .nav-dropdown-link .thumb-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
 /* PEERSPECT's logo is a teal square tile: the thumb background matches the
@@ -274,7 +315,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   display: flex;
 }
 .menu-icon1_line-top, .menu-icon1_line-bottom, .menu-icon1_line-middle {
-  background: #000;
+  background: var(--nav-text);
   width: 24px;
   height: 2px;
   transition: transform 0.3s, opacity 0.3s;
@@ -290,8 +331,8 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .nav.nav-open .menu-icon1_line-bottom { transform: translateY(-8px) rotate(-45deg); }
 /* Flower button — Webflow's "reach out" button, here for Ginko's Portfolio */
 .flower-button {
-  border: 1px solid var(--brown);
-  color: var(--earth);
+  border: 1px solid var(--btn-border);
+  color: var(--nav-text);
   text-align: center;
   letter-spacing: 1.5px;
   text-transform: none;
@@ -315,13 +356,13 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   line-height: 100%;
 }
 .flower-button .button-line-left {
-  background: var(--earth);
+  background: var(--nav-text);
   width: 20px;
   height: 1px;
   flex-shrink: 0;
 }
 .flower-button .button-line-right {
-  background: #000;
+  background: var(--nav-text);
   width: 0;
   height: 1px;
   flex-shrink: 0;
@@ -346,8 +387,8 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   font-size: clamp(2rem, 5vw, 3rem); /* 48px max desktop, smaller on mobile */
   line-height: 1.15;
   color: var(--sun); /* gold fill #f8c05e */
-  -webkit-text-stroke: 1.2px var(--brown); /* dark brown #372c1f, original thickness */
-  text-stroke: 1.2px var(--brown);
+  -webkit-text-stroke: 1.2px var(--h1-stroke); /* in dark themes the stroke switches to egg — see the theme blocks below */
+  text-stroke: 1.2px var(--h1-stroke);
   paint-order: fill stroke;
   max-width: 1100px;
 }
@@ -362,7 +403,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   font-family: "Krona One", sans-serif;
   font-size: 1.25rem; /* 20px */
   line-height: 1.4;
-  color: var(--brown); /* brown #372c1f */
+  color: var(--h1-subline); /* brown #372c1f in light; egg in dark themes */
   margin: 1rem 0 0;
   max-width: 680px;
 }
@@ -375,7 +416,7 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
   font-size: 1.25rem; line-height: 1.5;
   color: var(--muted); max-width: 680px; margin: 0;
 }
-.hero p.lede strong { color: var(--earth); font-weight: 600; }
+.hero p.lede strong { color: var(--text); font-weight: 600; }
 .hero .back { display: inline-block; margin-bottom: 1.25rem; }
 .section-intro {
   font-size: 1.1rem; line-height: 1.5;
@@ -385,14 +426,14 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .btn {
   display: inline-block; padding: 0.8rem 1.4rem; border-radius: 999px;
   font-weight: 600; font-size: 0.95rem; text-decoration: none;
-  border: 2px solid var(--earth);
+  border: 2px solid var(--btn-border);
 }
-.btn-primary { background: var(--earth); color: var(--egg); }
+.btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); }
 .btn-primary:hover { background: var(--forest); border-color: var(--forest); color: #fff; } /* white on #e26c00 fails; white on forest 9.86:1 */
-.btn-secondary { background: transparent; color: var(--earth); }
+.btn-secondary { background: transparent; color: var(--text); }
 .btn-secondary:hover { background: var(--sun); border-color: var(--sun); }
 .created-for { margin: 2rem 0 0; font-size: 0.9rem; color: var(--muted); }
-.created-for strong { color: var(--earth); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 0.5rem; }
+.created-for strong { color: var(--text); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 0.5rem; }
 .highlight {
   background: linear-gradient(transparent 55%, var(--sun) 55%);
   padding: 0 0.15em;
@@ -401,9 +442,9 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 /* Pill tags — as on Webflow case-study cards */
 .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; padding: 0; list-style: none; }
 .tags li {
-  border: 1px solid var(--earth); border-radius: 999px;
+  border: 1px solid var(--text); border-radius: 999px;
   padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500;
-  background: transparent; color: var(--earth);
+  background: transparent; color: var(--text);
 }
 .tags li.sun { background: var(--sun); border-color: var(--sun); }
 
@@ -427,19 +468,19 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .img-wrapper a { display: block; }
 .cs-thumbnail-img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 20px 24px -4px rgba(0,0,0,.08), 0 8px 8px -4px rgba(0,0,0,.03); }
 .cs-thumnbail-card { margin-left: -60px; position: relative; }
-.ch_card { background: #fefefe; border-radius: 12px; border: 1px solid rgba(59,52,47,.08); box-shadow: 0 12px 30px rgba(59,52,47,.12); }
-.ch_card:hover { box-shadow: 0 16px 36px rgba(59,52,47,.18); }
+.ch_card { background: var(--card-surface); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 12px 30px var(--shadow); }
+.ch_card:hover { box-shadow: 0 16px 36px var(--shadow-strong); }
 .card-content { display: flex; flex-direction: column; padding: 3rem; }
-.card-content .tag-item.is-trans { align-self: flex-end; background: transparent; border: 0; padding: 0; font-size: .875rem; font-weight: 500; color: #504945; margin-bottom: 2.2rem; }
+.card-content .tag-item.is-trans { align-self: flex-end; background: transparent; border: 0; padding: 0; font-size: .875rem; font-weight: 500; color: var(--card-year); margin-bottom: 2.2rem; }
 .card-content .text-style-muted { opacity: .6; }
-.portfolio-card_heading { font-family: "Krona One", sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1.4; color: #3e3327; margin: 0 0 .5rem; }
-.card-content .text-size-medium { color: #52483d; font-size: 1.125rem; line-height: 1.5; margin: 0; }
+.portfolio-card_heading { font-family: "Krona One", sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1.4; color: var(--card-heading); margin: 0 0 .5rem; }
+.card-content .text-size-medium { color: var(--card-body); font-size: 1.125rem; line-height: 1.5; margin: 0; }
 .card-content .margin-vertical.margin-medium { margin: 4.125rem 0 3.125rem; }
-.button.is-link.is-icon { display: inline-flex; align-items: center; gap: .5rem; min-width: 44px; min-height: 44px; padding: .25rem 0; font-family: "Krona One", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1; text-transform: none; color: #000; text-decoration: none; }
+.button.is-link.is-icon { display: inline-flex; align-items: center; gap: .5rem; min-width: 44px; min-height: 44px; padding: .25rem 0; font-family: "Krona One", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1; text-transform: none; color: var(--text); text-decoration: none; }
 .button.is-link.is-icon:hover { text-decoration: underline; }
-.card-content .padding-top.padding-small.top-line { padding-top: 2.5rem; border-top: 1px solid rgba(59,52,47,.15); }
+.card-content .padding-top.padding-small.top-line { padding-top: 2.5rem; border-top: 1px solid var(--border); }
 .list-of-tags { display: flex; gap: .5rem; flex-wrap: wrap; }
-.list-of-tags .tag-item { background: #f7bf5e; border: 1px solid #000; border-radius: 999px; padding: .3rem .85rem; font-size: .875rem; font-weight: 600; color: #3e3327; }
+.list-of-tags .tag-item { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: 999px; padding: .3rem .85rem; font-size: .875rem; font-weight: 600; color: var(--tag-text); }
 @media (max-width: 991px) {
   .case-study-block { grid-template-columns: 1fr; gap: 1.25rem; }
   .cs-thumnbail-card { margin-left: 0; }
@@ -454,10 +495,10 @@ h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
 .card {
   display: block; background: var(--cream); color: inherit;
   border-radius: 24px; overflow: hidden; text-decoration: none;
-  box-shadow: 0 12px 30px rgba(59, 52, 47, 0.12);
-  border: 1px solid rgba(59, 52, 47, 0.08);
+  box-shadow: 0 12px 30px var(--shadow);
+  border: 1px solid var(--border);
 }
-.card:hover { box-shadow: 0 16px 36px rgba(59, 52, 47, 0.18); transform: translateY(-2px); }
+.card:hover { box-shadow: 0 16px 36px var(--shadow-strong); transform: translateY(-2px); }
 .card-media {
   /* Nov 23 2026: keep the illustration ratio intact. The SVGs are
      800x450 (16:9). The media box was a fixed 180px tall, so on a
@@ -520,7 +561,7 @@ section { padding: 2rem 0; }
    too; .footer-inner keeps no padding of its own. */
 footer { margin-top: 0; padding: 6rem 5% 0; color: var(--muted); font-size: 0.9rem; }
 .footer-inner { max-width: none; margin: 0; padding: 0; }
-footer a { color: var(--earth); }
+footer a { color: var(--text); }
 .footer-top {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -531,10 +572,10 @@ footer a { color: var(--earth); }
 }
 .footer-logo img { width: 144px; max-height: 3.5rem; display: block; }
 .footer-email { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
-.footer-email-label { font-size: 0.75rem; font-weight: 600; line-height: 1.5; color: var(--earth); }
+.footer-email-label { font-size: 0.75rem; font-weight: 600; line-height: 1.5; color: var(--text); }
 .footer-block { display: flex; gap: 2rem; align-items: center; justify-content: flex-start; flex-wrap: wrap; }
 .email-copy {
-  color: #000; background: transparent; border: 2px solid var(--earth);
+  color: var(--text); background: transparent; border: 2px solid var(--btn-border);
   border-radius: 4px; height: 2.5rem; padding: 0.5rem 1rem;
   display: inline-flex; align-items: center; gap: 0.75rem;
   font-family: "Poppins", sans-serif; font-size: 1rem; font-weight: 400;
@@ -549,7 +590,7 @@ footer a { color: var(--earth); }
   position: relative; text-decoration: none;
 }
 .footer-social img { width: 2em; height: auto; filter: invert(1); display: block; }
-.footer-divider { background: var(--earth); width: 100%; height: 1px; border: 0; margin: 0; }
+.footer-divider { background: var(--muted); width: 100%; height: 1px; border: 0; margin: 0; }
 .footer-copyright {
   display: flex; gap: 1.5rem; text-align: center; justify-content: space-between;
   align-items: center; color: var(--muted); padding: 2rem 0;
@@ -572,15 +613,15 @@ footer a { color: var(--earth); }
   .nav { min-height: 4rem; }
   .nav .logo img.logo-img { display: none; }
   .nav .logo img.logo-g { display: block; margin-right: auto; }
-  .menu-button { display: block; }
+  .menu-button { display: block; margin-left: auto; }
   .nav-links {
     display: none;
     position: absolute;
     top: 4.5rem;
     left: 0;
     right: 0;
-    background: var(--egg);
-    border-bottom: 1px solid #000;
+    background: var(--bg);
+    border-bottom: 1px solid var(--dropdown-border);
     flex-direction: column;
     align-items: flex-start;
     /* Nov 24 2026: was gap 0, so the Prototypes underline (bottom -3px)
@@ -595,7 +636,7 @@ footer a { color: var(--earth); }
     position: static;
     width: auto;
     border: 0;
-    background: var(--egg);
+    background: var(--bg);
     padding: 1rem 0;
   }
   .nav-dropdown.open .nav-dropdown-list { gap: 0.5rem; }
@@ -620,7 +661,7 @@ footer a { color: var(--earth); }
    Code-drawn canvas (assets/js/jungle.js), no image file. The canvas
    is 180 x 72 cells; image-rendering: pixelated keeps the cells crisp
    at any width. Same method as Ben's meadow, Ginko's own landscape. */
-.jungle { margin: 4rem 0 0; border: 1px solid rgba(59, 52, 47, 0.25); }
+.jungle { margin: 4rem 0 0; border: 1px solid var(--border-strong); }
 .hero .jungle { margin: 1.5rem 0 0; }
 .jungle__canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 .jungle figcaption { font-size: 0.85rem; color: var(--muted); padding: 0.6rem 0.25rem 0; }
@@ -676,3 +717,216 @@ footer a { color: var(--earth); }
 .noise { z-index:0; opacity:.1; background-color:transparent; background-image:url("https://cdn.prod.website-files.com/65aa0538768bf69053e3bb51/667098bd72787f95a8fd90f9_5c06f51d6e75c933fe05c728_giphy.gif"); background-size:256px; background-clip:border-box; mix-blend-mode:normal; justify-content:center; align-items:center; width:100%; display:block; position:fixed; inset:0; overflow:visible; pointer-events:none; }
 .noise.c-noise { z-index:0; opacity:.1; mix-blend-mode:normal; background-clip:border-box; display:block; position:fixed; overflow:visible; pointer-events:none; }
 main, .wrap, footer { position:relative; z-index:1; }
+
+/* ============================================================
+   Themes — Light / Dark brown / Dark graphite, Nov 28 2026
+   Three-way theme, cycled from the nav button (assets/js/theme.js):
+   Light -> Dark brown -> Dark graphite -> Light. Light is the
+   default and is unchanged from before this change. Dark brown is
+   the default dark theme (warm, from Ginko's palette). Dark
+   graphite is the alternative to compare: midnight grey, NOT
+   black — Ginko's correction Nov 28 2026, around #1a1d21 / #23272e.
+   Every text/background pair was checked by calculation
+   (WCAG 2.2 AA, 4.5:1 for normal text, 3:1 for the large
+   stylized H1 fill). Active states never rely on colour alone:
+   the toggle, links, buttons and nav underline also change
+   shape/label, not just colour. The palette vars (--earth,
+   --brown, --forest, --sun, --egg...) stay fixed: they are also
+   used as dark fills with light text, so only the semantic layer
+   and the text-role vars (--cream, --sand, --muted, --rust-text,
+   --tangerine-text) change per theme.
+   ============================================================ */
+html { color-scheme: light; }
+
+/* Dark brown — deep warm browns, egg text, sun gold accents.
+   Body text #e9e2d3 on #2a2320 11.98:1; muted #c8bba7 8.18:1;
+   links lizard #c9c972 8.89:1; cards #3a2f29, panels #453832. */
+html[data-theme="brown"] {
+  color-scheme: dark;
+  --bg: #2a2320;
+  --text: #e9e2d3;
+  --link: #c9c972;
+  --focus: #f8c05e;
+  --cream: #3a2f29;
+  --sand: #453832;
+  --muted: #c8bba7;
+  --rust-text: #e8b07e;
+  --tangerine-text: #f8c05e;
+  --nav-bg: rgba(42, 35, 32, 0.72);
+  --nav-text: #e9e2d3;
+  --dropdown-bg: #3a2f29;
+  --dropdown-border: rgba(233, 226, 211, 0.35);
+  --btn-border: #e9e2d3;
+  --btn-primary-bg: #f8c05e;
+  --btn-primary-text: #372c1f;
+  --tag-text: #372c1f;
+  --card-surface: #3a2f29;
+  --card-year: #c8bba7;
+  --card-heading: #f2ead9;
+  --card-body: #d8cfbf;
+  --h1-stroke: #e3e0d8;
+  --h1-subline: #e3e0d8;
+  --border: rgba(233, 226, 211, 0.16);
+  --border-strong: rgba(233, 226, 211, 0.30);
+  --surface-2: #453832;
+  --flag-bg: #4a3a1e;
+  --ok-tint-bg: #1f3229;
+  --private-tint-bg: #3d2a28;
+  --shadow-soft: rgba(0, 0, 0, 0.35);
+  --shadow: rgba(0, 0, 0, 0.40);
+  --shadow-strong: rgba(0, 0, 0, 0.55);
+}
+
+/* Dark graphite — midnight grey, on the edge of grey and dark.
+   Body text #e8e6e1 on #1a1d21 13.56:1; muted #b9bec6 9.06:1;
+   links lizard #c9c972 9.73:1; cards #23272e, panels #2c313a. */
+html[data-theme="graphite"] {
+  color-scheme: dark;
+  --bg: #1a1d21;
+  --text: #e8e6e1;
+  --link: #c9c972;
+  --focus: #f8c05e;
+  --cream: #23272e;
+  --sand: #2c313a;
+  --muted: #b9bec6;
+  --rust-text: #e0a370;
+  --tangerine-text: #f8c05e;
+  --nav-bg: rgba(26, 29, 33, 0.72);
+  --nav-text: #e8e6e1;
+  --dropdown-bg: #23272e;
+  --dropdown-border: rgba(232, 230, 225, 0.35);
+  --btn-border: #e8e6e1;
+  --btn-primary-bg: #f8c05e;
+  --btn-primary-text: #372c1f;
+  --tag-text: #372c1f;
+  --card-surface: #23272e;
+  --card-year: #b9bec6;
+  --card-heading: #f0ede6;
+  --card-body: #d3d6da;
+  --h1-stroke: #e3e0d8;
+  --h1-subline: #e3e0d8;
+  --border: rgba(232, 230, 225, 0.16);
+  --border-strong: rgba(232, 230, 225, 0.30);
+  --surface-2: #2c313a;
+  --flag-bg: #3d3419;
+  --ok-tint-bg: #1c2b26;
+  --private-tint-bg: #33262a;
+  --shadow-soft: rgba(0, 0, 0, 0.35);
+  --shadow: rgba(0, 0, 0, 0.40);
+  --shadow-strong: rgba(0, 0, 0, 0.55);
+}
+
+/* Theme toggle — 44px round button in the nav bar. On desktop it
+   sits after the nav links; on mobile it stays in the bar next to
+   the hamburger (the .menu-button margin keeps them grouped right).
+   The icon shown is the NEXT theme: moon = switch to dark brown,
+   half-filled circle = switch to dark graphite, sun = back to
+   light. The label is set by assets/js/theme.js. */
+.theme-toggle {
+  width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+  border-radius: 50%; border: 1px solid var(--border-strong);
+  background: transparent; color: var(--nav-text);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; padding: 0;
+}
+.theme-toggle:hover { background: var(--cream); }
+.theme-toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.theme-toggle svg { width: 22px; height: 22px; display: block; }
+.theme-toggle .theme-icon { display: none; }
+.theme-toggle .theme-icon-moon { display: block; } /* default: light, next is brown */
+html[data-theme="brown"] .theme-toggle .theme-icon-moon { display: none; }
+html[data-theme="brown"] .theme-toggle .theme-icon-graphite { display: block; }
+html[data-theme="graphite"] .theme-toggle .theme-icon-moon { display: none; }
+html[data-theme="graphite"] .theme-toggle .theme-icon-sun { display: block; }
+/* Nav layout with the toggle: logo left, links + toggle right. */
+.nav-links { margin-left: auto; }
+
+/* Shared dark-theme overrides — both dark themes. :is() keeps the
+   specificity one notch above the base rules and the rough pages'
+   inline <style> blocks (which load after this sheet), so these win
+   without touching the light theme. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .hero h1 .seen { color: var(--lizard); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .hero h1 .heard { color: var(--sun); }
+/* Hovers that land on a light fill need dark text in dark themes. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .btn-secondary:hover { background: var(--sun); border-color: var(--sun); color: var(--brown); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .tags li.sun { color: var(--brown); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .flower-button:hover { background: var(--lizard); color: var(--brown); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .email-copy:hover { background: var(--sun); color: var(--brown); }
+/* LinkedIn mark is a white SVG inverted to black on light; in dark
+   themes it stays white. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .footer-social img { filter: none; }
+/* The Ginko logo is dark green on transparent: unreadable on a dark
+   nav/footer, so it sits on a small egg chip in dark themes. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .nav .logo,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .footer-logo { background: var(--egg); border-radius: 10px; padding: 4px 10px; }
+/* Grain stays subtle on dark. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .noise { opacity: .06; }
+/* Rough prototype pages: white surfaces go to the dark panel colour. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .picker,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .toggle,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .preview figcaption,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .checklist li,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .ba-box,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .howto div,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .steps li,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .readout,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .transcript-box,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .typed-fallback input,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .mock-frame,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .mock-icon-btn,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue-actions button,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .not-found,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) textarea { background: var(--surface-2); }
+/* Dark text in the rough pages follows the theme text colour. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .picker,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .toggle,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .ba-box p,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) textarea,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .grade .big,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .filter-btn,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .note-card .speaker strong,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .how-it-works strong,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .big-btn.secondary,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .readout,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .typed-fallback input,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .mock-low.fixed,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .counts strong,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue p strong,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue-actions button,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .summary-box ul strong,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .note blockquote,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .flag { color: var(--text); }
+/* Sun-background elements: dark text, not light body text. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .sample-note,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .sample-badge,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .badge,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .uncertain,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .steps li.active,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .steps li.done,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .steps li.active span,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .steps li.done span,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .checklist .mark,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .filter-btn:hover,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .big-btn.secondary:hover,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .big-btn.secondary:focus-visible,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue-actions button:hover:not(:disabled) { color: var(--brown); }
+/* Forest-as-text becomes the link colour in dark themes. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .grade.after .big,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .theme-card .source a,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .mock-link,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .mock-fixed-note,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .decision.approved { color: var(--link); }
+/* Tinted panels go dark. */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .flag,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .status.work { background: var(--flag-bg); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .status.approved,
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue.decided-approved { background: var(--ok-tint-bg); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .note.private-note { background: var(--private-tint-bg); }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue code { background: var(--surface-2); }
+/* Red text on dark needs a lighter red (light #a93226 fails AA). */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .issue-actions .reject { border-color: #f0a49e; color: #f0a49e; }
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .decision.rejected { color: #f0a49e; }
+/* Severity pill: white on bright tangerine is 2.5:1 even in light
+   (pre-existing); in dark themes use the dark tangerine so it
+   passes AA (white on #9a4a00 is 6.26:1). */
+:is(html[data-theme="brown"], html[data-theme="graphite"]) .sev-medium { background: #9a4a00; }
